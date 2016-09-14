@@ -1,11 +1,3 @@
-      $import([
-              "sounds/Black.mp3"
-          ],
-          function(files) {
-              // Loading complete
-              console.log(files);
-          });
-
       (function() {
           'use strict';
 
@@ -92,14 +84,18 @@
           function run() {
               var image1 = document.querySelector("#image1");
               image1.addEventListener("stateremoved", function(evt) {
-		      if (evt.detail.state === "cursor-hovered" && image1.isPlaying) {
-			      image1.pause();
-		      }
+                  if (evt.detail.state === "cursor-hovered" && image1.components.sound.isPlaying) {
+                      console.log(image1.components.sound.sound.context.currentTime);
+                      image1.components.sound.pause();
+                      console.log(image1.components.sound.sound.context.currentTime);
+                  }
               });
               image1.addEventListener("stateadded", function(evt) {
-		      if (evt.detail.state === "cursor-hovered" && !image1.isPlaying) {
-			      image1.play();
-		      }
+                  if (evt.detail.state === "cursor-hovered" && !image1.components.sound.isPlaying) {
+                      console.log(image1.components.sound.sound.context.currentTime);
+                      image1.components.sound.play();
+                      console.log(image1.components.sound.sound.context.currentTime);
+                  }
               });
           }
       })();
