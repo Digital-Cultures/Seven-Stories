@@ -82,19 +82,22 @@
           }
 
           function run() {
+              var soundEntity = document.querySelector("#soundEntity");
               var image1 = document.querySelector("#image1");
               image1.addEventListener("stateremoved", function(evt) {
-                  if (evt.detail.state === "cursor-hovered" && image1.components.sound.isPlaying) {
-                      console.log(image1.components.sound.sound.context.currentTime);
-                      image1.components.sound.pause();
-                      console.log(image1.components.sound.sound.context.currentTime);
+                  if (evt.detail.state === "cursor-hovered" && soundEntity.components.sound.isPlaying) {
+                      //soundEntity.components.sound.pause();
+                      soundEntity.components.sound.sound.context.suspend();
+                      soundEntity.components.sound.isPlaying = false;
+                      console.log(soundEntity.components.sound.sound.context.currentTime);
                   }
               });
               image1.addEventListener("stateadded", function(evt) {
-                  if (evt.detail.state === "cursor-hovered" && !image1.components.sound.isPlaying) {
-                      console.log(image1.components.sound.sound.context.currentTime);
-                      image1.components.sound.play();
-                      console.log(image1.components.sound.sound.context.currentTime);
+                  if (evt.detail.state === "cursor-hovered" && !soundEntity.components.sound.isPlaying) {
+                      //soundEntity.components.sound.play();
+                      soundEntity.components.sound.sound.context.resume();
+                      soundEntity.components.sound.isPlaying = true;
+                      console.log(soundEntity.components.sound.sound.context.currentTime);
                   }
               });
           }

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Hello, World! • A-Frame</title>
     <meta name="description" content="Hello, World! • A-Frame">
-    <script src="https://aframe.io/aframe/dist/aframe.js"></script>
+    <script src="https://aframe.io/releases/0.3.0/aframe.js"></script>
     <!-- <script data-pace-options='{ "ajax": false }' src="pace.min.js"></script> -->
     <script type="text/javascript" src="https://rawgit.com/w3core/import.js/master/import.min.js"></script>
 
@@ -26,14 +26,16 @@
       
       
       <a-entity id="scene1" position="0 0 0" alongpath="path:0,2,-20 0,2,-12 3,2,-15 0,0,-12; closed:true; dur:12000" >
-        <a-image id="image1" src="#portrait" width="5" height="10" position="0 5.2 0.3" scale="0.2 0.2 0.2" sound="src: #black; on: click">
-          <a-event name="mouseenter" scale="1 1 1" >
-           <!--  <a-entity narration sound="autoplay: true; src: #black; volume: 5" ></a-entity> -->
-          </a-event>
+	<a-entity id="soundEntity" sound="src: #black; on: mouseenter">
+          <a-image id="image1" src="#portrait" width="5" height="10" position="0 5.2 0.3" scale="0.2 0.2 0.2">
+            <a-event name="mouseenter" scale="1 1 1" >
+             <!--  <a-entity narration sound="autoplay: true; src: #black; volume: 5" ></a-entity> -->
+            </a-event>
 
-          <a-event name="mouseleave" scale="0.2 0.2 0.2" >
-          </a-event>
-        </a-image>        
+            <a-event name="mouseleave" scale="0.2 0.2 0.2" >
+            </a-event>
+          </a-image>
+	</a-entity>
 
         <a-collada-model cursor-listener src="#sculpture" position="2 0 0" rotation="180 0 90" scale="4 4 4">
           <a-animation attribute="rotation"
