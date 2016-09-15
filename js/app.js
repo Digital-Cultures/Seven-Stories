@@ -82,20 +82,48 @@
           }
 
           function run() {
+            //remove loader
+            var cover = document.getElementById("cover");
+            cover.parentNode.removeChild(cover);
+
+
               var image1 = document.querySelector("#image1");
+              var audio = document.querySelector("#audio");
+
               image1.addEventListener("stateremoved", function(evt) {
-                  if (evt.detail.state === "cursor-hovered" && image1.components.sound.isPlaying) {
-                      console.log(image1.components.sound.sound.context.currentTime);
-                      image1.components.sound.pause();
-                      console.log(image1.components.sound.sound.context.currentTime);
+
+                console.log(audio.components);
+                  if (evt.detail.state === "cursor-hovered" && !audio.components.sound.isPlaying) {
+                      //image1.setAttribute('scale', { x: 1, y: 1, z: 1 });//scale="1 1 1"
+                      
+                      audio.components.sound.play();
+                      console.log(audio.components.sound.sound.context.currentTime);
                   }
               });
+
               image1.addEventListener("stateadded", function(evt) {
-                  if (evt.detail.state === "cursor-hovered" && !image1.components.sound.isPlaying) {
-                      console.log(image1.components.sound.sound.context.currentTime);
-                      image1.components.sound.play();
-                      console.log(image1.components.sound.sound.context.currentTime);
+                  console.log(audio.components);
+                  if (evt.detail.state === "cursor-hovered" && audio.components.sound.isPlaying) {
+                      //scale="0.2 0.2 0.2"
+                      console.log(audio.components.sound.sound.context.currentTime);
+                      audio.components.sound.pause();
+                      audio.components.sound.sound.context.suspend();
+                      console.log(audio.components.sound.sound.context.currentTime);
                   }
               });
+
+              var timer = document.querySelector("#timer");
+              var camera = document.querySelector("#camera");
+              var totalSeconds = 0;
+              setInterval(setTime, 1000);
+              function setTime(){
+                totalSeconds++;
+                timer.setAttribute('text', {text: totalSeconds});
+
+                if (totalSeconds==10){
+                  camera.setAttribute('position', { x: 4, y: 4, z: 0 });
+                }
+              }
+
           }
       })();
