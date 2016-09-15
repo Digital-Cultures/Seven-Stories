@@ -86,7 +86,6 @@
             var cover = document.getElementById("cover");
             cover.parentNode.removeChild(cover);
 
-
               var image1 = document.querySelector("#image1");
               var audio = document.querySelector("#audio");
 
@@ -96,7 +95,8 @@
                   if (evt.detail.state === "cursor-hovered" && !audio.components.sound.isPlaying) {
                       //image1.setAttribute('scale', { x: 1, y: 1, z: 1 });//scale="1 1 1"
                       
-                      audio.components.sound.play();
+                      audio.components.sound.sound.context.resume();
+                      audio.components.sound.isPlaying = true;
                       console.log(audio.components.sound.sound.context.currentTime);
                   }
               });
@@ -106,8 +106,8 @@
                   if (evt.detail.state === "cursor-hovered" && audio.components.sound.isPlaying) {
                       //scale="0.2 0.2 0.2"
                       console.log(audio.components.sound.sound.context.currentTime);
-                      audio.components.sound.pause();
                       audio.components.sound.sound.context.suspend();
+                      audio.components.sound.isPlaying = false;
                       console.log(audio.components.sound.sound.context.currentTime);
                   }
               });
