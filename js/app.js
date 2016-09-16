@@ -93,28 +93,26 @@
             //Get a reference to the audio element
             //var sound = document.getElementById(DingType);
             //Play it
-            sound.components.sound.sound.play();
+            narration.play();
             run();
         }
 
         function audioIsPlaying(audioElem) {
-            return !audioElem.paused || audioElem.currentTime > 0;
+            return !audioElem.paused;
         }
 
         function run() {
             //remove loader
             var cover = document.getElementById("cover");
-            cover.parentNode.removeChild(cover);
+            cover.remove();
 
             var image1 = document.querySelector("#image1");
-            var audio = document.querySelector("#audio");
             var narration = document.querySelector("#narration");
 
             image1.addEventListener("stateremoved", function(evt) {
-
-                console.log(audio.components);
+                //console.log(sound.components);
+                image1.setAttribute('scale', "0.2 0.2 0.2"); //scale="0.2 0.2 0.2"
                 if (evt.detail.state === "cursor-hovered" && !audioIsPlaying(narration)) {
-                    //image1.setAttribute('scale', { x: 1, y: 1, z: 1 });//scale="1 1 1"
 
                     narration.play();
                     console.log(narration.currentTime);
@@ -122,9 +120,9 @@
             });
 
             image1.addEventListener("stateadded", function(evt) {
-                console.log(audio.components);
+                //console.log(sound.components);
+                image1.setAttribute('scale', "1 1 1"); //scale="1 1 1"
                 if (evt.detail.state === "cursor-hovered" && audioIsPlaying(narration)) {
-                    //scale="0.2 0.2 0.2"
                     narration.pause();
                     console.log(narration.currentTime);
                 }
