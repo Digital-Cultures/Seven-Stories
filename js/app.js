@@ -82,14 +82,16 @@
 							scene.addEventListener('loaded', showStartBtn);
 					}
 
+					var sound = document.getElementById('audio');
+
 					function showStartBtn(){
 						document.getElementById("startBtn").style.visibility = "visible";
-						document.getElementById("startBtn").onclick=function(){ PlayDing('audio')};
+						document.getElementById("startBtn").onclick=function(){ PlayDing()};
 					}
 
 					function PlayDing(DingType) {
 						//Get a reference to the audio element
-						var sound = document.getElementById(DingType);
+						//var sound = document.getElementById(DingType);
 						//Play it
 						sound.components.sound.sound.play();
 						run();
@@ -128,15 +130,79 @@
 
 							var timer = document.querySelector("#timer");
 							var camera = document.querySelector("#camera");
+
+
+							///TIMINGS
 							var totalSeconds = 0;
 							setInterval(setTime, 1000);
+
+
+
+							var bookcasepoints = [new THREE.Vector3(0,0,-8),new THREE.Vector3(0,0,0)];
+							var curve = new THREE['SplineCurve3'](bookcasepoints);
+
+							var bookcaseFrame;
+
+							var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+							var cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame;
+
+							function onFrame(t) {
+									bookcaseFrame = requestAnimationFrame(onFrame);
+									t = t % 10000;
+									var i = t / 10000;
+
+									try {
+											var p = curve.getPoint(i);
+											camera.setAttribute('position', p);
+											//console.log(p);
+									} catch (ex) {}
+
+									console.log(i+"  "+t);
+							}
+
+	
+
 							function setTime(){
 								totalSeconds++;
 								timer.setAttribute('text', {text: totalSeconds});
 
-								if (totalSeconds==10){
-									camera.setAttribute('position', { x: 4, y: 4, z: 0 });
-								}
+								switch (totalSeconds) {
+									case 1:
+											//Start zoom out from book case
+											bookcaseFrame = requestAnimationFrame(onFrame);
+
+											break;
+							    case 10:
+							    		cancelAnimationFrame(bookcaseFrame); 
+							    		//Marianne dreams
+							    		break;
+							    case 16:
+											//Rufus
+											break;
+									case 23:
+											//mirror
+											break;
+									case 28:
+											//Keys
+											break;
+									case 36:
+											//Stop Zoom out from book case
+											break;
+									case 38:
+											//Fade out room
+											break;
+									case 40:
+											//flash in bedside
+							        camera.setAttribute('position', { x: 4, y: 4, z: 0 });
+							        break;
+							    case 48:
+							    		//Marianne appears
+							    		break;
+							    case 52:
+							    		//book appears
+							    		break;
+							  }
 							}
 
 					}
