@@ -76,9 +76,23 @@
 
           var scene = document.querySelector('a-scene');
           if (scene.hasLoaded) {
-              run();
+              showStartBtn();
+              //run();
           } else {
-              scene.addEventListener('loaded', run);
+              scene.addEventListener('loaded', showStartBtn);
+          }
+
+          function showStartBtn(){
+            document.getElementById("startBtn").style.visibility = "visible";
+            document.getElementById("startBtn").onclick=function(){ PlayDing('audio')};
+          }
+
+          function PlayDing(DingType) {
+            //Get a reference to the audio element
+            var sound = document.getElementById(DingType);
+            //Play it
+            sound.components.sound.sound.play();
+            run();
           }
 
           function run() {
