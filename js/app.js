@@ -97,6 +97,10 @@
             run();
         }
 
+        function audioIsPlaying(audioElem) {
+            return !audioElem.paused || audioElem.currentTime > 0;
+        }
+
         function run() {
             //remove loader
             var cover = document.getElementById("cover");
@@ -109,20 +113,20 @@
             image1.addEventListener("stateremoved", function(evt) {
 
                 console.log(audio.components);
-                if (evt.detail.state === "cursor-hovered" && !audio.components.sound.isPlaying) {
+                if (evt.detail.state === "cursor-hovered" && !audioIsPlaying(narration)) {
                     //image1.setAttribute('scale', { x: 1, y: 1, z: 1 });//scale="1 1 1"
 
                     narration.play();
-                    console.log(audio.components.sound.sound.context.currentTime);
+                    console.log(narration.currentTime);
                 }
             });
 
             image1.addEventListener("stateadded", function(evt) {
                 console.log(audio.components);
-                if (evt.detail.state === "cursor-hovered" && audio.components.sound.isPlaying) {
+                if (evt.detail.state === "cursor-hovered" && audioIsPlaying(narration)) {
                     //scale="0.2 0.2 0.2"
                     narration.pause();
-                    console.log(audio.components.sound.sound.context.currentTime);
+                    console.log(narration.currentTime);
                 }
             });
 
