@@ -140,6 +140,7 @@
             var cameraPositions;
             var cameraPath;
             var startFrame;
+            var duration = 10000;
 
             var bookcaseFrame;
             var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
@@ -149,7 +150,7 @@
                 if (!startFrame) startFrame = t;
                 bookcaseFrame = requestAnimationFrame(cameraPan);
                 t = t - startFrame;
-                var i = t / 10000;
+                var i = t / duration;
 
                 try {
                     var p = cameraPath.getPoint(i);
@@ -167,12 +168,13 @@
                 switch (totalSeconds) {
                     case 1:
                         //Start zoom out from book case
-                        cameraPositions = [new THREE.Vector3(0, 0, -8), new THREE.Vector3(0, 0, 0)];
+                        cameraPositions = [new THREE.Vector3(2.5, 4, -8), new THREE.Vector3(2.5, 4, 0)];
                         cameraPath = new THREE.SplineCurve3(cameraPositions);
+                        duration = 36000;
                         bookcaseFrame = requestAnimationFrame(cameraPan);
                         break;
                     case 10:
-                        cancelAnimationFrame(bookcaseFrame);
+                        
                         //Marianne dreams
                         break;
                     case 16:
@@ -185,6 +187,7 @@
                         //Keys
                         break;
                     case 36:
+                    	cancelAnimationFrame(bookcaseFrame);
                         //Stop Zoom out from book case
                         break;
                     case 38:
@@ -192,7 +195,8 @@
                         break;
                     case 40:
                         //flash in bedside
-                        camera.setAttribute('position', { x: 4, y: 4, z: 0 });
+                        camera.setAttribute('position', { x: 5, y: 4, z: 0 });
+                        //camera.lookAt( new THREE.Vector3(0,0,0));
                         break;
                     case 48:
                         //Marianne appears
