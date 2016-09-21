@@ -173,17 +173,20 @@
                         duration = 36000;
                         bookcaseFrame = requestAnimationFrame(cameraPan);
                         break;
-                    case 10:
-                        
+                    case 12:
+                        document.querySelector('#movingBookDreams').emit('bookDreams');
                         //Marianne dreams
                         break;
-                    case 16:
+                    case 20:
+                    	document.querySelector('#movingBookRufus').emit('bookRufus');
                         //Rufus
                         break;
-                    case 23:
+                    case 26:
+                    	document.querySelector('#movingBookMirror').emit('bookMirror');
                         //mirror
                         break;
-                    case 28:
+                    case 32:
+                    	document.querySelector('#movingBookKey').emit('bookKey');
                         //Keys
                         break;
                     case 36:
