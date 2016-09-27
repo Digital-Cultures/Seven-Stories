@@ -133,7 +133,7 @@
 
 
             ///TIMINGS
-            var totalSeconds = 39;
+            var totalSeconds = 0;
             setInterval(setTime, 1000);
 
 
