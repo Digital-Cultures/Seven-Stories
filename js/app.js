@@ -111,7 +111,7 @@
 
             image1.addEventListener("stateremoved", function(evt) {
                 //console.log(sound.components);
-                image1.setAttribute('scale', "0.2 0.2 0.2"); //scale="0.2 0.2 0.2"
+                //image1.setAttribute('scale', "0.2 0.2 0.2"); //scale="0.2 0.2 0.2"
                 if (evt.detail.state === "cursor-hovered" && !audioIsPlaying(narration)) {
 
                     narration.play();
@@ -121,7 +121,7 @@
 
             image1.addEventListener("stateadded", function(evt) {
                 //console.log(sound.components);
-                image1.setAttribute('scale', "1 1 1"); //scale="1 1 1"
+                //image1.setAttribute('scale', "1 1 1"); //scale="1 1 1"
                 if (evt.detail.state === "cursor-hovered" && audioIsPlaying(narration)) {
                     narration.pause();
                     console.log(narration.currentTime);
@@ -133,7 +133,7 @@
 
 
             ///TIMINGS
-            var totalSeconds = 0;
+            var totalSeconds = 39;
             setInterval(setTime, 1000);
 
 
