@@ -17,8 +17,9 @@
 	<div id="cover"> 
 		Loading..
 		<br>
-		Make sure the volume on your phone is on
+		This short introduction to the Catherine Storr archives is a joint project by Newcastle University and Seven Stories, the UK's National Centre for Children's Literature. After enjoying the interactive Virtual Reality guided tour, you may want to learn more about Catherine Storr, her work, and the material held by Seven Stories. There is a link that will lead you to more detailed information at the end of the tour.
 		<br>
+		Make sure the volume on your phone is on!
 		<a id="startBtn" href="#" data-icon="info" data-role="button" data-mini="false" data-theme="b" data-corners="false" style="visibility: hidden;">Start</a>
 	</div>
 
@@ -27,9 +28,8 @@
 
 		<!-- <a-animation attribute="fog.density" from="7" to="0.1" dur="2000"></a-animation> -->
 		<!-- Animations -->
-		<a-animation begin="fogfadeout" attribute="fog.density" to="1" dur="2000"></a-animation>
-		<!-- <a-animation begin="fogfadeout" attribute="fog.color" from="#444" to="black" dur="1000"></a-animation> -->
-		<a-animation attribute="fog.density" begin="fogfadein" from="1" to="0.1" dur="2000"></a-animation>
+		<a-animation begin="fogfadeout" attribute="fog.density" to="1" dur="1000"></a-animation>
+		<a-animation begin="fogfadein"  attribute="fog.density" from="1" to="0.1" dur="1000"></a-animation>
 
 		<a-entity light="color: #FFF; intensity: 1.0" position="2 3 8" rotation="" scale="" visible="">
 			<a-animation begin="lightOn" attribute="light.intensity" to="10" direction="alternate" dur="100"></a-animation> -->
@@ -43,11 +43,10 @@
 			<a-asset-item id="bookhouse" src="models/Open+Book+House.dae"></a-asset-item>
 			<a-asset-item id="book" src="models/book.dae"></a-asset-item>
 			<a-asset-item id="bed" src="models/bed.dae"></a-asset-item>
-			<a-asset-item id="boy" src="models/boy.obj"></a-asset-item>
+			<a-asset-item id="house" src="models/house.dae"></a-asset-item>
 			<a-asset-item id="bookChineseEgg" src="models/book+Chinese+Egg.dae"></a-asset-item>
 			<a-asset-item id="bookcase" src="models/Bookcase+with+books.dae"></a-asset-item>
-			<audio id="narration" src="sounds/narration2.mp3"></audio>
-			<audio id="river" src="sounds/blip2.mp3"></audio>
+			<audio id="narration" src="sounds/narration.mp3"></audio>
 		</a-assets>
 
 		<!-- Object -->
@@ -115,9 +114,6 @@
 			</a-image>
 
 		</a-entity>
-		
-		<a-collada-model src="#boy" position="7 2 -1" scale="10 10 10" color="#CCCCCC" rotation="0 0 0" material="shader: flat" collada-model="" visible="">
-		</a-collada-model>
 	 
 		<a-camera id="camera" position="2.5 4 -8">
 			<a-entity cursor="fuse: true; timeout: 50"
@@ -141,6 +137,7 @@
 
 	</a-scene>
 	<script type="text/javascript" src="js/addElements.js"></script>
+	<script type="text/javascript" src="js/timeLine.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
   </body>
 </html>
