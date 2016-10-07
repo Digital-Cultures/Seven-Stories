@@ -142,7 +142,7 @@ function timeLine() {
             startFrame = null;
             cameraPositions = [new THREE.Vector3(8, 4, 8), new THREE.Vector3(8, 3.5, 1.5)];
             cameraPath = new THREE.SplineCurve3(cameraPositions);
-            duration = 9000;
+            duration = 12000;
             bookcaseFrame = requestAnimationFrame(cameraPan);
             
             break;
