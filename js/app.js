@@ -62,10 +62,10 @@
             scene.addEventListener('loaded', showStartBtn);
         }
 
-        var sound = document.getElementById('audio');
 
         function showStartBtn() {
-            document.getElementById("startBtn").style.visibility = "visible";
+            document.getElementById("startBtn").style.display = "block";
+            document.getElementById("loading").style.display = "none";
             document.getElementById("startBtn").onclick = function() { PlayDing(); };
         }
 
@@ -75,6 +75,7 @@
             //Play it
             run();
         }
+
 
         function audioIsPlaying(audioElem) {
             return !audioElem.paused;
@@ -107,8 +108,8 @@
             startTimeLine();
 
             //remove loader
-            var cover = document.getElementById("cover");
+            var cover = document.getElementById("cover2");
             setTimeout(cover.remove(), 1000);
-            narration.play();
         }
+
     })();

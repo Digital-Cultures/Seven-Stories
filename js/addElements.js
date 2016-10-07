@@ -4,7 +4,7 @@ function addOpenBook(){
 	var entity = document.createElement("a-collada-model");
 
 	entity.setAttribute("src", "#bookhouse");
-	entity.setAttribute("position", "10 1 -3.5");
+	entity.setAttribute("position", "10 0.4 -3.5");
 	entity.setAttribute("scale", "8 8 8");
 	entity.setAttribute("rotation", "0 90 0");
 	entity.setAttribute("material", "shader: flat");

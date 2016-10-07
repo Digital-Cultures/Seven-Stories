@@ -4,24 +4,50 @@
 		<meta charset="utf-8">
 		<title>Hello, World! • A-Frame</title>
 		<meta name="description" content="Hello, World! • A-Frame">
-		<script src="js/aframe.js"></script>
-		<script src="js/aframe-text-component.min.js"></script>
-		<!-- <script data-pace-options='{ "ajax": false }' src="pace.min.js"></script> -->
-		<script type="text/javascript" src="https://rawgit.com/w3core/import.js/master/import.min.js"></script>
-		<script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
 
 		<link href="css/style.css" rel="stylesheet" />
   </head>
   <body>
 
 	<div id="cover"> 
-		Loading..
-		<br>
 		This short introduction to the Catherine Storr archives is a joint project by Newcastle University and Seven Stories, the UK's National Centre for Children's Literature. After enjoying the interactive Virtual Reality guided tour, you may want to learn more about Catherine Storr, her work, and the material held by Seven Stories. There is a link that will lead you to more detailed information at the end of the tour.
-		<br>
-		Make sure the volume on your phone is on!
-		<a id="startBtn" href="#" data-icon="info" data-role="button" data-mini="false" data-theme="b" data-corners="false" style="visibility: hidden;">Start</a>
+		<br><br>
+		<div style="width: 100%; text-align: center; padding-bottom: 20px">Make sure the sound is on!</div>
+		<div id="beginBtn" href="#" data-icon="info" data-role="button" data-mini="false" data-theme="b" data-corners="false">Shall we begin?</div>
 	</div>
+	<div id="cover2" style="display: none;">
+		<div style="width: 100%; text-align: center; padding: 20px"> This experiance is best enjoyed on mobile with headphones + Cardboard, for desktops click and drag the mouse to look around.</div>
+		<div id="loading" style="width: 100%; text-align: center;">
+			<div class="spinner"></div>
+			Loading...
+		</div>
+		<div id="startBtn" href="#" data-icon="info" data-role="button" data-mini="false" data-theme="b" data-corners="false">Click to Start!</div>
+	</div>
+	<div id="credits" style="display: none;">
+		<div style="width: 100%; text-align: center; padding: 20px"> 
+			Credits:<br>
+			Narration - Elena Joy Miller<br>
+			Music - Kevin MacLeod<br>
+			Kim Reynolds<br>
+			Kristopher McKie<br>
+			Daniel Foster-Smith<br>
+
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.getElementById('beginBtn').onclick = function() {
+            document.getElementById("cover").style.display = "none";
+            document.getElementById("cover2").style.display = "block";
+        };
+	</script>
+
+	<!-- This has the inspector build below the scene markup. -->
+	<script src="js/aframe.js"></script>
+	<script src="js/aframe-text-component.min.js"></script>
+	<!-- <script data-pace-options='{ "ajax": false }' src="pace.min.js"></script> -->
+	<script type="text/javascript" src="https://rawgit.com/w3core/import.js/master/import.min.js"></script>
+	<script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
 
 	<a-scene id="scene-1" antialias="true" fog="type: exponential; color: #444; density: 0" animation__fog="startEvents: fogfadeout; property: fog.color; to: #000; dur: 2000">
 	<!-- <a-scene id="scene-1" antialias="true" fog="type: exponential; color: #444; density: 0.2" animation__fog="startEvents: fogfadeout; property: fog.color; to: #000; dur: 2000"> -->
@@ -46,7 +72,9 @@
 			<a-asset-item id="house" src="models/house.dae"></a-asset-item>
 			<a-asset-item id="bookChineseEgg" src="models/book+Chinese+Egg.dae"></a-asset-item>
 			<a-asset-item id="bookcase" src="models/Bookcase+with+books.dae"></a-asset-item>
+			<audio id="music" src="sounds/Wounded.mp3"></audio>
 			<audio id="narration" src="sounds/narration.mp3"></audio>
+			<audio id="bang" src="sounds/Exploding-Sound.mp3"></audio>
 		</a-assets>
 
 		<!-- Object -->
@@ -69,17 +97,17 @@
 			<a-animation attribute="material.opacity" begin="fadeout" to="0" dur="5000"></a-animation>
 
 			<!-- Objects -->
-			<a-plane class="walls" color="#C00" height="10" width="20" material="opacity:0" geometry="" position="-2 3 -2" rotation="0 90 0">
+			<a-plane class="walls" color="#C00" height="10" width="20" material="opacity:0" geometry="" position="-7.7 3 -2" rotation="0 90 0">
 				<a-animation attribute="material.opacity" begin="fadein" to="1" dur="30000"></a-animation>
 			</a-plane>
 			<a-plane class="walls" color="#C00" height="10" width="20" material="opacity:0" geometry="" position="12.3 3 -2" rotation="180 90 0">
 				<a-animation attribute="material.opacity" begin="fadein" to="1" dur="30000"></a-animation>
 			</a-plane>
-			<a-plane class="walls" color="#C00" height="10" width="20" material="opacity:0" geometry="" position="8 3 -12" rotation="180 180 0">
+			<a-plane class="walls" color="#C00" height="10" width="20" material="opacity:0" geometry="" position="2.3 3 -12" rotation="180 180 0">
 				<a-animation attribute="material.opacity" begin="fadein" to="1" dur="30000"></a-animation>
 			</a-plane>
 
-			<a-plane class="walls" src="#carpet"  material="repeat: 20 20; opacity:0;" height="20" width="20" position="8 -2 -2" rotation="270 180 0">
+			<a-plane class="walls" src="#carpet"  material="repeat: 15 15; opacity:0;" height="20" width="20" position="2.3 -2 -2" rotation="270 180 0">
 				<a-animation attribute="material.opacity" begin="fadein" to="1" dur="30000"></a-animation>
 			</a-plane>
 
@@ -88,23 +116,23 @@
 			</a-collada-model>
 
 			<a-collada-model src="#bookcase" position="-6 -2 -10" scale="4 4 4" color="#CCCCCC" rotation="0 0 0"  material="shader: flat">
-				<a-collada-model id="movingBookDreams" src="#bookChineseEgg" position="2 1.5 0.7" rotation="155 90 90" scale="0.75 1 0.8">
-					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="2 1.5 0.7" to="2.18 1.83 -0.05" begin="bookDreams"></a-animation>
+				<a-collada-model id="movingBookDreams" src="#bookChineseEgg" position="1.9 1.5 0.9" rotation="155 90 90" scale="0.75 1 0.8">
+					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="1.9 1.5 0.9" to="2.18 1.83 -0.05" begin="bookDreams"></a-animation>
 					<a-animation attribute="rotation" dur="4000" from="155 90 90" to="165 175 90" begin="bookDreams"></a-animation>
 				</a-collada-model>
 
-				<a-collada-model id="movingBookRufus" src="#bookChineseEgg" position="2 1.5 1.1" rotation="155 90 90" scale="0.75 1 0.8">
-					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="2 1.5 1.1" to="1.64 1.84 -0.02" begin="bookRufus"></a-animation>
+				<a-collada-model id="movingBookRufus" src="#bookChineseEgg" position="2.1 1.5 1.3" rotation="155 90 90" scale="0.75 1 0.8">
+					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="2.1 1.5 1.3" to="1.64 1.84 -0.02" begin="bookRufus"></a-animation>
 					<a-animation attribute="rotation" dur="4000" from="155 90 90" to="165 175 90" begin="bookRufus"></a-animation>
 				</a-collada-model>
 
-				<a-collada-model id="movingBookMirror" src="#bookChineseEgg" position="2 1.5 1.6" rotation="155 90 90" scale="0.75 1 0.8">
-					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="2 1.5 1.6" to="1.93 1.06 -0.03" begin="bookMirror"></a-animation>
+				<a-collada-model id="movingBookMirror" src="#bookChineseEgg" position="1.9 1.5 1.9" rotation="155 90 90" scale="0.75 1 0.8">
+					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="1.9 1.5 1.9" to="1.93 1.06 -0.03" begin="bookMirror"></a-animation>
 					<a-animation attribute="rotation" dur="4000" from="155 90 90" to="165 175 90" begin="bookMirror"></a-animation>
 				</a-collada-model>
 				
-				<a-collada-model id="movingBookKey" src="#bookChineseEgg" position="2 1.5 2" rotation="155 90 90" scale="0.75 1 0.8">
-					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="2 1.5 2" to="1.8 2.14 -0.02" begin="bookKey"></a-animation>
+				<a-collada-model id="movingBookKey" src="#bookChineseEgg" position="2.1 1.5 2.2" rotation="155 90 90" scale="0.75 1 0.8">
+					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="2.1 1.5 2.2" to="1.8 2.14 -0.02" begin="bookKey"></a-animation>
 					<a-animation attribute="rotation" dur="4000" from="155 90 90" to="165 175 90" begin="bookKey"></a-animation>
 				</a-collada-model>
 		  	</a-collada-model>
@@ -115,7 +143,7 @@
 
 		</a-entity>
 	 
-		<a-camera id="camera" position="2.5 4 -8">
+		<a-entity camera look-controls id="camera" position="2.5 4 -8">
 			<a-entity cursor="fuse: true; timeout: 50"
 			  position="0 0 -1"
 			  scale="0.1 0.1 0.1"
@@ -130,12 +158,13 @@
 			  material="color: white; shader: flat">
 			</a-entity>
 
-			<a-entity id="audio" sound="autoplay: false; src: #narration; volume: 5" ></a-entity>
+			<!-- <a-entity id="audio" sound="autoplay: false; src: #narration; volume: 5" ></a-entity> -->
 
 			<a-entity light="type: point; intensity: 5.7; distance: 20; decay: 2" position="0 10 10"></a-entity>
-		</a-camera>
+		</a-entity>
 
 	</a-scene>
+
 	<script type="text/javascript" src="js/addElements.js"></script>
 	<script type="text/javascript" src="js/timeLine.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>

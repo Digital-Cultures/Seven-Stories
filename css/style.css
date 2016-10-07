@@ -1,7 +1,30 @@
-#cover {
+body{
   height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
   width: 100%;
+}
+#cover, #cover2, #credits {
+  height: 100%;
+  width: 90%;
   background: white;
+  font-family: sans-serif;
+  font-size: 25px;
+  margin: 40px;
+}
+
+#beginBtn, #startBtn{
+  margin: auto;
+  width: 240px;
+  text-align: center;
+  cursor: pointer;
+  background: black;
+  color: white;
+  padding: 12px;
+  font-style: oblique;
+  border-radius: 5px;
+  text-transform: uppercase;
 }
 
 .pace {
@@ -54,4 +77,34 @@
 
 .pace.pace-inactive {
   display: none;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+  background-color: #333;
+
+  border-radius: 100%;  
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
 }
