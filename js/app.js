@@ -54,19 +54,49 @@
             }
         });
 
-        var scene = document.querySelector('a-scene');
-        if (scene.hasLoaded) {
-            showStartBtn();
-            //run();
-        } else {
-            scene.addEventListener('loaded', showStartBtn);
+
+        var musicLoaded = false;
+        var narrationLoaded = false;
+        var bangLoaded = false;
+
+        function loadAudio(){
+            var camera = document.querySelector("#camera");
+            listener = new THREE.AudioListener();
+            camera.components.camera.camera.add( listener );
+            audioLoader = new THREE.AudioLoader();
+
+            music = new THREE.Audio( listener );
+            audioLoader.load( 'sounds/Wounded.mp3', function( buffer ) {
+                music.setBuffer( buffer );
+                music.setVolume(0.5);
+                musicLoaded = true;
+                showStartBtn();
+            });
+
+            narration = new THREE.Audio( listener );
+            audioLoader.load( 'sounds/narration.mp3', function( buffer ) {
+                narration.setBuffer( buffer );
+                narration.setVolume(0.5);
+                narrationLoaded = true;
+                showStartBtn();
+            });
+
+            bang = new THREE.Audio( listener );
+            audioLoader.load( 'sounds/Exploding-Sound.mp3', function( buffer ) {
+                bang.setBuffer( buffer );
+                bang.setVolume(0.5);
+                bangLoaded = true;
+                showStartBtn();
+            });
+
         }
 
-
         function showStartBtn() {
-            document.getElementById("startBtn").style.display = "block";
-            document.getElementById("loading").style.display = "none";
-            document.getElementById("startBtn").onclick = function() { PlayDing(); };
+            if (musicLoaded && narrationLoaded && bangLoaded){
+                document.getElementById("startBtn").style.display = "block";
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("startBtn").onclick = function() { PlayDing(); };
+            }
         }
 
         function PlayDing(DingType) {
@@ -83,7 +113,7 @@
 
         function run() {
             var image1 = document.querySelector("#image1");
-            var narration = document.querySelector("#narration");
+            //var narration = document.querySelector("#narration");
 
             image1.addEventListener("stateremoved", function(evt) {
                 //console.log(sound.components);
@@ -91,7 +121,7 @@
                 if (evt.detail.state === "cursor-hovered" && !audioIsPlaying(narration)) {
 
                     //narration.play();
-                    console.log(narration.currentTime);
+                   // console.log(narration.currentTime);
                 }
             });
 
@@ -100,7 +130,7 @@
                 //image1.setAttribute('scale', "1 1 1"); //scale="1 1 1"
                 if (evt.detail.state === "cursor-hovered" && audioIsPlaying(narration)) {
                    // narration.pause();
-                    console.log(narration.currentTime);
+                    //console.log(narration.currentTime);
                 }
             });
 
@@ -110,6 +140,17 @@
             //remove loader
             var cover = document.getElementById("cover2");
             setTimeout(cover.remove(), 1000);
+            //narration delay
+            //setTimeout(narration.play(), 3000);
         }
 
+
+        var scene = document.querySelector('a-scene');
+        if (scene.hasLoaded) {
+            showStartBtn();
+            //run();
+        } else {
+            scene.addEventListener('loaded', loadAudio);
+        }
+        
     })();

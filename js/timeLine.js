@@ -5,6 +5,12 @@ var cameraPath;
 var startFrame;
 var duration = 10000;
 
+var listener;
+var audioLoader;
+var music;
+var narration;
+var bang;
+
 var bookcaseFrame;
 var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 var cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame;
@@ -30,10 +36,15 @@ function cameraPan(t) {
 function timeLine() {
     timer.setAttribute('text', { text: totalSeconds });
 
+
     switch (totalSeconds) {
         case 0:
-            var music = document.querySelector("#music");
-            music.play();
+
+                music.play();
+
+
+            // var music = document.querySelector("#music");
+            // music.play();
             //Start zoom out from book case
             cameraPositions = [new THREE.Vector3(2.5, 4, -8), new THREE.Vector3(2.5, 4, 0)];
             cameraPath = new THREE.SplineCurve3(cameraPositions);
@@ -42,8 +53,9 @@ function timeLine() {
             break;
 
         case 2:
-            var narration = document.querySelector("#narration");
             narration.play();
+            // var narration = document.querySelector("#narration");
+            // narration.play();
             break;
         case 15:
             //Marianne dreams
@@ -151,7 +163,8 @@ function timeLine() {
             // remove House front
             removeHouse();
             break;
-        case 103:
+        case 107:
+            addHouseRoom();
             //fae into bedroom (3 Sec) B&W and cold
             break;
         case 104:
@@ -183,7 +196,6 @@ function timeLine() {
             break;
         case 149:
             //play bang and Marianne dissapears
-            var bang = document.querySelector("#bang");
             bang.play();
             break;
 
