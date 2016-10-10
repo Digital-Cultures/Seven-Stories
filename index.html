@@ -49,16 +49,17 @@
 	<script type="text/javascript" src="https://rawgit.com/w3core/import.js/master/import.min.js"></script>
 	<script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
 
-	<a-scene id="scene-1" antialias="true" fog="type: exponential; color: #444; density: 0" animation__fog="startEvents: fogfadeout; property: fog.color; to: #000; dur: 2000">
-	<!-- <a-scene id="scene-1" antialias="true" fog="type: exponential; color: #444; density: 0.2" animation__fog="startEvents: fogfadeout; property: fog.color; to: #000; dur: 2000"> -->
+	<!-- <a-scene id="scene-1" antialias="true" fog="type: exponential; color: #444; density: 0" animation__fog="startEvents: fogfadeout; property: fog.color; to: #000; dur: 1000" animation__fog="startEvents: fogfadein; property: fog.color; to: #444; dur: 1000">
+	 --><a-scene id="scene-1" antialias="true" fog="type: exponential; color: #666; density: 0.2" animation__fog="startEvents: fogfadeout; property: fog.color; to: #000; dur: 2000">
 
 		<!-- <a-animation attribute="fog.density" from="7" to="0.1" dur="2000"></a-animation> -->
 		<!-- Animations -->
-		<a-animation begin="fogfadeout" attribute="fog.density" to="1" dur="1000"></a-animation>
+		<a-animation begin="fogClearSlow" attribute="fog.density" to="0.08" dur="40000"></a-animation>
+		<a-animation begin="fogfadeout" attribute="fog.density" to="1" from="0.1" dur="1000"></a-animation>
 		<a-animation begin="fogfadein"  attribute="fog.density" from="1" to="0.1" dur="1000"></a-animation>
 
-		<a-entity light="color: #FFF; intensity: 1.0" position="2 3 8" rotation="" scale="" visible="">
-			<a-animation begin="lightOn" attribute="light.intensity" to="10" direction="alternate" dur="100"></a-animation> -->
+		<a-entity id="lightMain" light="color: #FFF; intensity: 0.1" position="2 3 8" rotation="" scale="" visible="">
+			<a-animation begin="lightOn" attribute="light.intensity" to="1" dur="1000"></a-animation> -->
 	  	</a-entity>
 
 		<!-- ASSETS -->
@@ -72,14 +73,15 @@
 			<a-asset-item id="house" src="models/house.dae"></a-asset-item>
 			<a-asset-item id="bookChineseEgg" src="models/book+Chinese+Egg.dae"></a-asset-item>
 			<a-asset-item id="bookcase" src="models/Bookcase+with+books.dae"></a-asset-item>
+			<a-asset-item id="mirror" src="models/Goldmirror.dae"></a-asset-item>
 			<audio id="music" src="sounds/Wounded.mp3"></audio>
 			<audio id="narration" src="sounds/narration.mp3"></audio> -->
 			<audio id="bang" src="sounds/Exploding-Sound.mp3"></audio>
 		</a-assets>
 
 		<!-- Object -->
-	  	<a-sky  color="#FFF" ></a-sky>
-	  	<!-- <a-sky  color="#000" ></a-sky> -->
+	  	<!-- <a-sky  color="#FFF" ></a-sky> -->
+	  	<a-sky  color="#000" ></a-sky>
 	  
 		<a-entity id="movingBook" position="0 0 0" alongpath="path:0,2,-2 0,2,-1 3,2,-5 0,0,-2; closed:true; dur:12000" >
 			<a-collada-model cursor-listener src="#bookChineseEgg" position="2 0 0" rotation="180 0 90" scale="4 4 4">
@@ -112,9 +114,6 @@
 			</a-plane>
 
 
-			<a-collada-model src="#bed" position="12 -2 -2" scale="4 4 4" color="#CCCCCC" rotation="0 90 0">
-			</a-collada-model>
-
 			<a-collada-model src="#bookcase" position="-6 -2 -10" scale="4 4 4" color="#CCCCCC" rotation="0 0 0"  material="shader: flat">
 				<a-collada-model id="movingBookDreams" src="#bookChineseEgg" position="1.9 1.5 0.9" rotation="155 90 90" scale="0.75 1 0.8">
 					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="1.9 1.5 0.9" to="2.18 1.83 -0.05" begin="bookDreams"></a-animation>
@@ -137,7 +136,7 @@
 				</a-collada-model>
 		  	</a-collada-model>
 
-		  	<a-image id="image1" src="#portrait" position="7.2 1.5 -6.5" scale="4.1 8 4 " rotation="0 -30 0" material="opacity:0">
+		  	<a-image id="Catherine1" src="#portrait" position="7.2 1.5 -6.5" scale="4.1 8 4 " rotation="0 -30 0" material="opacity:0">
 				<a-animation attribute="material.opacity" begin="fadein" to="1" dur="5000"></a-animation>
 			</a-image>
 
@@ -160,7 +159,7 @@
 
 			<!-- <a-entity id="audio" sound="autoplay: false; src: #narration; volume: 5" ></a-entity> -->
 
-			<a-entity light="type: point; intensity: 5.7; distance: 20; decay: 2" position="0 10 10"></a-entity>
+			<a-entity light="type: point; intensity: 10; distance: 15; decay: 2" position="0 1 10"></a-entity>
 		</a-entity>
 
 	</a-scene>

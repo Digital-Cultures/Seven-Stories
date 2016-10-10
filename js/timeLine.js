@@ -39,12 +39,7 @@ function timeLine() {
 
     switch (totalSeconds) {
         case 0:
-
-                music.play();
-
-
-            // var music = document.querySelector("#music");
-            // music.play();
+            music.play();
             //Start zoom out from book case
             cameraPositions = [new THREE.Vector3(2.5, 4, -8), new THREE.Vector3(2.5, 4, 0)];
             cameraPath = new THREE.SplineCurve3(cameraPositions);
@@ -54,25 +49,33 @@ function timeLine() {
 
         case 2:
             narration.play();
-            // var narration = document.querySelector("#narration");
-            // narration.play();
+            document.querySelector('#scene-1').emit('fogClearSlow');
             break;
         case 15:
-            //Marianne dreams
-            document.querySelector('#movingBookDreams').emit('bookDreams');
             var walls = document.querySelectorAll(".walls");
             [].forEach.call(walls, function(div) {
               div.emit('fadein');
             });
+
+            //Marianne dreams
+            document.querySelector('#movingBookDreams').emit('bookDreams');
+            addBed();
             
             break;
         case 24:
         	document.querySelector('#movingBookRufus').emit('bookRufus');
             //Rufus
             break;
-        case 30:
-        	document.querySelector('#movingBookMirror').emit('bookMirror');
+
+        case 28:
             //mirror
+            addMirror();
+        case 30:
+            //mirror book move
+        	document.querySelector('#movingBookMirror').emit('bookMirror');
+
+            //totalSeconds--;
+            
             break;
         case 36:
         	document.querySelector('#movingBookKey').emit('bookKey');
@@ -89,18 +92,19 @@ function timeLine() {
             break;
         case 44:
             //flash in bedside
-            document.querySelector('#scene-1').emit('fogfadein');
-            document.querySelector('#image1').emit('fadein');
             camera.setAttribute('position', { x: 8, y: 4, z: 0 });
             startFrame = null;
             cameraPositions = [new THREE.Vector3(8, 4, 0), new THREE.Vector3(9, 3, -1.5)];
             cameraPath = new THREE.SplineCurve3(cameraPositions);
             duration = 20000;
             bookcaseFrame = requestAnimationFrame(cameraPan);
+            document.querySelector('#scene-1').emit('fogfadein');
+            document.querySelector('#lightMain').emit('lightOn');
             //camera.lookAt( new THREE.Vector3(0,0,0));
             break;
-        case 45:
+        case 46:
             //Catherine appears
+            document.querySelector('#Catherine1').emit('fadein');
             break;
         case 52:
             //Marianne appears
@@ -110,14 +114,14 @@ function timeLine() {
             //flip through book pages
             break;
         case 67:
-             //document.querySelector('#scene-1').emit('fogfadeout');
+             document.querySelector('#scene-1').emit('fogfadeout');
         case 72:
             cancelAnimationFrame(bookcaseFrame);
              //World spins to look down bed
             camera.setAttribute('position', { x: 8, y: 3.5, z: 0 });
             document.querySelector('#room').setAttribute('position', { x: 3.5, y: 1.5, z: -11 });
             document.querySelector('#room').setAttribute('rotation', { x: 0, y: -90, z: 0});
-
+            document.querySelector('#scene-1').emit('fogfadein');
             break;
         case 78:
             addOpenBook();
@@ -203,7 +207,7 @@ function timeLine() {
         case 179:
             //show portrate
             break;
-        case 190:
+        case 200:
             document.getElementById("credits").style.display = "block";
             break;
     }

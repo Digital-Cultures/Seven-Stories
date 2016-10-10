@@ -12,6 +12,32 @@ function addOpenBook(){
 	document.querySelector("#room").appendChild(entity);
 }
 
+function addBed(){
+		// 	<a-collada-model src="#bookhouse" position="7 2 -1" scale="10 10 10" color="#CCCCCC" rotation="0 0 0" material="shader: flat" collada-model="" visible="">
+		// </a-collada-model>
+	var entity = document.createElement("a-collada-model");
+
+	entity.setAttribute("src", "#bed");
+	entity.setAttribute("position", "12 -2 -2");
+	entity.setAttribute("scale", "4 4 4");
+	entity.setAttribute("rotation", "0 90 0");
+
+	document.querySelector("#room").appendChild(entity);
+}
+
+function addMirror(){
+		// 	<a-collada-model src="#bookhouse" position="7 2 -1" scale="10 10 10" color="#CCCCCC" rotation="0 0 0" material="shader: flat" collada-model="" visible="">
+		// </a-collada-model>
+	var entity = document.createElement("a-collada-model");
+
+	entity.setAttribute("src", "#mirror");
+	entity.setAttribute("position", "11.9 2 -10");
+	entity.setAttribute("scale", "3 3 3");
+	entity.setAttribute("rotation", "0 -90 0");
+
+	document.querySelector("#room").appendChild(entity);
+}
+
 function addHouse(){
 		// 	<a-collada-model src="#bookhouse" position="7 2 -1" scale="10 10 10" color="#CCCCCC" rotation="0 0 0" material="shader: flat" collada-model="" visible="">
 		// </a-collada-model>

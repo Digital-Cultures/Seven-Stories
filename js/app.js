@@ -76,7 +76,7 @@
             narration = new THREE.Audio( listener );
             audioLoader.load( 'sounds/narration.mp3', function( buffer ) {
                 narration.setBuffer( buffer );
-                narration.setVolume(0.5);
+                narration.setVolume(0.8);
                 narrationLoaded = true;
                 showStartBtn();
             });
@@ -84,7 +84,7 @@
             bang = new THREE.Audio( listener );
             audioLoader.load( 'sounds/Exploding-Sound.mp3', function( buffer ) {
                 bang.setBuffer( buffer );
-                bang.setVolume(0.5);
+                bang.setVolume(0.2);
                 bangLoaded = true;
                 showStartBtn();
             });
@@ -112,7 +112,7 @@
         }
 
         function run() {
-            var image1 = document.querySelector("#image1");
+            var image1 = document.querySelector("#Catherine1");
             //var narration = document.querySelector("#narration");
 
             image1.addEventListener("stateremoved", function(evt) {
