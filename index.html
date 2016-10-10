@@ -58,8 +58,8 @@
 		<a-animation begin="fogfadeout" attribute="fog.density" to="1" from="0.1" dur="1000"></a-animation>
 		<a-animation begin="fogfadein"  attribute="fog.density" from="1" to="0.1" dur="1000"></a-animation>
 
-		<a-entity id="lightMain" light="color: #FFF; intensity: 0.1" position="2 3 8" rotation="" scale="" visible="">
-			<a-animation begin="lightOn" attribute="light.intensity" to="1" dur="1000"></a-animation> -->
+		<a-entity id="lightMain" light="color: #FFF; intensity: 0.05" position="2 3 8" rotation="" scale="" visible="">
+			<a-animation begin="lightOn" attribute="light.intensity" to="1" dur="1000"></a-animation>
 	  	</a-entity>
 
 		<!-- ASSETS -->
@@ -74,6 +74,7 @@
 			<a-asset-item id="bookChineseEgg" src="models/book+Chinese+Egg.dae"></a-asset-item>
 			<a-asset-item id="bookcase" src="models/Bookcase+with+books.dae"></a-asset-item>
 			<a-asset-item id="mirror" src="models/Goldmirror.dae"></a-asset-item>
+			<a-asset-item id="keys" src="models/keys.dae"></a-asset-item>
 			<audio id="music" src="sounds/Wounded.mp3"></audio>
 			<audio id="narration" src="sounds/narration.mp3"></audio> -->
 			<audio id="bang" src="sounds/Exploding-Sound.mp3"></audio>
@@ -159,7 +160,9 @@
 
 			<!-- <a-entity id="audio" sound="autoplay: false; src: #narration; volume: 5" ></a-entity> -->
 
-			<a-entity light="type: point; intensity: 10; distance: 15; decay: 2" position="0 1 10"></a-entity>
+			<a-entity id="lightSpot" light="type: point; intensity: 0; distance: 15; decay: 2" position="0 1 10">
+				<a-animation begin="lightOn" attribute="light.intensity" from="0" to="10" dur="3000"></a-animation>
+			</a-entity>
 		</a-entity>
 
 	</a-scene>

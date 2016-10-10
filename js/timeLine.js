@@ -41,7 +41,7 @@ function timeLine() {
         case 0:
             music.play();
             //Start zoom out from book case
-            cameraPositions = [new THREE.Vector3(2.5, 4, -8), new THREE.Vector3(2.5, 4, 0)];
+            cameraPositions = [new THREE.Vector3(2.5, 3.9, -8), new THREE.Vector3(2.5, 3.9, 0)];
             cameraPath = new THREE.SplineCurve3(cameraPositions);
             duration = 36000;
             bookcaseFrame = requestAnimationFrame(cameraPan);
@@ -50,6 +50,7 @@ function timeLine() {
         case 2:
             narration.play();
             document.querySelector('#scene-1').emit('fogClearSlow');
+            document.querySelector('#lightSpot').emit('lightOn');
             break;
         case 15:
             var walls = document.querySelectorAll(".walls");
@@ -73,13 +74,15 @@ function timeLine() {
         case 30:
             //mirror book move
         	document.querySelector('#movingBookMirror').emit('bookMirror');
+            break;
 
-            //totalSeconds--;
-            
+        case 34:
+        //Keys
+            addKeys();
             break;
         case 36:
         	document.querySelector('#movingBookKey').emit('bookKey');
-            //Keys
+            
             break;
         case 40:
             document.querySelector('#scene-1').emit('lightOn');

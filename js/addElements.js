@@ -25,6 +25,19 @@ function addBed(){
 	document.querySelector("#room").appendChild(entity);
 }
 
+function addKeys(){
+		// 	<a-collada-model src="#bookhouse" position="7 2 -1" scale="10 10 10" color="#CCCCCC" rotation="0 0 0" material="shader: flat" collada-model="" visible="">
+		// </a-collada-model>
+	var entity = document.createElement("a-collada-model");
+
+	entity.setAttribute("src", "#keys");
+	entity.setAttribute("position", "-3 -1.8 -6");
+	entity.setAttribute("scale", "10 10 10");
+	entity.setAttribute("rotation", "0 90 0");
+
+	document.querySelector("#room").appendChild(entity);
+}
+
 function addMirror(){
 		// 	<a-collada-model src="#bookhouse" position="7 2 -1" scale="10 10 10" color="#CCCCCC" rotation="0 0 0" material="shader: flat" collada-model="" visible="">
 		// </a-collada-model>
