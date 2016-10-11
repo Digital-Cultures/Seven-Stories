@@ -13,6 +13,15 @@ body{
   padding: 40px;
   overflow: scroll;
 }
+#cover2 {
+  position: absolute;
+  z-index: 10;
+  opacity: 1;
+  left: 0;
+  right: 0;
+  -webkit-transition: opacity 1000ms linear;
+  transition: opacity 1000ms linear;
+}
 
 #beginBtn, #startBtn{
   background: black;

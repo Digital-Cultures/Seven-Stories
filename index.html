@@ -4,19 +4,19 @@
 		<meta charset="utf-8">
 		<title>Hello, World! • A-Frame</title>
 		<meta name="description" content="Hello, World! • A-Frame">
-
 		<link href="css/style.css" rel="stylesheet" />
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
   </head>
   <body>
 
 	<div id="cover"> 
 		This short introduction to the Catherine Storr archives is a joint project by Newcastle University and Seven Stories, the UK's National Centre for Children's Literature. After enjoying the interactive Virtual Reality guided tour, you may want to learn more about Catherine Storr, her work, and the material held by Seven Stories. There is a link that will lead you to more detailed information at the end of the tour.
 		<br><br>
-		<div style="text-align: center;">Make sure the sound is on!</div>
+		<div style="text-align: center;"><i class="fa fa-volume-up" aria-hidden="true"></i> Make sure the sound is on!</div>
 		<div id="beginBtn" href="#" data-icon="info" data-role="button" data-mini="false" data-theme="b" data-corners="false">Shall we begin?</div>
 	</div>
 	<div id="cover2" style="display: none;">
-		<div style="text-align: center;"> This experiance is best enjoyed on mobile with headphones + Cardboard. <br>For desktops click and drag the mouse to look around.</div>
+		<div style="text-align: center;"> This experiance is best enjoyed on <i class="fa fa-mobile" aria-hidden="true"></i> mobile with <i class="fa fa-headphones" aria-hidden="true"></i> headphones + Cardboard. <br>For desktops <i class="fa fa-mouse-pointer" aria-hidden="true"></i> click and drag the mouse to look around.</div>
 		<div id="loading" style="width: 100%; text-align: center;">
 			<div class="spinner"></div>
 			Loading...
@@ -161,7 +161,7 @@
 			<!-- <a-entity id="audio" sound="autoplay: false; src: #narration; volume: 5" ></a-entity> -->
 
 			<a-entity id="lightSpot" light="type: point; intensity: 0; distance: 15; decay: 2" position="0 1 10">
-				<a-animation begin="lightOn" attribute="light.intensity" from="0" to="10" dur="3000"></a-animation>
+				<a-animation begin="lightOn" attribute="light.intensity" from="0" to="10" dur="10000"></a-animation>
 			</a-entity>
 		</a-entity>
 

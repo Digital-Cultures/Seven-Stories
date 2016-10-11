@@ -95,15 +95,8 @@
             if (musicLoaded && narrationLoaded && bangLoaded){
                 document.getElementById("startBtn").style.display = "block";
                 document.getElementById("loading").style.display = "none";
-                document.getElementById("startBtn").onclick = function() { PlayDing(); };
+                document.getElementById("startBtn").onclick = function() { run(); };
             }
-        }
-
-        function PlayDing(DingType) {
-            //Get a reference to the audio element
-            //var sound = document.getElementById(DingType);
-            //Play it
-            run();
         }
 
 
@@ -139,7 +132,8 @@
 
             //remove loader
             var cover = document.getElementById("cover2");
-            setTimeout(cover.remove(), 1000);
+            cover.style.opacity = '0';
+            setTimeout(function(){cover.remove();}, 1000);
             //narration delay
             //setTimeout(narration.play(), 3000);
         }
