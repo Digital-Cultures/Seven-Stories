@@ -28,7 +28,7 @@ function addBed(){
 function addKeys(){
 	var entity = document.createElement("a-collada-model");
 
-	entity.setAttribute("src", "#keys");
+	entity.setAttribute("src", "#Bunch_of_keys");
 	entity.setAttribute("position", "-3 -1.8 -6");
 	entity.setAttribute("scale", "10 10 10");
 	entity.setAttribute("rotation", "0 90 0");
