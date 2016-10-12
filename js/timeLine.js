@@ -60,7 +60,7 @@ function timeLine() {
 
             //Marianne dreams
             document.querySelector('#movingBookDreams').emit('bookDreams');
-            addBed();
+            //addBed();
             
             break;
         case 24:
@@ -68,17 +68,19 @@ function timeLine() {
             //Rufus
             break;
 
-        case 28:
+        case 27:
             //mirror
-            addMirror();
-        case 30:
+            //addMirror();
+            break;
+        case 31:
             //mirror book move
         	document.querySelector('#movingBookMirror').emit('bookMirror');
             break;
 
-        case 34:
+        case 33:
         //Keys
-            addKeys();
+            //addKeys();
+            //addDoor();
             break;
         case 36:
         	document.querySelector('#movingBookKey').emit('bookKey');
@@ -87,6 +89,7 @@ function timeLine() {
         case 40:
             document.querySelector('#scene-1').emit('lightOn');
         	cancelAnimationFrame(bookcaseFrame);
+
             //Stop Zoom out from book case
             break;
         case 41:
@@ -181,6 +184,7 @@ function timeLine() {
             // Marianne appears next to Mark
             break;
         case 116:
+            addJamHoney();
             //Food -> Toys -> Furniture fade in
             break;
         case 118:

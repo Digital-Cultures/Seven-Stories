@@ -58,7 +58,7 @@
 		<a-animation begin="fogfadeout" attribute="fog.density" to="1" from="0.1" dur="1000"></a-animation>
 		<a-animation begin="fogfadein"  attribute="fog.density" from="1" to="0.1" dur="1000"></a-animation>
 
-		<a-entity id="lightMain" light="color: #FFF; intensity: 0.05" position="2 3 8" rotation="" scale="" visible="">
+		<a-entity id="lightMain" light="color:#FFD5C6;intensity:0.1;type:point" position="2.5 5.49 -0.88" rotation="0 0 0" scale="1 1 1" visible="true">
 			<a-animation begin="lightOn" attribute="light.intensity" to="1" dur="1000"></a-animation>
 	  	</a-entity>
 
@@ -67,12 +67,17 @@
 			<!-- <img id="room" src="images/room.jpg"> -->
 			<img id="portrait" src="images/doctor.png">
 			<img id="carpet" src="images/carpet.jpg">
+			<img id="JamHoney" src="images/JamHoney.png">
 			<a-asset-item id="bookhouse" src="models/Open+Book+House.dae"></a-asset-item>
+			<a-asset-item id="Book_MarianneDreams" src="models/Book_MarianneDreams.dae"></a-asset-item>
+			<a-asset-item id="Book_Rufus" src="models/Book_Rufus.dae"></a-asset-item>
+			<a-asset-item id="Book_MirrorGhost" src="models/Book_MirrorGhost.dae"></a-asset-item>
+			<a-asset-item id="Book_IfGame" src="models/Book_IfGame.dae"></a-asset-item>
+			<a-asset-item id="door" src="models/door.dae"></a-asset-item>
 			<a-asset-item id="book" src="models/book.dae"></a-asset-item>
 			<a-asset-item id="bed" src="models/bed.dae"></a-asset-item>
 			<a-asset-item id="house" src="models/house.dae"></a-asset-item>
-			<a-asset-item id="bookChineseEgg" src="models/book+Chinese+Egg.dae"></a-asset-item>
-			<a-asset-item id="bookcase" src="models/Bookcase+with+books.dae"></a-asset-item>
+			<a-asset-item id="bookcase" src="models/Bookcase1.dae"></a-asset-item>
 			<a-asset-item id="mirror" src="models/Goldmirror.dae"></a-asset-item>
 			<a-asset-item id="keys" src="models/keys.dae"></a-asset-item>
 			<audio id="music" src="sounds/Wounded.mp3"></audio>
@@ -100,13 +105,17 @@
 			<a-animation attribute="material.opacity" begin="fadeout" to="0" dur="5000"></a-animation>
 
 			<!-- Objects -->
-			<a-plane class="walls" color="#C00" height="10" width="20" material="opacity:0" geometry="" position="-7.7 3 -2" rotation="0 90 0">
+			<a-plane class="walls" color="#FAE9DA" height="10" width="20" material="opacity:0" position="-7.7 3 -2" rotation="0 90 0">
 				<a-animation attribute="material.opacity" begin="fadein" to="1" dur="30000"></a-animation>
 			</a-plane>
-			<a-plane class="walls" color="#C00" height="10" width="20" material="opacity:0" geometry="" position="12.3 3 -2" rotation="180 90 0">
+			<a-plane class="walls" color="#FAE9DA" height="10" width="20" material="opacity:0" position="12.3 3 -2" rotation="180 90 0">
 				<a-animation attribute="material.opacity" begin="fadein" to="1" dur="30000"></a-animation>
 			</a-plane>
-			<a-plane class="walls" color="#C00" height="10" width="20" material="opacity:0" geometry="" position="2.3 3 -12" rotation="180 180 0">
+			<a-plane class="walls" color="#FAE9DA" height="10" width="20" material="opacity:0" position="2.3 3 -12" rotation="180 180 0">
+				<a-animation attribute="material.opacity" begin="fadein" to="1" dur="30000"></a-animation>
+			</a-plane>
+
+			<a-plane class="walls" color="#FFF" height="20" width="20" material="opacity:0; side:back;" position="2.3 8 -2" rotation="270 180 0">
 				<a-animation attribute="material.opacity" begin="fadein" to="1" dur="30000"></a-animation>
 			</a-plane>
 
@@ -114,32 +123,36 @@
 				<a-animation attribute="material.opacity" begin="fadein" to="1" dur="30000"></a-animation>
 			</a-plane>
 
-
-			<a-collada-model src="#bookcase" position="-6 -2 -10" scale="4 4 4" color="#CCCCCC" rotation="0 0 0"  material="shader: flat">
-				<a-collada-model id="movingBookDreams" src="#bookChineseEgg" position="1.9 1.5 0.9" rotation="155 90 90" scale="0.75 1 0.8">
-					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="1.9 1.5 0.9" to="2.18 1.83 -0.05" begin="bookDreams"></a-animation>
+			<a-collada-model src="#bookcase" position="-6 -2 -10" scale="4 4 4" rotation="0 0 0"  material="shader: flat">
+				<a-collada-model id="movingBookDreams" src="#Book_MarianneDreams" position="1.7 1.5 0.9" rotation="155 90 90" scale="0.75 0.4 0.8">
+					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="1.7 1.5 0.9" to="2.18 1.83 -0.05" begin="bookDreams"></a-animation>
 					<a-animation attribute="rotation" dur="4000" from="155 90 90" to="165 175 90" begin="bookDreams"></a-animation>
 				</a-collada-model>
 
-				<a-collada-model id="movingBookRufus" src="#bookChineseEgg" position="2.1 1.5 1.3" rotation="155 90 90" scale="0.75 1 0.8">
-					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="2.1 1.5 1.3" to="1.64 1.84 -0.02" begin="bookRufus"></a-animation>
-					<a-animation attribute="rotation" dur="4000" from="155 90 90" to="165 175 90" begin="bookRufus"></a-animation>
+				<a-collada-model id="movingBookRufus" src="#Book_Rufus" position="2.2 1.5 1.3" rotation="175 100 90" scale="0.75 0.4 0.8">
+					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="2.2 1.5 1.3" to="1.64 1.84 -0.02" begin="bookRufus"></a-animation>
+					<a-animation attribute="rotation" dur="4000" from="175 100 90" to="165 175 90" begin="bookRufus"></a-animation>
 				</a-collada-model>
 
-				<a-collada-model id="movingBookMirror" src="#bookChineseEgg" position="1.9 1.5 1.9" rotation="155 90 90" scale="0.75 1 0.8">
-					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="1.9 1.5 1.9" to="1.93 1.06 -0.03" begin="bookMirror"></a-animation>
+				<a-collada-model id="movingBookMirror" src="#Book_MirrorGhost" position="1.8 1.5 1.9" rotation="155 90 90" scale="0.75 0.4 0.8">
+					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="1.8 1.5 1.9" to="1.93 1.06 -0.03" begin="bookMirror"></a-animation>
 					<a-animation attribute="rotation" dur="4000" from="155 90 90" to="165 175 90" begin="bookMirror"></a-animation>
 				</a-collada-model>
 				
-				<a-collada-model id="movingBookKey" src="#bookChineseEgg" position="2.1 1.5 2.2" rotation="155 90 90" scale="0.75 1 0.8">
-					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="2.1 1.5 2.2" to="1.8 2.14 -0.02" begin="bookKey"></a-animation>
-					<a-animation attribute="rotation" dur="4000" from="155 90 90" to="165 175 90" begin="bookKey"></a-animation>
+				<a-collada-model id="movingBookKey" src="#Book_IfGame" position="2.2 1.5 2.2" rotation="175 100 90" scale="0.75 0.4 0.8">
+					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="2.2 1.5 2.2" to="1.8 2.14 -0.02" begin="bookKey"></a-animation>
+					<a-animation attribute="rotation" dur="4000" from="175 100 90" to="165 175 90" begin="bookKey"></a-animation>
 				</a-collada-model>
 		  	</a-collada-model>
 
-		  	<a-image id="Catherine1" src="#portrait" position="7.2 1.5 -6.5" scale="4.1 8 4 " rotation="0 -30 0" material="opacity:0">
+		  	<a-image id="Catherine1" src="#portrait" position="7.6 1.8 -6.5" scale="5.5 7 4" rotation="0 -25 0" material="opacity:0">
 				<a-animation attribute="material.opacity" begin="fadein" to="1" dur="5000"></a-animation>
 			</a-image>
+
+			<a-collada-model src="#bed" collada-model="#bed" position="12 -2 -2" scale="4 4 4" rotation="0 90 0" material=""></a-collada-model>
+			<a-collada-model src="#mirror" collada-model="#mirror" position="11.9 2 -10" scale="3 3 3" rotation="0 -90 0" material=""></a-collada-model>
+			<a-collada-model src="#keys" collada-model="#keys" position="-3 -1.8 -6" scale="10 10 10" rotation="0 90 0" material=""></a-collada-model>
+			<a-collada-model id="door" src="#door" collada-model="#door" position="-2.09 -2.03 -11.98" scale="4.6 4.5 4.2" rotation="0 200 0" material=""><a-animation attribute="rotation" dur="2000" to="0 200 0" begin="3000"></a-animation></a-collada-model>
 
 		</a-entity>
 	 

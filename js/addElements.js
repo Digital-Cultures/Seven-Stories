@@ -26,8 +26,6 @@ function addBed(){
 }
 
 function addKeys(){
-		// 	<a-collada-model src="#bookhouse" position="7 2 -1" scale="10 10 10" color="#CCCCCC" rotation="0 0 0" material="shader: flat" collada-model="" visible="">
-		// </a-collada-model>
 	var entity = document.createElement("a-collada-model");
 
 	entity.setAttribute("src", "#keys");
@@ -39,8 +37,6 @@ function addKeys(){
 }
 
 function addMirror(){
-		// 	<a-collada-model src="#bookhouse" position="7 2 -1" scale="10 10 10" color="#CCCCCC" rotation="0 0 0" material="shader: flat" collada-model="" visible="">
-		// </a-collada-model>
 	var entity = document.createElement("a-collada-model");
 
 	entity.setAttribute("src", "#mirror");
@@ -51,9 +47,26 @@ function addMirror(){
 	document.querySelector("#room").appendChild(entity);
 }
 
+function addDoor(){
+	var entity = document.createElement("a-collada-model");
+
+	entity.setAttribute("id", "door");
+	entity.setAttribute("src", "#door");
+	entity.setAttribute("position", "-2.09 -2.03 -11.98");
+	entity.setAttribute("scale", "4.6 4.5 4.2");
+	entity.setAttribute("rotation", "0 180 0");
+
+	var animation = document.createElement("a-animation");
+	animation.setAttribute("attribute", "rotation");
+	animation.setAttribute("dur", "2000");
+	animation.setAttribute("to", "0 200 0");
+	animation.setAttribute("begin","3000");
+
+	entity.appendChild(animation);
+	document.querySelector("#room").appendChild(entity);
+}
+
 function addHouse(){
-		// 	<a-collada-model src="#bookhouse" position="7 2 -1" scale="10 10 10" color="#CCCCCC" rotation="0 0 0" material="shader: flat" collada-model="" visible="">
-		// </a-collada-model>
 	var entity = document.createElement("a-collada-model");
 
 	entity.setAttribute("id", "fullHouse");
@@ -102,4 +115,24 @@ function addHouseRoom(){
 	floor.setAttribute("position", "2.3 -2 -2");
 	floor.setAttribute("rotation", "270 180 0");
 	document.getElementById("houseRoom").appendChild(floor);
+}
+
+function addJamHoney(){
+	/*<a-image id="Catherine1" src="#portrait" position="7.6 1.8 -6.5" scale="5.5 7 4" rotation="0 -25 0" material="opacity:0">
+				<a-animation attribute="material.opacity" begin="fadein" to="1" dur="5000"></a-animation>
+			</a-image>*/
+	var JamHoney = document.createElement("a-image");
+	JamHoney.setAttribute("src", "#JamHoney");
+	JamHoney.setAttribute("position", "7.6 -2 -6.5");
+	JamHoney.setAttribute("scale", "4 4 4");
+	JamHoney.setAttribute("rotation", "0 -25 0");
+
+	var animation = document.createElement("a-animation");
+	animation.setAttribute("attribute", "position");
+	animation.setAttribute("dur", "2000");
+	animation.setAttribute("to", "7.6 1.8 -6.5");
+	animation.setAttribute("begin","3000");
+	
+	JamHoney.appendChild(animation)
+	document.querySelector("a-scene").appendChild(JamHoney);
 }
