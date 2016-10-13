@@ -66,6 +66,13 @@ function addDoor(){
 	document.querySelector("#room").appendChild(entity);
 }
 
+var roomHTML;
+function removeRoom(){
+	var elem = document.getElementById("room");
+	roomHTML = elem.cloneNode(true);
+	elem.parentNode.removeChild(elem);
+}
+
 function addHouse(){
 	var entity = document.createElement("a-collada-model");
 
@@ -76,8 +83,19 @@ function addHouse(){
 	entity.setAttribute("rotation", "0 0 0");
 	entity.setAttribute("material", "shader: flat");
 
+// <<a-image src="#fence" material="src:#fence;color:#FFF;shader:flat;side:double;transparent:true" position="7.08 3.04 4.36" scale="3.08 3.2800000000000002 4" rotation="0 0 0" width="5.76" geometry="width:5.76;height:0.52;primitive:plane" height="0.52"></a-image>
+	var fence = document.createElement("a-image");
+	fence.setAttribute("src", "#fence");
+	fence.setAttribute("position", "7 3 4.36");
+	fence.setAttribute("scale", "3 3 3");
+	fence.setAttribute("rotation", "0 0 0");
+	fence.setAttribute("width", "5.76");
+	fence.setAttribute("height", "0.52");
+
 	document.querySelector("a-scene").appendChild(entity);
+	document.querySelector("a-scene").appendChild(fence);
 }
+
 function removeHouse(){
 	var elem = document.getElementById("fullHouse");
 	elem.parentNode.removeChild(elem);
@@ -115,6 +133,18 @@ function addHouseRoom(){
 	floor.setAttribute("position", "2.3 -2 -2");
 	floor.setAttribute("rotation", "270 180 0");
 	document.getElementById("houseRoom").appendChild(floor);
+
+	var celing = document.createElement("a-plane");
+	celing.setAttribute("height", "20");
+	celing.setAttribute("width", "20");
+	celing.setAttribute("position", "2.3 8 -4.5");
+	celing.setAttribute("rotation", "270 180 0");
+	document.getElementById("houseRoom").appendChild(celing);
+}
+
+function removeHouseRoom(){
+	var elem = document.getElementById("houseRoom");
+	elem.parentNode.removeChild(elem);
 }
 
 function addJamHoney(){

@@ -5,11 +5,7 @@ var cameraPath;
 var startFrame;
 var duration = 10000;
 
-var listener;
-var audioLoader;
-var music;
-var narration;
-var bang;
+var listener, audioLoader, music, narration, mirrorAudio, bang;
 
 var bookcaseFrame;
 var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
@@ -49,7 +45,7 @@ function timeLine() {
 
         case 2:
             narration.play();
-            document.querySelector('#scene-1').emit('fogClearSlow');
+            //document.querySelector('#scene-1').emit('fogClearSlow');
             document.querySelector('#lightSpot').emit('lightOn');
             break;
         case 15:
@@ -157,10 +153,10 @@ function timeLine() {
             break;
         case 94:
             //remove old room
-            var elem = document.getElementById("room");
-            elem.parentNode.removeChild(elem);
+            removeRoom();
             //House front (no door handle - looking up, big and close)
             addHouse();
+
             startFrame = null;
             cameraPositions = [new THREE.Vector3(8, 4, 8), new THREE.Vector3(8, 3.5, 1.5)];
             cameraPath = new THREE.SplineCurve3(cameraPositions);
@@ -168,10 +164,14 @@ function timeLine() {
             bookcaseFrame = requestAnimationFrame(cameraPan);
             
             break;
+        case 100:
+            totalSeconds--;
+            break;
         case 106:
             cancelAnimationFrame(bookcaseFrame);
             // remove House front
             removeHouse();
+            document.querySelector('#windowSun').emit('lightOff');
             break;
         case 107:
             addHouseRoom();
@@ -208,9 +208,13 @@ function timeLine() {
         case 149:
             //play bang and Marianne dissapears
             bang.play();
+            removeHouseRoom();
+            document.querySelector('#scene-1').emit('fogfadeout');
             break;
-
-
+        case 150:
+            document.querySelector("a-scene").appendChild(roomHTML);
+            document.querySelector('#scene-1').emit('fogfadein');
+            break;
         case 179:
             //show portrate
             break;
@@ -219,5 +223,8 @@ function timeLine() {
             break;
     }
 
-    totalSeconds++;
+    if (narration.playing()||totalSeconds<3){
+        totalSeconds++;
+    }
+    
     }

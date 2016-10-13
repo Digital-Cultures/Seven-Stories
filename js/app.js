@@ -55,9 +55,9 @@
         });
 
 
-        var musicLoaded = false;
-        var narrationLoaded = false;
-        var bangLoaded = false;
+        var musicLoaded, narrationLoaded, bangLoaded = false;
+
+        var narrationPaused = false;
 
         function loadAudio(){
             var camera = document.querySelector("#camera");
@@ -65,38 +65,58 @@
             camera.components.camera.camera.add( listener );
             audioLoader = new THREE.AudioLoader();
 
-            music = new THREE.Audio( listener );
-            audioLoader.load( 'sounds/Wounded.mp3', function( buffer ) {
-                music.setBuffer( buffer );
-                music.setVolume(0.5);
-                musicLoaded = true;
-                showStartBtn();
+            music = new Howl({
+              src: ['sounds/Wounded.mp3'],
+              volume: 0.5
             });
 
-            narration = new THREE.Audio( listener );
-            audioLoader.load( 'sounds/narration.mp3', function( buffer ) {
-                narration.setBuffer( buffer );
-                narration.setVolume(0.8);
-                narrationLoaded = true;
-                showStartBtn();
+            // = new THREE.Audio( listener );
+            // audioLoader.load( 'sounds/Wounded.mp3', function( buffer ) {
+            //     music.setBuffer( buffer );
+            //     music.setVolume(0.5);
+            //     musicLoaded = true;
+            //     showStartBtn();
+            // });
+
+            narration = new Howl({
+              src: ['sounds/narration.mp3'],
+              volume: 0.8,
+              onload: showStartBtn
             });
 
-            bang = new THREE.Audio( listener );
-            audioLoader.load( 'sounds/Exploding-Sound.mp3', function( buffer ) {
-                bang.setBuffer( buffer );
-                bang.setVolume(0.2);
-                bangLoaded = true;
-                showStartBtn();
+           // narration = new THREE.Audio( listener );
+           //  audioLoader.load( 'sounds/narration.mp3', function( buffer ) {
+           //      narration.setBuffer( buffer );
+           //      narration.setVolume(0.8);
+           //      narrationLoaded = true;
+                
+           //  });
+
+            bang = new Howl({
+              src: ['sounds/Exploding-Sound.mp3'],
+              volume: 0.2,
+              loop: false
             });
+
+            mirrorAudio = new Howl({
+              src: ['sounds/MirrorImageGhost.mp3'],
+              volume: 0.8
+            });
+
+            // = new THREE.Audio( listener );
+            // audioLoader.load( 'sounds/Exploding-Sound.mp3', function( buffer ) {
+            //     bang.setBuffer( buffer );
+            //     bang.setVolume(0.2);
+            //     bangLoaded = true;
+            //     showStartBtn();
+            // });
 
         }
 
         function showStartBtn() {
-            if (musicLoaded && narrationLoaded && bangLoaded){
-                document.getElementById("startBtn").style.display = "block";
-                document.getElementById("loading").style.display = "none";
-                document.getElementById("startBtn").onclick = function() { run(); };
-            }
+            document.getElementById("startBtn").style.display = "block";
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("startBtn").onclick = function() { run(); };
         }
 
 
@@ -105,27 +125,26 @@
         }
 
         function run() {
-            var image1 = document.querySelector("#Catherine1");
+            var mirrorModel = document.querySelector("#mirrorModel");
             //var narration = document.querySelector("#narration");
 
-            image1.addEventListener("stateremoved", function(evt) {
-                //console.log(sound.components);
-                //image1.setAttribute('scale', "0.2 0.2 0.2"); //scale="0.2 0.2 0.2"
-                if (evt.detail.state === "cursor-hovered" && !audioIsPlaying(narration)) {
-
-                    //narration.play();
-                   // console.log(narration.currentTime);
+            mirrorModel.addEventListener("stateadded", function(evt) {
+                
+                mirrorModel.setAttribute('scale', "4 4 4"); //scale="1 1 1"
+                if (evt.detail.state === "cursor-hovered") {
+                    narration.pause();
+                    mirrorAudio.play();
                 }
             });
 
-            image1.addEventListener("stateadded", function(evt) {
-                //console.log(sound.components);
-                //image1.setAttribute('scale', "1 1 1"); //scale="1 1 1"
-                if (evt.detail.state === "cursor-hovered" && audioIsPlaying(narration)) {
-                   // narration.pause();
-                    //console.log(narration.currentTime);
+            mirrorModel.addEventListener("stateremoved", function(evt) {
+
+                mirrorModel.setAttribute('scale', "3 3 3"); //scale="0.2 0.2 0.2"
+                if (evt.detail.state === "cursor-hovered") {
+                    narration.play();
                 }
             });
+
 
             //var timer = document.querySelector("#timer");
             startTimeLine();
