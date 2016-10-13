@@ -47,6 +47,7 @@ function timeLine() {
             narration.play();
             //document.querySelector('#scene-1').emit('fogClearSlow');
             document.querySelector('#lightSpot').emit('lightOn');
+    
             break;
         case 10:
             // var walls = document.querySelectorAll(".walls");
@@ -167,11 +168,15 @@ function timeLine() {
             break;
         case 93:
             //fade out (2 seconds)
+            document.querySelector('#windowSun').emit('lightOff');
+            document.querySelector('#scene-1').emit('fogLittleIn');
+            
             //document.querySelector('#scene-1').emit('fogfadeout');
             break;
         case 94:
             //remove old room
             removeRoom();
+
             //House front (no door handle - looking up, big and close)
             addHouse();
 
@@ -189,7 +194,7 @@ function timeLine() {
             cancelAnimationFrame(bookcaseFrame);
             // remove House front
             removeHouse();
-            document.querySelector('#windowSun').emit('lightOff');
+            document.querySelector('#scene-1').emit('fogLittleOut');
             break;
         case 107:
             addHouseRoom();
