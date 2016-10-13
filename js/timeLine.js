@@ -1,4 +1,4 @@
-var totalSeconds = 0;
+var totalSeconds = pauseTime = 0;
 var camera = document.querySelector("#camera");
 var cameraPositions;
 var cameraPath;
@@ -48,38 +48,38 @@ function timeLine() {
             //document.querySelector('#scene-1').emit('fogClearSlow');
             document.querySelector('#lightSpot').emit('lightOn');
             break;
-        case 15:
-            var walls = document.querySelectorAll(".walls");
-            [].forEach.call(walls, function(div) {
-              div.emit('fadein');
-            });
+        case 10:
+            // var walls = document.querySelectorAll(".walls");
+            // [].forEach.call(walls, function(div) {
+            //   div.emit('fadein');
+            // });
 
             //Marianne dreams
-            document.querySelector('#movingBookDreams').emit('bookDreams');
+            addBookMarianne();
+            //document.querySelector('#movingBookDreams').emit('bookDreams');
             //addBed();
             
             break;
-        case 24:
-        	document.querySelector('#movingBookRufus').emit('bookRufus');
+        case 19:
+            addBookRufus();
+        	//document.querySelector('#movingBookRufus').emit('bookRufus');
             //Rufus
             break;
 
-        case 27:
+        case 22:
             //mirror
+            addBookMirror();
             //addMirror();
             break;
         case 31:
             //mirror book move
-        	document.querySelector('#movingBookMirror').emit('bookMirror');
-            break;
-
-        case 33:
         //Keys
+            addBookKey();
             //addKeys();
             //addDoor();
             break;
         case 36:
-        	document.querySelector('#movingBookKey').emit('bookKey');
+        	//document.querySelector('#movingBookKey').emit('bookKey');
             
             break;
         case 40:
@@ -105,6 +105,24 @@ function timeLine() {
             //camera.lookAt( new THREE.Vector3(0,0,0));
             break;
         case 46:
+            // pause to look around
+            if (!mirrorAudio.playing()){
+                pauseTime ++;  
+                document.querySelector('#pauseTimeBar').setAttribute('scale', { x: pauseTime/50, y: 0.01, z: 0.01 });
+                document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+(pauseTime/100), y: -0.2, z: -1 });
+            }
+            
+            if (pauseTime<10){
+                narration.pause();
+                timer.setAttribute('text', { text: "Paused to look around" });
+            } else {
+                narration.play();
+                document.querySelector('#pauseTimeBar').setAttribute('scale', { x: 0, y: 0.01, z: 0.01 });
+            }
+            
+            
+            break;
+        case 47:
             //Catherine appears
             document.querySelector('#Catherine1').emit('fadein');
             break;
@@ -165,7 +183,7 @@ function timeLine() {
             
             break;
         case 100:
-            totalSeconds--;
+            
             break;
         case 106:
             cancelAnimationFrame(bookcaseFrame);

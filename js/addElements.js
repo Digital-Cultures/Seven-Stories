@@ -66,6 +66,131 @@ function addDoor(){
 	document.querySelector("#room").appendChild(entity);
 }
 
+
+// <a-collada-model id="movingBookDreams" src="#Book_MarianneDreams" position="1.7 1.5 0.9" rotation="155 90 90" scale="0.75 0.7 0.8">
+
+
+// </a-collada-model>
+
+function addBookMarianne(){
+	var entity = document.createElement("a-collada-model");
+
+	entity.setAttribute("src", "#Book_MarianneDreams");
+	entity.setAttribute("position", "1.7 1.5 0.9");
+	entity.setAttribute("scale", "0.75 0.7 0.8");
+	entity.setAttribute("rotation", "155 90 90");
+
+	var animation_P = document.createElement("a-animation");
+	animation_P.setAttribute("attribute", "position");
+	animation_P.setAttribute("easing", "ease-in-cubic");
+	animation_P.setAttribute("dur", "4000");
+	animation_P.setAttribute("from", "1.7 1.5 0.9");
+	animation_P.setAttribute("to", "2.18 1.83 -0.05");
+	animation_P.setAttribute("begin","5000");
+
+	entity.appendChild(animation_P);
+
+		var animation = document.createElement("a-animation");
+	animation.setAttribute("attribute", "rotation");
+	animation.setAttribute("dur", "4000");
+	animation.setAttribute("from", "155 90 90");
+	animation.setAttribute("to", "165 175 90");
+	animation.setAttribute("begin","5000");
+
+	entity.appendChild(animation);
+	document.querySelector("#bookcaseModel").appendChild(entity);
+}
+
+
+function addBookRufus(){
+	var entity = document.createElement("a-collada-model");
+
+	entity.setAttribute("src", "#Book_Rufus");
+	entity.setAttribute("position", "2.2 1.5 1.3");
+	entity.setAttribute("scale", "0.75 0.7 0.8");
+	entity.setAttribute("rotation", "175 100 90");
+
+	var animation_P = document.createElement("a-animation");
+	animation_P.setAttribute("attribute", "position");
+	animation_P.setAttribute("easing", "ease-in-cubic");
+	animation_P.setAttribute("dur", "4000");
+	animation_P.setAttribute("from", "2.2 1.5 1.3");
+	animation_P.setAttribute("to", "1.64 1.84 -0.02");
+	animation_P.setAttribute("begin","5000");
+
+	entity.appendChild(animation_P);
+
+		var animation = document.createElement("a-animation");
+	animation.setAttribute("attribute", "rotation");
+	animation.setAttribute("dur", "4000");
+	animation.setAttribute("from", "175 100 90");
+	animation.setAttribute("to", "165 175 90");
+	animation.setAttribute("begin","5000");
+
+	entity.appendChild(animation);
+	document.querySelector("#bookcaseModel").appendChild(entity);
+}
+
+function addBookMirror(){
+	var entity = document.createElement("a-collada-model");
+
+	entity.setAttribute("src", "#Book_MirrorGhost");
+	entity.setAttribute("position", "1.8 1.5 1.9");
+	entity.setAttribute("scale", "0.75 0.7 0.8");
+	entity.setAttribute("rotation", "155 90 90");
+
+	var animation_P = document.createElement("a-animation");
+	animation_P.setAttribute("attribute", "position");
+	animation_P.setAttribute("easing", "ease-in-cubic");
+	animation_P.setAttribute("dur", "4000");
+	animation_P.setAttribute("from", "1.8 1.5 1.9");
+	animation_P.setAttribute("to", "1.93 1.06 -0.03");
+	animation_P.setAttribute("begin","5000");
+
+	entity.appendChild(animation_P);
+
+		var animation = document.createElement("a-animation");
+	animation.setAttribute("attribute", "rotation");
+	animation.setAttribute("dur", "4000");
+	animation.setAttribute("from", "155 90 90");
+	animation.setAttribute("to", "165 175 90");
+	animation.setAttribute("begin","5000");
+
+	entity.appendChild(animation);
+	document.querySelector("#bookcaseModel").appendChild(entity);
+}
+
+function addBookKey(){
+	var entity = document.createElement("a-collada-model");
+
+	entity.setAttribute("src", "#Book_IfGame");
+	entity.setAttribute("position", "2.2 1.5 2.2");
+	entity.setAttribute("scale", "0.75 0.7 0.8");
+	entity.setAttribute("rotation", "175 100 90");
+
+	var animation_P = document.createElement("a-animation");
+	animation_P.setAttribute("attribute", "position");
+	animation_P.setAttribute("easing", "ease-in-cubic");
+	animation_P.setAttribute("dur", "4000");
+	animation_P.setAttribute("from", "2.2 1.5 2.2");
+	animation_P.setAttribute("to", "1.8 2.14 -0.02");
+	animation_P.setAttribute("begin","5000");
+
+	entity.appendChild(animation_P);
+
+	var animation = document.createElement("a-animation");
+	animation.setAttribute("attribute", "rotation");
+	animation.setAttribute("dur", "4000");
+	animation.setAttribute("from", "175 100 90");
+	animation.setAttribute("to", "165 175 90");
+	animation.setAttribute("begin","5000");
+
+	entity.appendChild(animation);
+
+	document.querySelector("#bookcaseModel").appendChild(entity);
+}
+
+
 var roomHTML;
 function removeRoom(){
 	var elem = document.getElementById("room");
@@ -83,12 +208,13 @@ function addHouse(){
 	entity.setAttribute("rotation", "0 0 0");
 	entity.setAttribute("material", "shader: flat");
 
-// <<a-image src="#fence" material="src:#fence;color:#FFF;shader:flat;side:double;transparent:true" position="7.08 3.04 4.36" scale="3.08 3.2800000000000002 4" rotation="0 0 0" width="5.76" geometry="width:5.76;height:0.52;primitive:plane" height="0.52"></a-image>
+// <a-image src="#fence" material="src:#fence;color:#FFF;shader:standard;side:double;transparent:true;visible:true;depthTest:false;flatShading:false;metalness:1" position="7 3 4.36" scale="3 3 3" rotation="0 0 0" width="5.76" geometry="width:5.76;height:0.52;primitive:plane" height="0.52"></a-image>
 	var fence = document.createElement("a-image");
 	fence.setAttribute("src", "#fence");
 	fence.setAttribute("position", "7 3 4.36");
 	fence.setAttribute("scale", "3 3 3");
 	fence.setAttribute("rotation", "0 0 0");
+	fence.setAttribute("material", "flatShading: false");
 	fence.setAttribute("width", "5.76");
 	fence.setAttribute("height", "0.52");
 
