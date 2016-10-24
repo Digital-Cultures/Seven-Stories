@@ -6,6 +6,7 @@ var startFrame;
 var duration = 10000;
 
 var listener, audioLoader, music, narration, mirrorAudio, bang;
+var noSleep = new NoSleep();
 
 var bookcaseFrame;
 var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
@@ -243,6 +244,7 @@ function timeLine() {
             break;
         case 200:
             document.getElementById("credits").style.display = "block";
+            window.navigator.wakeLock.release("display");
             break;
     }
 

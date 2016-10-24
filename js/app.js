@@ -153,6 +153,7 @@
             var cover = document.getElementById("cover2");
             cover.style.opacity = '0';
             setTimeout(function(){cover.remove();}, 1000);
+            noSleep.enable();
             //narration delay
             //setTimeout(narration.play(), 3000);
         }
