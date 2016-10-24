@@ -192,9 +192,13 @@ function addBookKey(){
 
 
 var roomHTML;
-function removeRoom(){
+function copyRoom(){
 	var elem = document.getElementById("room");
 	roomHTML = elem.cloneNode(true);
+}
+
+function removeRoom(){
+	var elem = document.getElementById("room");
 	elem.parentNode.removeChild(elem);
 }
 
@@ -298,6 +302,14 @@ function addHouseRoom(){
 	wall3.setAttribute("rotation", "180 180 0");
 	document.getElementById("houseRoom").appendChild(wall3);
 
+	var wall4 = document.createElement("a-plane");
+	wall4.setAttribute("height", "10");
+	wall4.setAttribute("width", "20");
+	wall4.setAttribute("position", "2.3 3 8");
+	wall4.setAttribute("rotation", "180 0 0");
+	document.getElementById("houseRoom").appendChild(wall4);
+
+
 	var floor = document.createElement("a-plane");
 	floor.setAttribute("height", "20");
 	floor.setAttribute("width", "20");
@@ -308,9 +320,17 @@ function addHouseRoom(){
 	var celing = document.createElement("a-plane");
 	celing.setAttribute("height", "20");
 	celing.setAttribute("width", "20");
-	celing.setAttribute("position", "2.3 8 -4.5");
-	celing.setAttribute("rotation", "270 180 0");
+	celing.setAttribute("position", "2.3 8 -2");
+	celing.setAttribute("rotation", "90 180 0");
 	document.getElementById("houseRoom").appendChild(celing);
+
+	var marrianne = document.createElement("a-image");
+	marrianne.setAttribute("src", "#marrianne");
+	marrianne.setAttribute("position", "7.6 1 -4");
+	marrianne.setAttribute("scale", "2.5 5 0");
+	marrianne.setAttribute("rotation", "0 -25 0");
+	marrianne.setAttribute("shader", "standard");
+	document.getElementById("houseRoom").appendChild(marrianne);
 }
 
 function removeHouseRoom(){
@@ -335,5 +355,26 @@ function addJamHoney(){
 	animation.setAttribute("begin","3000");
 	
 	JamHoney.appendChild(animation)
-	document.querySelector("a-scene").appendChild(JamHoney);
+	document.querySelector("#houseRoom").appendChild(JamHoney);
+}
+function addShpere(){
+	//transparent:true; color:#b2e8ff; flatShading:false; shader:standard; metalness:0;roughness:0.25;opacity:0.84;scale="2 2 2" 
+	var sphere = document.createElement("a-sphere");
+	sphere.setAttribute("color", "#b2e8ff");
+	sphere.setAttribute("transparent", "true");
+	sphere.setAttribute("opacity", "0.4");
+	sphere.setAttribute("metalness", "0");
+	sphere.setAttribute("roughness", "0.25");
+	sphere.setAttribute("scale", "2 2 2");
+	document.querySelector("#houseRoom").appendChild(sphere);
+}
+
+function addHeadShot(){
+	var headShot = document.createElement("a-image");
+	headShot.setAttribute("src", "#CatherineStorrHeadShot");
+	headShot.setAttribute("id", "HeadShot");
+	headShot.setAttribute("position", "7.6 2 30");
+	headShot.setAttribute("scale", "320 160 10");
+	headShot.setAttribute("rotation", "0 0 0");
+	document.querySelector("a-scene").appendChild(headShot);
 }

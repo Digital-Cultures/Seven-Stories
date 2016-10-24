@@ -100,7 +100,7 @@
 
             mirrorAudio = new Howl({
               src: ['sounds/MirrorImageGhost.mp3'],
-              volume: 0.8
+              volume: 1.3
             });
 
             // = new THREE.Audio( listener );
@@ -129,19 +129,18 @@
             //var narration = document.querySelector("#narration");
 
             mirrorModel.addEventListener("stateadded", function(evt) {
-                
-                mirrorModel.setAttribute('scale', "4 4 4"); //scale="1 1 1"
-                if (evt.detail.state === "cursor-hovered") {
-                    narration.pause();
-                    mirrorAudio.play();
+                if (!narration.playing() && !mirrorAudio.playing()){
+                    mirrorModel.setAttribute('scale', "4 4 4"); //scale="1 1 1"
+                    if (evt.detail.state === "cursor-hovered") {
+                        mirrorAudio.play();
+                    }
                 }
             });
 
             mirrorModel.addEventListener("stateremoved", function(evt) {
-
                 mirrorModel.setAttribute('scale', "3 3 3"); //scale="0.2 0.2 0.2"
                 if (evt.detail.state === "cursor-hovered") {
-                    narration.play();
+                    //narration.play();
                 }
             });
 

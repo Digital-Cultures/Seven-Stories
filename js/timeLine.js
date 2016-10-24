@@ -51,6 +51,7 @@ function timeLine() {
     
             break;
         case 10:
+            copyRoom();
             // var walls = document.querySelectorAll(".walls");
             // [].forEach.call(walls, function(div) {
             //   div.emit('fadein');
@@ -136,14 +137,14 @@ function timeLine() {
             //flip through book pages
             break;
         case 67:
-             document.querySelector('#scene-1').emit('fogfadeout');
+             //document.querySelector('#scene-1').emit('fogfadeout');
         case 72:
             cancelAnimationFrame(bookcaseFrame);
              //World spins to look down bed
             camera.setAttribute('position', { x: 8, y: 3.5, z: 0 });
             document.querySelector('#room').setAttribute('position', { x: 3.5, y: 1.5, z: -11 });
             document.querySelector('#room').setAttribute('rotation', { x: 0, y: -90, z: 0});
-            document.querySelector('#scene-1').emit('fogfadein');
+            //document.querySelector('#scene-1').emit('fogfadein');
             break;
         case 78:
             addOpenBook();
@@ -164,23 +165,25 @@ function timeLine() {
             document.querySelector('#room').setAttribute('position', { x: 3.5, y: 2, z: -10.8 });
             break;
         case 85:
-            document.querySelector('#room').setAttribute('position', { x: 3.5, y: 2, z: -10.6 });
+            document.querySelector('#room').setAttribute('position', { x: 3.5, y: 2.5, z: -10.6 });
             //Marianne in window and closer to house with other things around (but as an illustration)
+            break;
+        case 86:
+            document.querySelector('#windowSun').emit('lightOff');
+            break;
+        case 92:
+            //fade out (2 seconds)
+            document.querySelector('#scene-1').emit('fogfadeout');
             break;
         case 93:
             //fade out (2 seconds)
-            document.querySelector('#windowSun').emit('lightOff');
-            document.querySelector('#scene-1').emit('fogLittleIn');
-            
-            //document.querySelector('#scene-1').emit('fogfadeout');
-            break;
-        case 94:
             //remove old room
             removeRoom();
-
+            document.querySelector('#scene-1').emit('fogLittleIn');
+            break;
+        case 94:
             //House front (no door handle - looking up, big and close)
             addHouse();
-
             startFrame = null;
             cameraPositions = [new THREE.Vector3(8, 4, 8), new THREE.Vector3(8, 3.5, 1.5)];
             cameraPath = new THREE.SplineCurve3(cameraPositions);
@@ -189,20 +192,16 @@ function timeLine() {
             
             break;
         case 100:
-            
             break;
-        case 106:
+        case 107:
             cancelAnimationFrame(bookcaseFrame);
             // remove House front
             removeHouse();
             document.querySelector('#scene-1').emit('fogLittleOut');
             break;
-        case 107:
+        case 108:
             addHouseRoom();
             //fae into bedroom (3 Sec) B&W and cold
-            break;
-        case 104:
-            // mark appears
             break;
         case 114:
             // Marianne appears next to Mark
@@ -219,6 +218,7 @@ function timeLine() {
             break;
         case 127:
             //Aura ball fades out revealing larger Marianne
+            addShpere();
             break;
         case 128:
             // zoom in on Marianne
@@ -239,12 +239,21 @@ function timeLine() {
             document.querySelector("a-scene").appendChild(roomHTML);
             document.querySelector('#scene-1').emit('fogfadein');
             break;
-        case 179:
-            //show portrate
+        case 152:
+            document.querySelector('#windowSun').emit('lightOn');
             break;
-        case 200:
+        case 173:
+            //show portrate
+            addHeadShot();
+            startFrame = null;
+            cameraPositions = [new THREE.Vector3(8, 4, 0), new THREE.Vector3(4, 25, 190)];
+            cameraPath = new THREE.SplineCurve3(cameraPositions);
+            duration = 30000;
+            bookcaseFrame = requestAnimationFrame(cameraPan);
+            break;
+        case 204:
             document.getElementById("credits").style.display = "block";
-            window.navigator.wakeLock.release("display");
+            noSleep.disable();
             break;
     }
 
