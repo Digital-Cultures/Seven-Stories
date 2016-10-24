@@ -30863,22 +30863,24 @@ THREE.Mesh.prototype.raycast = ( function () {
 				intersection = checkIntersection( this, raycaster, ray, fvA, fvB, fvC, intersectionPoint );
 
 				if ( intersection ) {
+          try {
+  					if ( uvs ) {
 
-					if ( uvs ) {
+  						var uvs_f = uvs[ f ];
+  						uvA.copy( uvs_f[ 0 ] );
+  						uvB.copy( uvs_f[ 1 ] );
+  						uvC.copy( uvs_f[ 2 ] );
 
-						var uvs_f = uvs[ f ];
-						uvA.copy( uvs_f[ 0 ] );
-						uvB.copy( uvs_f[ 1 ] );
-						uvC.copy( uvs_f[ 2 ] );
+  						intersection.uv = uvIntersection( intersectionPoint, fvA, fvB, fvC, uvA, uvB, uvC );
 
-						intersection.uv = uvIntersection( intersectionPoint, fvA, fvB, fvC, uvA, uvB, uvC );
+  					}
 
-					}
-
-					intersection.face = face;
-					intersection.faceIndex = f;
-					intersects.push( intersection );
-
+  					intersection.face = face;
+  					intersection.faceIndex = f;
+  					intersects.push( intersection );
+          }catch(err){
+            console.log("Error: "+err.message)
+          }
 				}
 
 			}
