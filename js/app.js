@@ -1,6 +1,5 @@
     (function() {
         'use strict';
-
         AFRAME.registerComponent('alongpath', {
             schema: {
                 path: { default: '' },
@@ -102,6 +101,9 @@
               src: ['sounds/MirrorImageGhost.mp3'],
               volume: 1.3
             });
+            mirrorAudio.on('end',function(){
+                timer.setAttribute('text', { text: "Paused to look around" });
+            });
 
             // = new THREE.Audio( listener );
             // audioLoader.load( 'sounds/Exploding-Sound.mp3', function( buffer ) {
@@ -126,25 +128,96 @@
 
         function run() {
             var mirrorModel = document.querySelector("#mirrorModel");
+            var doubles = document.querySelector("#doubles");
+            var portraitChild = document.querySelector("#portraitChild");
+            var dollsCloths = document.querySelector("#dollsCloths");
+            var marrianneInBed = document.querySelector("#marrianneInBed");
             //var narration = document.querySelector("#narration");
 
             mirrorModel.addEventListener("stateadded", function(evt) {
                 if (!narration.playing() && !mirrorAudio.playing()){
-                    mirrorModel.setAttribute('scale', "4 4 4"); //scale="1 1 1"
+                    mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
                     if (evt.detail.state === "cursor-hovered") {
                         mirrorAudio.play();
+                        timer.setAttribute('text', { text: "&#x1f50a; The Mirror Image Gost (1994)" });
                     }
                 }
             });
 
             mirrorModel.addEventListener("stateremoved", function(evt) {
-                mirrorModel.setAttribute('scale', "3 3 3"); //scale="0.2 0.2 0.2"
+                mirrorModel.setAttribute('scale', "3 4 3"); //scale="0.2 0.2 0.2"
                 if (evt.detail.state === "cursor-hovered") {
                     //narration.play();
                 }
             });
 
+            doubles.addEventListener("stateadded", function(evt) {
+                if (!narration.playing() && !mirrorAudio.playing()){
+                    mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
+                    if (evt.detail.state === "cursor-hovered") {
+                        mirrorAudio.play();
+                        timer.setAttribute('text', { text: "🔊 Doubles" });
+                    }
+                }
+            });
 
+            doubles.addEventListener("stateremoved", function(evt) {
+                mirrorModel.setAttribute('scale', "3 4 3"); //scale="0.2 0.2 0.2"
+                if (evt.detail.state === "cursor-hovered") {
+                    //narration.play();
+                }
+            });
+
+            portraitChild.addEventListener("stateadded", function(evt) {
+                if (!narration.playing() && !mirrorAudio.playing()){
+                    mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
+                    if (evt.detail.state === "cursor-hovered") {
+                        mirrorAudio.play();
+                        timer.setAttribute('text', { text: "portraitChild" });
+                    }
+                }
+            });
+
+            portraitChild.addEventListener("stateremoved", function(evt) {
+                mirrorModel.setAttribute('scale', "3 4 3"); //scale="0.2 0.2 0.2"
+                if (evt.detail.state === "cursor-hovered") {
+                    //narration.play();
+                }
+            });
+
+            dollsCloths.addEventListener("stateadded", function(evt) {
+                if (!narration.playing() && !mirrorAudio.playing()){
+                    mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
+                    if (evt.detail.state === "cursor-hovered") {
+                        mirrorAudio.play();
+                        timer.setAttribute('text', { text: "dollsCloths" });
+                    }
+                }
+            });
+
+            dollsCloths.addEventListener("stateremoved", function(evt) {
+                mirrorModel.setAttribute('scale', "3 4 3"); //scale="0.2 0.2 0.2"
+                if (evt.detail.state === "cursor-hovered") {
+                    //narration.play();
+                }
+            });
+
+            marrianneInBed.addEventListener("stateadded", function(evt) {
+                if (!narration.playing() && !mirrorAudio.playing()){
+                    mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
+                    if (evt.detail.state === "cursor-hovered") {
+                        mirrorAudio.play();
+                        timer.setAttribute('text', { text: "marrianneInBed" });
+                    }
+                }
+            });
+
+            marrianneInBed.addEventListener("stateremoved", function(evt) {
+                mirrorModel.setAttribute('scale', "3 4 3"); //scale="0.2 0.2 0.2"
+                if (evt.detail.state === "cursor-hovered") {
+                    //narration.play();
+                }
+            });
             //var timer = document.querySelector("#timer");
             startTimeLine();
 

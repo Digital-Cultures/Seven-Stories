@@ -25,6 +25,18 @@ function addBed(){
 	document.querySelector("#room").appendChild(entity);
 }
 
+function addSheet(){
+		// 				<a-collada-model id="marrianneSheet" src="#sheet" collada-model="#sheet" position="3.96 0.18 -2" scale="0.29 0.3 0.32" rotation="0 0 0" material="opacity:0;depthTest:true;flatShading:false">
+		//	</a-collada-model>
+	var entity = document.createElement("a-collada-model");
+
+	entity.setAttribute("src", "#sheet");
+	entity.setAttribute("position", "3.96 0.18 -2");
+	entity.setAttribute("scale", "0.29 0.3 0.32");
+
+	document.querySelector("#room").appendChild(entity);
+}
+
 function addKeys(){
 	var entity = document.createElement("a-collada-model");
 
@@ -212,7 +224,7 @@ function addHouse(){
 	house.setAttribute("position", "5 2 -3.5");
 	house.setAttribute("scale", "15 15 15");
 	house.setAttribute("rotation", "0 0 0");
-	
+	entity.appendChild(house);
 
 // <a-image src="#fence" material="src:#fence;color:#FFF;shader:standard;side:double;transparent:true;visible:true;depthTest:false;flatShading:false;metalness:1" position="7 3 4.36" scale="3 3 3" rotation="0 0 0" width="5.76" geometry="width:5.76;height:0.52;primitive:plane" height="0.52"></a-image>
 	var fence = document.createElement("a-image");
@@ -222,7 +234,7 @@ function addHouse(){
 	fence.setAttribute("rotation", "0 0 0");
 	fence.setAttribute("width", "5.76");
 	fence.setAttribute("height", "0.52");
-	fence.setAttribute("shader", "standard");
+	// fence.setAttribute("shader", "standard");
 
 	var fence2 = document.createElement("a-image");
 	fence2.setAttribute("src", "#fence");
@@ -231,7 +243,7 @@ function addHouse(){
 	fence2.setAttribute("rotation", "0 90 0");
 	fence2.setAttribute("width", "5.76");
 	fence2.setAttribute("height", "0.52");
-	fence2.setAttribute("shader", "standard");
+	//fence2.setAttribute("shader", "standard");
 
 	var fence3 = document.createElement("a-image");
 	fence3.setAttribute("src", "#fence");
@@ -240,7 +252,7 @@ function addHouse(){
 	fence3.setAttribute("rotation", "0 90 0");
 	fence3.setAttribute("width", "5.76");
 	fence3.setAttribute("height", "0.52");
-	fence3.setAttribute("shader", "standard");
+	// fence3.setAttribute("shader", "standard");
 
 	//<a-image src="#fence" material="color:#FFF;shader:standard;side:double;transparent:true;src:#fence" position="-1.45 2.96 -4.33" scale="3 3 3" rotation="0 90 0" width="5.76" geometry="primitive:plane;width:5.76;height:0.52" height="0.52" shader="standard" visible="true"></a-image>
 
@@ -250,8 +262,8 @@ function addHouse(){
 	ground.setAttribute("rotation", "270 0 0");
 	ground.setAttribute("width", "30");
 	ground.setAttribute("height", "30");
-	ground.setAttribute("roughness", "1");
-	ground.setAttribute("shader", "standard");
+	//ground.setAttribute("roughness", "1");
+	// ground.setAttribute("shader", "standard");
 
 //<a-image src="#stone" material="src:#stone;shader:standard;color:#FFF;side:double;transparent:true" position="18.1 3.75 -4.33" scale="3 3 3" rotation="0 120 0" width="5.76" geometry="width:1;height:1;primitive:plane" height="0.52" shader="standard"></a-image>
 	var stone = document.createElement("a-image");
@@ -259,10 +271,8 @@ function addHouse(){
 	stone.setAttribute("position", "18.1 3.75 -4.33");
 	stone.setAttribute("scale", "3 3 3");
 	stone.setAttribute("rotation", "0 120 0");
-	stone.setAttribute("shader", "standard");
+	//stone.setAttribute("shader", "standard");
 
-
-	entity.appendChild(house);
 	entity.appendChild(ground);
 	entity.appendChild(stone);
 	entity.appendChild(fence2);

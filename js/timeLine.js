@@ -31,7 +31,6 @@ function cameraPan(t) {
 }
 
 function timeLine() {
-    timer.setAttribute('text', { text: totalSeconds });
 
 
     switch (totalSeconds) {
@@ -46,50 +45,39 @@ function timeLine() {
 
         case 2:
             narration.play();
-            //document.querySelector('#scene-1').emit('fogClearSlow');
+            //totalSeconds = 86;
             document.querySelector('#lightSpot').emit('lightOn');
     
             break;
-        case 10:
-            copyRoom();
-            // var walls = document.querySelectorAll(".walls");
-            // [].forEach.call(walls, function(div) {
-            //   div.emit('fadein');
-            // });
-
+        case 14:
             //Marianne dreams
-            addBookMarianne();
-            //document.querySelector('#movingBookDreams').emit('bookDreams');
-            //addBed();
+            document.querySelector('#movingBookDreams').emit('bookDreams');
+            //addBookMarianne();
             
             break;
-        case 19:
-            addBookRufus();
-        	//document.querySelector('#movingBookRufus').emit('bookRufus');
+        case 22:
+            //addBookRufus();
+            document.querySelector('#movingBookRufus').emit('bookRufus');
             //Rufus
             break;
 
-        case 22:
+        case 29:
             //mirror
-            addBookMirror();
+            //addBookMirror();
+            document.querySelector('#movingBookMirror').emit('bookMirror');
             //addMirror();
             break;
-        case 31:
+        case 37:
             //mirror book move
         //Keys
-            addBookKey();
-            //addKeys();
-            //addDoor();
+            //addBookKey();
+            document.querySelector('#movingBookKey').emit('bookKey');
+            copyRoom();
             break;
-        case 36:
-        	//document.querySelector('#movingBookKey').emit('bookKey');
-            
-            break;
-        case 40:
-            document.querySelector('#scene-1').emit('lightOn');
-        	cancelAnimationFrame(bookcaseFrame);
 
-            //Stop Zoom out from book case
+        case 40:
+            //document.querySelector('#scene-1').emit('lightOn');
+        	cancelAnimationFrame(bookcaseFrame);
             break;
         case 41:
             document.querySelector('#scene-1').emit('fogfadeout');
@@ -99,12 +87,15 @@ function timeLine() {
             //flash in bedside
             camera.setAttribute('position', { x: 8, y: 4, z: 0 });
             startFrame = null;
-            cameraPositions = [new THREE.Vector3(8, 4, 0), new THREE.Vector3(9, 3, -1.5)];
+            cameraPositions = [new THREE.Vector3(8, 4, 0), new THREE.Vector3(6, 3, 0)];
             cameraPath = new THREE.SplineCurve3(cameraPositions);
             duration = 20000;
             bookcaseFrame = requestAnimationFrame(cameraPan);
             document.querySelector('#scene-1').emit('fogfadein');
+            document.querySelector('#marrianneInBed').emit('fadein');
+            addSheet();
             document.querySelector('#lightMain').emit('lightOn');
+            document.querySelector('#windowSun').setAttribute('position', { x: 11, y: 2, z: -1 });
             //camera.lookAt( new THREE.Vector3(0,0,0));
             break;
         case 46:
@@ -115,12 +106,12 @@ function timeLine() {
                 document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+(pauseTime/100), y: -0.2, z: -1 });
             }
             
-            if (pauseTime<10){
-                narration.pause();
-                timer.setAttribute('text', { text: "Paused to look around" });
-            } else {
+            if (pauseTime>10){
                 narration.play();
                 document.querySelector('#pauseTimeBar').setAttribute('scale', { x: 0, y: 0.01, z: 0.01 });
+            } else if (narration.playing()){
+                narration.pause();
+                timer.setAttribute('text', { text: "Paused to look around" });
             }
             
             
@@ -130,22 +121,20 @@ function timeLine() {
             document.querySelector('#Catherine1').emit('fadein');
             break;
         case 52:
+            totalSeconds --;
             //Marianne appears
             break;
-        case 56:
-            //book appears
-            //flip through book pages
-            break;
-        case 67:
-             //document.querySelector('#scene-1').emit('fogfadeout');
+        case 69:
+             document.querySelector('#scene-1').emit('fogfadeout');
         case 72:
             cancelAnimationFrame(bookcaseFrame);
              //World spins to look down bed
             camera.setAttribute('position', { x: 8, y: 3.5, z: 0 });
             document.querySelector('#room').setAttribute('position', { x: 3.5, y: 1.5, z: -11 });
             document.querySelector('#room').setAttribute('rotation', { x: 0, y: -90, z: 0});
-            //document.querySelector('#scene-1').emit('fogfadein');
+            document.querySelector('#scene-1').emit('fogfadein');
             break;
+
         case 78:
             addOpenBook();
             //document.querySelector('#scene-1').emit('fogfadeout');
@@ -173,7 +162,7 @@ function timeLine() {
             break;
         case 92:
             //fade out (2 seconds)
-            document.querySelector('#scene-1').emit('fogfadeout');
+            //document.querySelector('#scene-1').emit('fogfadeout');
             break;
         case 93:
             //fade out (2 seconds)
@@ -251,7 +240,7 @@ function timeLine() {
             duration = 30000;
             bookcaseFrame = requestAnimationFrame(cameraPan);
             break;
-        case 204:
+        case 200:
             document.getElementById("credits").style.display = "block";
             noSleep.disable();
             break;
@@ -259,6 +248,7 @@ function timeLine() {
 
     if (narration.playing()||totalSeconds<3){
         totalSeconds++;
+        timer.setAttribute('text', { text: totalSeconds });
     }
     
     }

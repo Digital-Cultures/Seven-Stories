@@ -5,7 +5,7 @@ body{
   padding: 0;
   width: 100%;
 }
-#cover, #cover2, #credits {
+#cover, #cover2, #credits, #webGLneeded {
   background: white;
   font-family: sans-serif;
   font-size: 22px;

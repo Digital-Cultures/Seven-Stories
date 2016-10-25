@@ -15,6 +15,9 @@
 		<div style="text-align: center;"><i class="fa fa-volume-up" aria-hidden="true"></i> Make sure the sound is on!</div>
 		<div id="beginBtn" href="#" data-icon="info" data-role="button" data-mini="false" data-theme="b" data-corners="false">Shall we begin?</div>
 	</div>
+	<div id="webGLneeded" style="display: none;">
+		This experiance requires WebGL. For more information WebGL click <a href="https://en.wikipedia.org/wiki/WebGL">here.</a>
+	</div>
 	<div id="cover2" style="display: none;">
 		<div style="text-align: center;"> This experiance is best enjoyed on <i class="fa fa-mobile" aria-hidden="true"></i> mobile with <i class="fa fa-headphones" aria-hidden="true"></i> headphones + Cardboard. <br>For desktops <i class="fa fa-mouse-pointer" aria-hidden="true"></i> click and drag the mouse to look around.</div>
 		<div id="loading" style="width: 100%; text-align: center;">
@@ -35,10 +38,16 @@
 		</div>
 	</div>
 
+	<script src="js/Detector.js"></script>
 	<script type="text/javascript">
 		document.getElementById('beginBtn').onclick = function() {
             document.getElementById("cover").style.display = "none";
-            document.getElementById("cover2").style.display = "block";
+            if ( ! Detector.webgl ){
+            	document.getElementById("webGLneeded").style.display = "block";
+            }else{
+            	document.getElementById("cover2").style.display = "block";	
+            }
+            
         };
 	</script>
 
@@ -86,6 +95,7 @@
 			<img id="fence" src="images/fence.png">
 			<img id="stone" src="images/stone.png">
 			<img id="marrianne" src="images/marrianne.png">
+			<img id="marrianneBed" src="images/marrianneBed.png">
 			<img id="CatherineStorrHeadShot" src="images/Catherine-Storr-head-shot.jpg">
 			<a-asset-item id="bookhouse" src="models/Open+Book+House.dae"></a-asset-item>
 			<a-asset-item id="Book_MarianneDreams" src="models/Book_MarianneDreams.dae"></a-asset-item>
@@ -94,6 +104,7 @@
 			<a-asset-item id="Book_IfGame" src="models/Book_IfGame.dae"></a-asset-item>
 			<a-asset-item id="door" src="models/door.dae"></a-asset-item>
 			<a-asset-item id="bed" src="models/bed.dae"></a-asset-item>
+			<a-asset-item id="sheet" src="models/sheet.dae"></a-asset-item>
 			<a-asset-item id="house" src="models/house.dae"></a-asset-item>
 			<a-asset-item id="bookcase" src="models/Bookcase1.dae"></a-asset-item>
 			<a-asset-item id="mirror" src="models/Goldmirror.dae"></a-asset-item>
@@ -140,11 +151,33 @@
 			</a-plane>
 
 			<a-collada-model id="bookcaseModel" src="#bookcase" position="-6 -2 -10.6" scale="4 4 4" rotation="0 0 0"  material="shader: flat">
-				
+				<a-collada-model id="movingBookDreams" src="#Book_MarianneDreams" position="1.7 1.5 0.9" rotation="155 90 90" scale="0.75 0.7 0.8">		
+ 					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="1.7 1.5 0.9" to="2.18 1.83 -0.05" begin="bookDreams"></a-animation>		
+ 					<a-animation attribute="rotation" dur="4000" from="155 90 90" to="165 175 90" begin="bookDreams"></a-animation>		
+ 				</a-collada-model>		
+ 		
+ 				<a-collada-model id="movingBookRufus" src="#Book_Rufus" position="2.2 1.5 1.3" rotation="175 100 90" scale="0.75 0.7 0.8">		
+ 					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="2.2 1.5 1.3" to="1.64 1.84 -0.02" begin="bookRufus"></a-animation>		
+					<a-animation attribute="rotation" dur="4000" from="175 100 90" to="165 175 90" begin="bookRufus"></a-animation>		
+				</a-collada-model>		
+		
+ 				<a-collada-model id="movingBookMirror" src="#Book_MirrorGhost" position="1.8 1.5 1.9" rotation="155 90 90" scale="0.75 0.7 0.8">		
+ 					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="1.8 1.5 1.9" to="1.93 1.06 -0.03" begin="bookMirror"></a-animation>		
+ 					<a-animation attribute="rotation" dur="4000" from="155 90 90" to="165 175 90" begin="bookMirror"></a-animation>		
+ 				</a-collada-model>		
+  						  				
+ 				<a-collada-model id="movingBookKey" src="#Book_IfGame" position="2.2 1.5 2.2" rotation="175 100 90" scale="0.75 0.7 0.8">		
+ 					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="2.2 1.5 2.2" to="1.8 2.14 -0.02" begin="bookKey"></a-animation>		
+ 					<a-animation attribute="rotation" dur="4000" from="175 100 90" to="165 175 90" begin="bookKey"></a-animation>		
+ 				</a-collada-model>
 		  	</a-collada-model>
 
 		  	<a-image id="Catherine1" src="#portrait" position="7.6 1.8 -6.5" scale="5.5 7 4" rotation="0 -15 0" material="opacity:0">
 				<a-animation attribute="material.opacity" begin="fadein" to="0.9" dur="5000"></a-animation>
+			</a-image>
+
+			<a-image id="marrianneInBed" src="#marrianneBed" position="10.68 1.77 -2.98" scale="2.34 3.04 3" rotation="0 -25 0" material="opacity:0;color:#FFF;shader:flat;side:double;transparent:true;src:#marrianneBed" geometry="primitive:plane">
+				<a-animation attribute="material.opacity" begin="fadein" to="1" dur="0"></a-animation>
 			</a-image>
 
 			<a-collada-model src="#bed" collada-model="#bed" position="12 -2 -2" scale="4 4 4" rotation="0 90 0" material=""></a-collada-model>
@@ -154,6 +187,13 @@
 			<a-collada-model id="bedside-Table" src="#bedsideTable" collada-model="#bedsideTable" position="10.98 -1.93 -1.47" scale="4.6 4.5 4.2" rotation="0 270 0" material=""></a-animation></a-collada-model>
 
 			<a-collada-model id="door" src="#door" collada-model="#door" position="-2.09 -2.03 -11.98" scale="4.6 4.5 4.2" rotation="0 200 0" material=""><a-animation attribute="rotation" dur="2000" to="0 200 0" begin="3000"></a-animation></a-collada-model>
+
+			<!-- HIT POINTS -->
+			<a-entity position="-7.51 4.96 -4.54" rotation="0 90 0" scale="3.46 2.3 1" geometry="primitive:plane" id="doubles" material="opacity:0.1"></a-entity>
+
+			<a-entity position="9 5 2.87" rotation="0 0 0" scale="1.86 2.58 1" visible="true" geometry="primitive:plane" id="portraitChild" material="opacity:0.1;side:back"></a-entity>
+
+			<a-entity position="9 0.78 2.87" rotation="0 0 0" scale="3.44 2.58 1" visible="true" geometry="primitive:plane" id="dollsCloths" material="opacity:0.1;side:back"></a-entity>
 
 		</a-entity>
 	 
@@ -168,13 +208,13 @@
 			</a-entity>
 			<a-entity id="pauseTimeBar" cursor="fuse: true; timeout: 50"
 			  position="-0.2 -0.2 -1"
-			  scale="0.01 0.01 0.01"
+			  scale="0 0.01 0.01"
 			  geometry="primitive: plane;"
 			  material="color: white; shader: flat">
 			</a-entity>
 			<a-entity id="timer" text="text: 0"
-			  position="0.2 -0.2 -1"
-			  scale="0.1 0.1 0.1"
+			  position="0 -0.2 -1"
+			  scale="0.1 0.1 0"
 			  material="color: white; shader: flat">
 			</a-entity>
 
