@@ -45,9 +45,9 @@ function timeLine() {
 
         case 2:
             narration.play();
-            //totalSeconds = 86;
+            totalSeconds = 76;
             document.querySelector('#lightSpot').emit('lightOn');
-    
+        
             break;
         case 14:
             //Marianne dreams
@@ -104,18 +104,18 @@ function timeLine() {
             // pause to look around
             if (!extras.playing()){
                 pauseTime ++;
-                timer.setAttribute('text', { text: "Paused to look around" });
+                timer.setAttribute('text', { text: "Look at items to hear more about them" });
                 document.querySelector('#pauseTimeBar').setAttribute('scale', { x: pauseTime/50, y: 0.01, z: 0.01 });
                 document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+(pauseTime/100), y: -0.2, z: -1 });
             }
             
-            if (pauseTime>10){
-                //narration.play();
+            if (pauseTime>15){
+                narration.play();
                 document.querySelector('#lightMain').emit('lightOff');
                 document.querySelector('#pauseTimeBar').setAttribute('scale', { x: 0, y: 0.01, z: 0.01 });
                 //hide crosshairs
                 document.querySelector('#crosshair').setAttribute('material',{visible:false});
-                
+
             } else if (narration.playing()){
                 narration.pause();
                 //show crosshairs
@@ -188,9 +188,7 @@ function timeLine() {
             cameraPath = new THREE.SplineCurve3(cameraPositions);
             duration = 12000;
             bookcaseFrame = requestAnimationFrame(cameraPan);
-            
-            break;
-        case 100:
+            document.querySelector('#lightMain').emit('lightOnHigh');
             break;
         case 107:
             cancelAnimationFrame(bookcaseFrame);
@@ -227,6 +225,7 @@ function timeLine() {
             break;
         case 134:
             // starts getting dark
+            narration.pause();
             break;
         case 149:
             //play bang and Marianne dissapears

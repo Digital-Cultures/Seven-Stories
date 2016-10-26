@@ -114,11 +114,14 @@
               }
             });
             extras.on('end',function(){
-                timer.setAttribute('text', { text: "Paused to look around" });
-                //document.querySelector("#mirrorText").setAttribute('material',{visible:false});
+                timer.setAttribute('text', { text: "Look at items to hear more about them" });
+                document.querySelector("#mirrorText").setAttribute('material',{visible:false});
                 document.querySelector("#doublesText").setAttribute('material',{visible:false});
                 document.querySelector("#portraitChildText").setAttribute('material',{visible:false});
                 document.querySelector("#dollsClothsText").setAttribute('material',{visible:false});
+                document.querySelector("#dolls2Text").setAttribute('material',{visible:false});
+                document.querySelector("#booksText").setAttribute('material',{visible:false});
+                document.querySelector('#lightMain').emit('lightOn');
             });
 
             // = new THREE.Audio( listener );
@@ -152,11 +155,12 @@
 
             mirrorModel.addEventListener("stateadded", function(evt) {
                 if (!narration.playing() && !extras.playing()){
-                    mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
+                    //mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('mirror');
-                        timer.setAttribute('text', { text: "&#x1f50a; The Mirror Image Gost (1994)" });
+                        timer.setAttribute('text', { text: "" });
                         document.querySelector("#mirrorText").setAttribute('material',{visible:true});
+                        document.querySelector('#lightMain').emit('lightOff');
                     }
                 }
             });
@@ -170,17 +174,17 @@
 
             doubles.addEventListener("stateadded", function(evt) {
                 if (!narration.playing() && !extras.playing()){
-                    mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('darkRoom');
-                        timer.setAttribute('text', { text: "🔊 Doubles" });
+                        timer.setAttribute('text', { text: "" });
                         document.querySelector("#doublesText").setAttribute('material',{visible:true});
+                        document.querySelector('#lightMain').emit('lightOff');
                     }
                 }
             });
 
+
             doubles.addEventListener("stateremoved", function(evt) {
-                mirrorModel.setAttribute('scale', "3 4 3"); //scale="0.2 0.2 0.2"
                 if (evt.detail.state === "cursor-hovered") {
                     //narration.play();
                 }
@@ -188,17 +192,16 @@
 
             portraitChild.addEventListener("stateadded", function(evt) {
                 if (!narration.playing() && !extras.playing()){
-                    mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('portraitChild');
-                        timer.setAttribute('text', { text: "portraitChild" });
+                        timer.setAttribute('text', { text: "" });
                         document.querySelector("#portraitChildText").setAttribute('material',{visible:true});
+                        document.querySelector('#lightMain').emit('lightOff');
                     }
                 }
             });
 
             portraitChild.addEventListener("stateremoved", function(evt) {
-                mirrorModel.setAttribute('scale', "3 4 3"); //scale="0.2 0.2 0.2"
                 if (evt.detail.state === "cursor-hovered") {
                     //narration.play();
                 }
@@ -206,19 +209,29 @@
 
             dollsCloths.addEventListener("stateadded", function(evt) {
                 if (!narration.playing() && !extras.playing()){
-                    mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('dolls');
-                        timer.setAttribute('text', { text: "dollsCloths" });
+                        timer.setAttribute('text', { text: "" });
                         document.querySelector("#dollsClothsText").setAttribute('material',{visible:true});
+                        document.querySelector('#lightMain').emit('lightOff');
                     }
                 }
             });
 
             dollsCloths.addEventListener("stateremoved", function(evt) {
-                mirrorModel.setAttribute('scale', "3 4 3"); //scale="0.2 0.2 0.2"
                 if (evt.detail.state === "cursor-hovered") {
                     //narration.play();
+                }
+            });
+
+            dolls2.addEventListener("stateadded", function(evt) {
+                if (!narration.playing() && !extras.playing()){
+                    if (evt.detail.state === "cursor-hovered") {
+                        extras.play('dolls');
+                        timer.setAttribute('text', { text: "" });
+                        document.querySelector("#dolls2Text").setAttribute('material',{visible:true});
+                        document.querySelector('#lightMain').emit('lightOff');
+                    }
                 }
             });
 
@@ -239,16 +252,33 @@
                 }
             });
 
-            bookcaseModel.addEventListener("stateadded", function(evt) {
+            // bookcaseModel.addEventListener("stateadded", function(evt) {
+            //     if (!narration.playing() && !extras.playing()){
+            //         if (evt.detail.state === "cursor-hovered") {
+            //             extras.play('handMadeBooks');
+            //             document.querySelector("#booksText").setAttribute('material',{visible:true});
+            //             timer.setAttribute('text', { text: "" });
+            //         }
+            //     }
+            // });
+
+            // bookcaseModel.addEventListener("stateremoved", function(evt) {
+            //     if (evt.detail.state === "cursor-hovered") {
+            //         //narration.play();
+            //     }
+            // });
+
+             mother.addEventListener("stateadded", function(evt) {
                 if (!narration.playing() && !extras.playing()){
                     if (evt.detail.state === "cursor-hovered") {
-                        extras.play('handMadeBooks');
-                        timer.setAttribute('text', { text: "marrianneInBed" });
+                        extras.play('piggyback');
+                        document.querySelector("#motherText").setAttribute('material',{visible:true});
+                        timer.setAttribute('text', { text: "" });
                     }
                 }
             });
 
-            bookcaseModel.addEventListener("stateremoved", function(evt) {
+            mother.addEventListener("stateremoved", function(evt) {
                 if (evt.detail.state === "cursor-hovered") {
                     //narration.play();
                 }

@@ -72,8 +72,9 @@
 		<a-animation begin="fogfadeout" attribute="fog.density" from="0" to="1" dur="1000"></a-animation>
 		<a-animation begin="fogfadein"  attribute="fog.density" from="1" to="0" dur="500"></a-animation>
 
-		<a-entity id="lightMain" light="color:#FFD5C6;intensity:0.1;type:point;angle:180" position="2.5 5.49 -0.88" rotation="0 0 0" scale="1 1 1" visible="true">
+		<a-entity id="lightMain" light="color:#FFFFFF;intensity:0.1;type:point;angle:180" position="2.5 5.49 -0.88" rotation="0 0 0" scale="1 1 1" visible="true">
 			<a-animation begin="lightOn" attribute="light.intensity" to="0.4" dur="1000"></a-animation>
+			<a-animation begin="lightOnHigh" attribute="light.intensity" to="1" dur="5000"></a-animation>
 			<a-animation begin="lightOff" attribute="light.intensity" to="0" dur="1000"></a-animation>
 	  	</a-entity>
 
@@ -172,6 +173,8 @@
  					<a-animation attribute="position" dur="4000" easing="ease-in-cubic" from="2.2 1.5 2.2" to="1.8 2.14 -0.02" begin="bookKey"></a-animation>		
  					<a-animation attribute="rotation" dur="4000" from="175 100 90" to="165 175 90" begin="bookKey"></a-animation>		
  				</a-collada-model>
+
+ 				<a-entity position="0.38 0.15 0" text="text:Hand made books;height:0" id="booksText" rotation="0 -76 0" scale="0.5 0.2 0" material="color:white;shader:flat;visible:false"></a-entity>
 		  	</a-collada-model>
 
 		  	<a-image id="Catherine1" src="#portrait" position="7.6 1.8 -6.5" scale="5.5 7 4" rotation="0 -15 0" material="opacity:0">
@@ -193,17 +196,25 @@
 
 			<a-collada-model id="door" src="#door" collada-model="#door" position="-2.09 -2.03 -11.98" scale="4.6 4.5 4.2" rotation="0 200 0" material=""><a-animation attribute="rotation" dur="2000" to="0 200 0" begin="3000"></a-animation></a-collada-model>
 
-			<!-- HIT POINTS -->
-			<a-entity position="-7.51 4.96 -4.54" rotation="0 90 0" scale="3.46 2.3 1" geometry="primitive:plane" id="doubles" material="opacity:0.1">
+			<!--**** HIT POINTS ****-->
+			<a-entity position="-7.51 4.96 -4.54" rotation="0 90 0" scale="3.46 2.3 1" geometry="primitive:plane" id="doubles" material="opacity:0">
 				<a-entity position="0 0 0" text="text:- Photos by Catherine Storr's mother" id="doublesText" rotation="0 -70 0" scale="0.5 0.5 0" material="color: white; shader: flat; visible:false"></a-entity>
 			</a-entity>
 
-			<a-entity position="9 5 2.87" rotation="0 0 0" scale="1.86 2.58 1" visible="true" geometry="primitive:plane" id="portraitChild" material="opacity:0.1;side:back">
+			<a-entity position="-7.63 -0.8 -3.48" rotation="0 90 0" scale="4.3 5.76 1" geometry="primitive:plane" id="dolls2" material="opacity:0" visible="true">
+				<a-entity position="0.38 0.15 0" text="text:Catherine Storr's dolls;height:0" id="dolls2Text" rotation="0 -76 0" scale="0.5 0.2 0" material="color:white;shader:flat;visible:false"></a-entity>
+			</a-entity>
+
+			<a-entity position="9 5 2.87" rotation="0 0 0" scale="1.86 2.58 1" visible="true" geometry="primitive:plane" id="portraitChild" material="opacity:0;side:back">
 				<a-entity position="-0.6 -0.39 0" text="text:Catherine aged 6" id="portraitChildText" rotation="0 180 0" scale="0.2 0.1 0" material="color: white; shader: flat; visible:false"></a-entity>
 			</a-entity>
 
-			<a-entity position="9 0.78 2.87" rotation="0 0 0" scale="3.44 2.58 1" visible="true" geometry="primitive:plane" id="dollsCloths" material="opacity:0.1;side:back">
+			<a-entity position="9 0.78 2.87" rotation="0 0 0" scale="3.44 2.58 1" visible="true" geometry="primitive:plane" id="dollsCloths" material="opacity:0;side:back">
 				<a-entity position="-0.46 0.21 0" text="text:Dolls cloths" id="dollsClothsText" material="color: white; shader: flat; visible:false" rotation="0 180 0" scale="0.2 0.1 0"></a-entity>
+			</a-entity>
+
+			<a-entity position="1.78 5.56 2.87" rotation="0 0 0" scale="3.58 2.98 1" visible="true" geometry="primitive:plane" id="mother" material="opacity:0;side:back">
+				<a-entity position="-0.6 -0.02 0" text="text:Catherine and Daughters" id="motherText" rotation="0 99 0" scale="0.5 0.2 0" material="color:white;shader:flat;visible:false"></a-entity>
 			</a-entity>
 
 		</a-entity>
