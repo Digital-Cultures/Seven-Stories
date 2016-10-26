@@ -1,6 +1,5 @@
 function addOpenBook(){
-		// 	<a-collada-model src="#bookhouse" position="7 2 -1" scale="10 10 10" color="#CCCCCC" rotation="0 0 0" material="shader: flat" collada-model="" visible="">
-		// </a-collada-model>
+
 	var entity = document.createElement("a-collada-model");
 
 	entity.setAttribute("src", "#bookhouse");
@@ -13,8 +12,7 @@ function addOpenBook(){
 }
 
 function addBed(){
-		// 	<a-collada-model src="#bookhouse" position="7 2 -1" scale="10 10 10" color="#CCCCCC" rotation="0 0 0" material="shader: flat" collada-model="" visible="">
-		// </a-collada-model>
+
 	var entity = document.createElement("a-collada-model");
 
 	entity.setAttribute("src", "#bed");
@@ -26,15 +24,21 @@ function addBed(){
 }
 
 function addSheet(){
-		// 				<a-collada-model id="marrianneSheet" src="#sheet" collada-model="#sheet" position="3.96 0.18 -2" scale="0.29 0.3 0.32" rotation="0 0 0" material="opacity:0;depthTest:true;flatShading:false">
-		//	</a-collada-model>
-	var entity = document.createElement("a-collada-model");
+	var entity = document.createElement("a-entity");
+	entity.setAttribute("id", "bedSheet");
 
-	entity.setAttribute("src", "#sheet");
-	entity.setAttribute("position", "3.96 0.18 -2");
-	entity.setAttribute("scale", "0.29 0.3 0.32");
+	var bedSheet = document.createElement("a-collada-model");
+	bedSheet.setAttribute("src", "#sheet");
+	bedSheet.setAttribute("position", "3.96 0.18 -2");
+	bedSheet.setAttribute("scale", "0.29 0.3 0.32");
+	entity.appendChild(bedSheet);
 
 	document.querySelector("#room").appendChild(entity);
+}
+
+function removeSheet(){
+	var elem = document.getElementById('bedSheet');
+	elem.parentNode.removeChild(elem);
 }
 
 function addKeys(){

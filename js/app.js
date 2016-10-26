@@ -97,12 +97,28 @@
               loop: false
             });
 
-            mirrorAudio = new Howl({
-              src: ['sounds/MirrorImageGhost.mp3'],
-              volume: 1.3
+            extras = new Howl({
+              src: ['sounds/extras.mp3'],
+              volume: 1,
+              sprite: {
+                dolls: [0, 7237],
+                portraitChild: [7623, 9376],
+                piggyback: [17369, 12255],
+                darkRoom: [30010, 11387],
+                handMadeBooks: [42072, 7527],
+                cleverPolly: [50468, 7912],
+                giant: [59635, 13606],
+                mirror: [74399, 13895],
+                robin: [88777, 12255],
+                marrianne: [102093, 9166]
+              }
             });
-            mirrorAudio.on('end',function(){
+            extras.on('end',function(){
                 timer.setAttribute('text', { text: "Paused to look around" });
+                //document.querySelector("#mirrorText").setAttribute('material',{visible:false});
+                document.querySelector("#doublesText").setAttribute('material',{visible:false});
+                document.querySelector("#portraitChildText").setAttribute('material',{visible:false});
+                document.querySelector("#dollsClothsText").setAttribute('material',{visible:false});
             });
 
             // = new THREE.Audio( listener );
@@ -135,11 +151,12 @@
             //var narration = document.querySelector("#narration");
 
             mirrorModel.addEventListener("stateadded", function(evt) {
-                if (!narration.playing() && !mirrorAudio.playing()){
+                if (!narration.playing() && !extras.playing()){
                     mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
                     if (evt.detail.state === "cursor-hovered") {
-                        mirrorAudio.play();
+                        extras.play('mirror');
                         timer.setAttribute('text', { text: "&#x1f50a; The Mirror Image Gost (1994)" });
+                        document.querySelector("#mirrorText").setAttribute('material',{visible:true});
                     }
                 }
             });
@@ -152,11 +169,12 @@
             });
 
             doubles.addEventListener("stateadded", function(evt) {
-                if (!narration.playing() && !mirrorAudio.playing()){
+                if (!narration.playing() && !extras.playing()){
                     mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
                     if (evt.detail.state === "cursor-hovered") {
-                        mirrorAudio.play();
+                        extras.play('darkRoom');
                         timer.setAttribute('text', { text: "🔊 Doubles" });
+                        document.querySelector("#doublesText").setAttribute('material',{visible:true});
                     }
                 }
             });
@@ -169,11 +187,12 @@
             });
 
             portraitChild.addEventListener("stateadded", function(evt) {
-                if (!narration.playing() && !mirrorAudio.playing()){
+                if (!narration.playing() && !extras.playing()){
                     mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
                     if (evt.detail.state === "cursor-hovered") {
-                        mirrorAudio.play();
+                        extras.play('portraitChild');
                         timer.setAttribute('text', { text: "portraitChild" });
+                        document.querySelector("#portraitChildText").setAttribute('material',{visible:true});
                     }
                 }
             });
@@ -186,11 +205,12 @@
             });
 
             dollsCloths.addEventListener("stateadded", function(evt) {
-                if (!narration.playing() && !mirrorAudio.playing()){
+                if (!narration.playing() && !extras.playing()){
                     mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
                     if (evt.detail.state === "cursor-hovered") {
-                        mirrorAudio.play();
+                        extras.play('dolls');
                         timer.setAttribute('text', { text: "dollsCloths" });
+                        document.querySelector("#dollsClothsText").setAttribute('material',{visible:true});
                     }
                 }
             });
@@ -203,10 +223,10 @@
             });
 
             marrianneInBed.addEventListener("stateadded", function(evt) {
-                if (!narration.playing() && !mirrorAudio.playing()){
+                if (!narration.playing() && !extras.playing()){
                     mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
                     if (evt.detail.state === "cursor-hovered") {
-                        mirrorAudio.play();
+                        extras.play('marrianne');
                         timer.setAttribute('text', { text: "marrianneInBed" });
                     }
                 }
@@ -214,6 +234,21 @@
 
             marrianneInBed.addEventListener("stateremoved", function(evt) {
                 mirrorModel.setAttribute('scale', "3 4 3"); //scale="0.2 0.2 0.2"
+                if (evt.detail.state === "cursor-hovered") {
+                    //narration.play();
+                }
+            });
+
+            bookcaseModel.addEventListener("stateadded", function(evt) {
+                if (!narration.playing() && !extras.playing()){
+                    if (evt.detail.state === "cursor-hovered") {
+                        extras.play('handMadeBooks');
+                        timer.setAttribute('text', { text: "marrianneInBed" });
+                    }
+                }
+            });
+
+            bookcaseModel.addEventListener("stateremoved", function(evt) {
                 if (evt.detail.state === "cursor-hovered") {
                     //narration.play();
                 }

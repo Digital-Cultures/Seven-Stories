@@ -5,7 +5,7 @@ var cameraPath;
 var startFrame;
 var duration = 10000;
 
-var listener, audioLoader, music, narration, mirrorAudio, bang;
+var listener, audioLoader, music, narration, extras, bang;
 var noSleep = new NoSleep();
 
 var bookcaseFrame;
@@ -96,24 +96,31 @@ function timeLine() {
             addSheet();
             document.querySelector('#lightMain').emit('lightOn');
             document.querySelector('#windowSun').setAttribute('position', { x: 11, y: 2, z: -1 });
+            document.querySelector('#windowSun').setAttribute('position', { x: 11, y: 2, z: -1 });
+            
             //camera.lookAt( new THREE.Vector3(0,0,0));
             break;
         case 46:
             // pause to look around
-            if (!mirrorAudio.playing()){
-                pauseTime ++;  
+            if (!extras.playing()){
+                pauseTime ++;
+                timer.setAttribute('text', { text: "Paused to look around" });
                 document.querySelector('#pauseTimeBar').setAttribute('scale', { x: pauseTime/50, y: 0.01, z: 0.01 });
                 document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+(pauseTime/100), y: -0.2, z: -1 });
             }
             
             if (pauseTime>10){
-                narration.play();
+                //narration.play();
+                document.querySelector('#lightMain').emit('lightOff');
                 document.querySelector('#pauseTimeBar').setAttribute('scale', { x: 0, y: 0.01, z: 0.01 });
+                //hide crosshairs
+                document.querySelector('#crosshair').setAttribute('material',{visible:false});
+                
             } else if (narration.playing()){
                 narration.pause();
-                timer.setAttribute('text', { text: "Paused to look around" });
+                //show crosshairs
+                document.querySelector('#crosshair').setAttribute('material',{visible:true});
             }
-            
             
             break;
         case 47:
@@ -121,18 +128,21 @@ function timeLine() {
             document.querySelector('#Catherine1').emit('fadein');
             break;
         case 52:
-            totalSeconds --;
             //Marianne appears
             break;
         case 69:
              document.querySelector('#scene-1').emit('fogfadeout');
+             break;
         case 72:
             cancelAnimationFrame(bookcaseFrame);
+            document.querySelector('#marrianneInBed').emit('fadeout');
+            
              //World spins to look down bed
             camera.setAttribute('position', { x: 8, y: 3.5, z: 0 });
             document.querySelector('#room').setAttribute('position', { x: 3.5, y: 1.5, z: -11 });
             document.querySelector('#room').setAttribute('rotation', { x: 0, y: -90, z: 0});
             document.querySelector('#scene-1').emit('fogfadein');
+            removeSheet();
             break;
 
         case 78:
