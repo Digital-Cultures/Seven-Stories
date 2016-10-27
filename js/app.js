@@ -115,13 +115,22 @@
             });
             extras.on('end',function(){
                 timer.setAttribute('text', { text: "Look at items to hear more about them" });
-                document.querySelector("#mirrorText").setAttribute('material',{visible:false});
-                document.querySelector("#doublesText").setAttribute('material',{visible:false});
-                document.querySelector("#portraitChildText").setAttribute('material',{visible:false});
-                document.querySelector("#dollsClothsText").setAttribute('material',{visible:false});
-                document.querySelector("#dolls2Text").setAttribute('material',{visible:false});
-                document.querySelector("#booksText").setAttribute('material',{visible:false});
-                document.querySelector('#lightMain').emit('lightOn');
+                var x = document.querySelectorAll(".text");
+
+                for(var i=0; i<x.length; i++){
+                    x[i].setAttribute('visible','false');
+                }
+                // document.querySelector("#mirrorText").setAttribute('material',{visible:false});
+                // document.querySelector("#doublesText").setAttribute('material',{visible:false});
+                // document.querySelector("#portraitChildText").setAttribute('material',{visible:false});
+                // document.querySelector("#dollsClothsText").setAttribute('material',{visible:false});
+                // document.querySelector("#dolls2Text").setAttribute('material',{visible:false});
+                // document.querySelector("#booksText").setAttribute('material',{visible:false});
+                if (totalSeconds>100){
+                    document.querySelector('#lightMain').emit('lightDreamOn');
+                }else{
+                    document.querySelector('#lightMain').emit('lightOn');
+                }
             });
 
             // = new THREE.Audio( listener );
@@ -159,7 +168,7 @@
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('mirror');
                         timer.setAttribute('text', { text: "" });
-                        document.querySelector("#mirrorText").setAttribute('material',{visible:true});
+                        document.querySelector("#mirrorText").setAttribute("visible","true");
                         document.querySelector('#lightMain').emit('lightOff');
                     }
                 }
@@ -177,7 +186,7 @@
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('darkRoom');
                         timer.setAttribute('text', { text: "" });
-                        document.querySelector("#doublesText").setAttribute('material',{visible:true});
+                        document.querySelector("#doublesText").setAttribute("visible","true");
                         document.querySelector('#lightMain').emit('lightOff');
                     }
                 }
@@ -195,7 +204,7 @@
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('portraitChild');
                         timer.setAttribute('text', { text: "" });
-                        document.querySelector("#portraitChildText").setAttribute('material',{visible:true});
+                        document.querySelector("#portraitChildText").setAttribute("visible","true");
                         document.querySelector('#lightMain').emit('lightOff');
                     }
                 }
@@ -212,7 +221,7 @@
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('dolls');
                         timer.setAttribute('text', { text: "" });
-                        document.querySelector("#dollsClothsText").setAttribute('material',{visible:true});
+                        document.querySelector("#dollsClothsText").setAttribute("visible","true");
                         document.querySelector('#lightMain').emit('lightOff');
                     }
                 }
@@ -229,7 +238,7 @@
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('dolls');
                         timer.setAttribute('text', { text: "" });
-                        document.querySelector("#dolls2Text").setAttribute('material',{visible:true});
+                        document.querySelector("#dolls2Text").setAttribute("visible","true");
                         document.querySelector('#lightMain').emit('lightOff');
                     }
                 }
@@ -272,7 +281,7 @@
                 if (!narration.playing() && !extras.playing()){
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('piggyback');
-                        document.querySelector("#motherText").setAttribute('material',{visible:true});
+                        document.querySelector("#motherText").setAttribute("visible","true");
                         timer.setAttribute('text', { text: "" });
                     }
                 }

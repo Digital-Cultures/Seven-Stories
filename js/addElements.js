@@ -382,7 +382,7 @@ function addHouseRoom(){
 	mark.setAttribute("shader", "standard");
 	document.getElementById("houseRoom").appendChild(mark);
 
-	
+	// BED
 	var bed = document.createElement("a-image");
 	bed.setAttribute("src", "#bedImg");
 	bed.setAttribute("position", "-6.99 1.79 4.46");
@@ -407,38 +407,164 @@ function addHouseRoom(){
 	bed2.setAttribute("shader", "standard");
 	document.getElementById("houseRoom").appendChild(bed2);
 
+	//CHAIR
+
+	var chairBack = document.createElement("a-image");
+	chairBack.setAttribute("src", "#chairBack");
+	chairBack.setAttribute("position", "10.32 -0.21 -5.33");
+	chairBack.setAttribute("scale", "2 4 0");
+	chairBack.setAttribute("rotation", "0 110 0");
+	chairBack.setAttribute("shader", "standard");
+	document.getElementById("houseRoom").appendChild(chairBack);
+
+	var chairFront = document.createElement("a-image");
+	chairFront.setAttribute("src", "#chairFront");
+	chairFront.setAttribute("position", "8.95 -1.36 -4.5");
+	chairFront.setAttribute("scale", "2 2 0");
+	chairFront.setAttribute("rotation", "0 295 0");
+	chairFront.setAttribute("shader", "standard");
+	document.getElementById("houseRoom").appendChild(chairFront);
+
+	var chairSeat = document.createElement("a-image");
+	chairSeat.setAttribute("src", "#chairSeat");
+	chairSeat.setAttribute("position", "9.65 -0.4 -4.84");
+	chairSeat.setAttribute("scale", "1.66 1.7 0");
+	chairSeat.setAttribute("rotation", "90 90 154");
+	chairSeat.setAttribute("shader", "standard");
+	document.getElementById("houseRoom").appendChild(chairSeat);
+
 
 	var PollyAndWolf = document.createElement("a-plane");
 	PollyAndWolf.setAttribute("src", "#Polly-and-wolf");
+	PollyAndWolf.setAttribute("id", "pollyWolfHP");
 	PollyAndWolf.setAttribute("height", "2.8");
 	PollyAndWolf.setAttribute("width", "3.5");
 	PollyAndWolf.setAttribute("position", "12.23 3.17 3.6");
 	PollyAndWolf.setAttribute("rotation", "0 270 0");
+	var pollyAndWolfHP = document.createElement("a-entity");
+		pollyAndWolfHP.setAttribute("class", "text");
+		pollyAndWolfHP.setAttribute("id", "pollyAndWolfText");
+		pollyAndWolfHP.setAttribute("text", "text:Clever Polly and the Stupid Wolf (1967)");
+		pollyAndWolfHP.setAttribute("rotation", "0 0 0");
+		pollyAndWolfHP.setAttribute("scale", "1 1 0");
+		pollyAndWolfHP.setAttribute("position", "-2.2 -2.4 0");
+		pollyAndWolfHP.setAttribute("material", "color: black;");
+		pollyAndWolfHP.setAttribute("visible", "false");
+
+		PollyAndWolf.appendChild(pollyAndWolfHP);
+
+		PollyAndWolf.addEventListener("stateadded", function(evt) {
+		    if (!narration.playing() && !extras.playing()){
+		        //mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
+		        if (evt.detail.state === "cursor-hovered") {
+		            extras.play('cleverPolly');
+		            timer.setAttribute('text', { text: "" });
+		            document.querySelector("#pollyAndWolfText").setAttribute("visible","true");
+		            document.querySelector('#lightMain').emit('lightDreamOff');
+		        }
+		    }
+		});
 	document.getElementById("houseRoom").appendChild(PollyAndWolf);
 
 	var robin = document.createElement("a-plane");
 	robin.setAttribute("src", "#robin");
+	robin.setAttribute("id", "robinHP");
 	robin.setAttribute("height", "2.5");
 	robin.setAttribute("width", "2.5");
-	robin.setAttribute("position", "11.96 3.33 -4.16");
-	robin.setAttribute("rotation", "0 270 0");
+	robin.setAttribute("position", "11.96 3.33 -1.8");
+	robin.setAttribute("rotation", "0 270 0");	
+		var robinHP = document.createElement("a-entity");
+		robinHP.setAttribute("class", "text");
+		robinHP.setAttribute("id", "robinText");
+		robinHP.setAttribute("text", "text:Robin (1962)");
+		robinHP.setAttribute("rotation", "0 0 0");
+		robinHP.setAttribute("scale", "1 1 0");
+		robinHP.setAttribute("position", "-2.2 -2.4 0");
+		robinHP.setAttribute("material", "color: black;");
+		robinHP.setAttribute("visible", "false");
+
+		robin.appendChild(robinHP);
+
+		robin.addEventListener("stateadded", function(evt) {
+		    if (!narration.playing() && !extras.playing()){
+		        //mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
+		        if (evt.detail.state === "cursor-hovered") {
+		            extras.play('robin');
+		            timer.setAttribute('text', { text: "" });
+		            document.querySelector("#robinText").setAttribute("visible","true");
+		            document.querySelector('#lightMain').emit('lightDreamOff');
+		        }
+		    }
+		});
 	document.getElementById("houseRoom").appendChild(robin);
+
 
 	var robin2 = document.createElement("a-plane");
 	robin2.setAttribute("src", "#robin2");
+	robin2.setAttribute("id", "robinHP2");
 	robin2.setAttribute("height", "3");
 	robin2.setAttribute("width", "3");
 	robin2.setAttribute("position", "7.75 3.45 7.78");
 	robin2.setAttribute("rotation", "0 180 0");
+		var robin2HP = document.createElement("a-entity");
+		robin2HP.setAttribute("class", "text");
+		robin2HP.setAttribute("id", "robin2Text");
+		robin2HP.setAttribute("text", "text:Robin (1962)");
+		robin2HP.setAttribute("rotation", "0 0 0");
+		robin2HP.setAttribute("scale", "1 1 0");
+		robin2HP.setAttribute("position", "-2.2 -2.4 0");
+		robin2HP.setAttribute("material", "color: black;");
+		robin2HP.setAttribute("visible", "false");
+		robin2.appendChild(robin2HP);
+
+		robin2.addEventListener("stateadded", function(evt) {
+		    if (!narration.playing() && !extras.playing()){
+		        //mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
+		        if (evt.detail.state === "cursor-hovered") {
+		            extras.play('robin');
+		            timer.setAttribute('text', { text: "" });
+		            document.querySelector("#robin2Text").setAttribute("visible","true");
+		            document.querySelector('#lightMain').emit('lightDreamOff');
+		        }
+		    }
+		});
 	document.getElementById("houseRoom").appendChild(robin2);
 
 	var giantOnBeach = document.createElement("a-plane");
 	giantOnBeach.setAttribute("src", "#Giant-on-beach");
+	giantOnBeach.setAttribute("id", "giantOnBeachHP");
 	giantOnBeach.setAttribute("height", "3.5");
 	giantOnBeach.setAttribute("width", "5.3");
 	giantOnBeach.setAttribute("position", "-7.64 3 -4.97");
 	giantOnBeach.setAttribute("rotation", "0 90 0");
+
+// id="doublesText" scale="0.5 0.5 0" material="color: white; shader: flat; visible:false"></a-entity>
+		var giantOnBeachHP = document.createElement("a-entity");
+		giantOnBeachHP.setAttribute("class", "text");
+		giantOnBeachHP.setAttribute("id", "giantOnBeachText");
+		giantOnBeachHP.setAttribute("text", "text:Giant's Bride (1956)");
+		giantOnBeachHP.setAttribute("rotation", "0 0 0");
+		giantOnBeachHP.setAttribute("scale", "1 1 0");
+		giantOnBeachHP.setAttribute("position", "-2.2 -2.4 0");
+		giantOnBeachHP.setAttribute("material", "color: black;");
+		giantOnBeachHP.setAttribute("visible", "false");
+
+		giantOnBeach.appendChild(giantOnBeachHP);
+
+		giantOnBeach.addEventListener("stateadded", function(evt) {
+		    if (!narration.playing() && !extras.playing()){
+		        //mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
+		        if (evt.detail.state === "cursor-hovered") {
+		            extras.play('giant');
+		            timer.setAttribute('text', { text: "" });
+		            document.querySelector("#giantOnBeachText").setAttribute("visible","true");
+		            document.querySelector('#lightMain').emit('lightDreamOff');
+		        }
+		    }
+		});
+
 	document.getElementById("houseRoom").appendChild(giantOnBeach);
+
 
 }
 

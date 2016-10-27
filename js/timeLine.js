@@ -45,7 +45,7 @@ function timeLine() {
 
         case 2:
             narration.play();
-            //totalSeconds = 76;
+           // totalSeconds = 76;
             document.querySelector('#lightSpot').emit('lightOn');
         
             break;
@@ -204,18 +204,39 @@ function timeLine() {
             // Marianne appears next to Mark
             break;
         case 116:
-            //Food -> Toys -> Furniture fade in
+            pauseTime=0;
             break;
         case 118:
             // becomes more colourfull
+            if (!extras.playing()){
+                pauseTime ++;
+                timer.setAttribute('text', { text: "Look at items to hear more about them" });
+                document.querySelector('#pauseTimeBar').setAttribute('scale', { x: pauseTime/50, y: 0.01, z: 0.01 });
+                document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+(pauseTime/100), y: -0.2, z: -1 });
+            }
+            
+            if (pauseTime>15){
+                narration.play();
+                document.querySelector('#pauseTimeBar').setAttribute('scale', { x: 0, y: 0.01, z: 0.01 });
+                //hide crosshairs
+                document.querySelector('#crosshair').setAttribute('material',{visible:false});
+
+            } else if (narration.playing()){
+                narration.pause();
+                //show crosshairs
+                document.querySelector('#crosshair').setAttribute('material',{visible:true});
+            }
             break;
         case 124:
             //Marianne and Mark become engulfed in aura ball
             break;
         case 127:
+            
             //Aura ball fades out revealing larger Marianne
             break;
         case 128:
+            // pause to look around
+            
             // zoom in on Marianne
             break;
         case 131:
@@ -223,7 +244,6 @@ function timeLine() {
             break;
         case 134:
             // starts getting dark
-            narration.pause();
             break;
         case 149:
             //play bang and Marianne dissapears
