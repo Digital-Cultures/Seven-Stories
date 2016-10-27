@@ -45,7 +45,7 @@ function timeLine() {
 
         case 2:
             narration.play();
-            totalSeconds = 76;
+            //totalSeconds = 76;
             document.querySelector('#lightSpot').emit('lightOn');
         
             break;
