@@ -72,7 +72,7 @@ function timeLine() {
         //Keys
             //addBookKey();
             document.querySelector('#movingBookKey').emit('bookKey');
-            copyRoom();
+            
             break;
 
         case 40:
@@ -81,6 +81,7 @@ function timeLine() {
             break;
         case 41:
             document.querySelector('#scene-1').emit('fogfadeout');
+            copyRoom();
             //Fade out room
             break;
         case 44:
@@ -104,7 +105,7 @@ function timeLine() {
             // pause to look around
             if (!extras.playing()){
                 pauseTime ++;
-                timer.setAttribute('text', { text: "Look at items to hear more about them" });
+                timer.setAttribute('text', { text: "Look around for "+(15-pauseTime)+"sec to hear more about items in the room" });
                 document.querySelector('#pauseTimeBar').setAttribute('scale', { x: pauseTime/50, y: 0.01, z: 0.01 });
                 document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+(pauseTime/100), y: -0.2, z: -1 });
             }
@@ -136,7 +137,7 @@ function timeLine() {
         case 72:
             cancelAnimationFrame(bookcaseFrame);
             document.querySelector('#marrianneInBed').emit('fadeout');
-            
+            document.querySelector('#Catherine1').emit('fadeOut');
              //World spins to look down bed
             camera.setAttribute('position', { x: 8, y: 3.5, z: 0 });
             document.querySelector('#room').setAttribute('position', { x: 3.5, y: 1.5, z: -11 });
@@ -182,13 +183,13 @@ function timeLine() {
             break;
         case 94:
             //House front (no door handle - looking up, big and close)
+            document.querySelector('#lightMain').emit('lightOnHigh');
             addHouse();
             startFrame = null;
             cameraPositions = [new THREE.Vector3(8, 4, 8), new THREE.Vector3(8, 3.5, 1.5)];
             cameraPath = new THREE.SplineCurve3(cameraPositions);
             duration = 12000;
             bookcaseFrame = requestAnimationFrame(cameraPan);
-            document.querySelector('#lightMain').emit('lightOnHigh');
             break;
         case 107:
             cancelAnimationFrame(bookcaseFrame);
@@ -210,12 +211,12 @@ function timeLine() {
             // becomes more colourfull
             if (!extras.playing()){
                 pauseTime ++;
-                timer.setAttribute('text', { text: "Look at items to hear more about them" });
+                timer.setAttribute('text', { text: "Look around for "+(10-pauseTime)+"sec to hear more about items in the room" });
                 document.querySelector('#pauseTimeBar').setAttribute('scale', { x: pauseTime/50, y: 0.01, z: 0.01 });
                 document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+(pauseTime/100), y: -0.2, z: -1 });
             }
             
-            if (pauseTime>15){
+            if (pauseTime>10){
                 narration.play();
                 document.querySelector('#pauseTimeBar').setAttribute('scale', { x: 0, y: 0.01, z: 0.01 });
                 //hide crosshairs
@@ -227,16 +228,28 @@ function timeLine() {
                 document.querySelector('#crosshair').setAttribute('material',{visible:true});
             }
             break;
+         case 119:
+            //Marianne and Mark become engulfed in aura ball
+            
+            break;
+        case 120:
+            removeMarianneAndMark();
+            //Marianne and Mark become engulfed in aura ball
+             addMandM();
+            break;
+        case 122:
+            //Marianne and Mark become engulfed in aura ball
+             addFoodToRoom();
+            break;
         case 124:
             //Marianne and Mark become engulfed in aura ball
+             addFurnitureToRoom();
             break;
         case 127:
-            
             //Aura ball fades out revealing larger Marianne
             break;
         case 128:
             // pause to look around
-            
             // zoom in on Marianne
             break;
         case 131:
@@ -253,6 +266,9 @@ function timeLine() {
             break;
         case 150:
             document.querySelector("a-scene").appendChild(roomHTML);
+            camera.setAttribute('position', { x: 8, y: 3.5, z: 0 });
+            document.querySelector('#room').setAttribute('position', { x: 3.5, y: 1.5, z: -11 });
+            document.querySelector('#room').setAttribute('rotation', { x: 0, y: -90, z: 0});
             document.querySelector('#scene-1').emit('fogfadein');
             break;
         case 152:
@@ -260,12 +276,15 @@ function timeLine() {
             break;
         case 173:
             //show portrate
-            addHeadShot();
+            
             startFrame = null;
             cameraPositions = [new THREE.Vector3(8, 4, 0), new THREE.Vector3(4, 25, 190)];
             cameraPath = new THREE.SplineCurve3(cameraPositions);
             duration = 30000;
             bookcaseFrame = requestAnimationFrame(cameraPan);
+            break;
+        case 183:
+            addHeadShot();
             break;
         case 200:
             document.getElementById("credits").style.display = "block";

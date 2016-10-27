@@ -115,8 +115,8 @@
             });
             extras.on('end',function(){
                 timer.setAttribute('text', { text: "Look at items to hear more about them" });
+                
                 var x = document.querySelectorAll(".text");
-
                 for(var i=0; i<x.length; i++){
                     x[i].setAttribute('visible','false');
                 }
@@ -244,22 +244,22 @@
                 }
             });
 
-            marrianneInBed.addEventListener("stateadded", function(evt) {
-                if (!narration.playing() && !extras.playing()){
-                    mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
-                    if (evt.detail.state === "cursor-hovered") {
-                        extras.play('marrianne');
-                        timer.setAttribute('text', { text: "marrianneInBed" });
-                    }
-                }
-            });
+            // marrianneInBed.addEventListener("stateadded", function(evt) {
+            //     if (!narration.playing() && !extras.playing()){
+            //         //mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
+            //         if (evt.detail.state === "cursor-hovered") {
+            //             extras.play('marrianne');
+            //             timer.setAttribute('text', { text: "marrianneInBed" });
+            //         }
+            //     }
+            // });
 
-            marrianneInBed.addEventListener("stateremoved", function(evt) {
-                mirrorModel.setAttribute('scale', "3 4 3"); //scale="0.2 0.2 0.2"
-                if (evt.detail.state === "cursor-hovered") {
-                    //narration.play();
-                }
-            });
+            // marrianneInBed.addEventListener("stateremoved", function(evt) {
+            //     mirrorModel.setAttribute('scale', "3 4 3"); //scale="0.2 0.2 0.2"
+            //     if (evt.detail.state === "cursor-hovered") {
+            //         //narration.play();
+            //     }
+            // });
 
             // bookcaseModel.addEventListener("stateadded", function(evt) {
             //     if (!narration.playing() && !extras.playing()){

@@ -10,10 +10,12 @@
   <body>
 
 	<div id="cover"> 
-		This short introduction to the Catherine Storr archives is a joint project by Newcastle University and Seven Stories, the UK's National Centre for Children's Literature. After enjoying the interactive Virtual Reality guided tour, you may want to learn more about Catherine Storr, her work, and the material held by Seven Stories. There is a link that will lead you to more detailed information at the end of the tour.
+		This short introduction to the Catherine Storr archives is a joint project by Newcastle University and Seven Stories, the UK's National Centre for Children's Literature.
+		<br><br>This experience is loosely based around Catherine Storr’s novel Marianne Dreams.
 		<br><br>
 		<div style="text-align: center;"><i class="fa fa-volume-up" aria-hidden="true"></i> Make sure the sound is on!</div>
 		<div id="beginBtn" href="#" data-icon="info" data-role="button" data-mini="false" data-theme="b" data-corners="false">Shall we begin?</div>
+		After enjoying the interactive Virtual Reality guided tour, you may want to learn more about Catherine Storr, her work, and the material held by Seven Stories. There is a link that will lead you to more detailed information at the end of the tour or alternatively go straight to it by clicking <a href="">here</a>.
 	</div>
 	<div id="webGLneeded" style="display: none;">
 		This experiance requires WebGL. For more information WebGL click <a href="https://en.wikipedia.org/wiki/WebGL">here.</a>
@@ -22,9 +24,9 @@
 		<div style="text-align: center;"> This experience is best enjoyed on <i class="fa fa-mobile" aria-hidden="true"></i> mobile with <i class="fa fa-headphones" aria-hidden="true"></i> headphones + Cardboard. <br>For desktops <i class="fa fa-mouse-pointer" aria-hidden="true"></i> click and drag the mouse to look around.</div>
 		<div id="loading" style="width: 100%; text-align: center;">
 			<div class="spinner"></div>
-			Loading...
+			Loading Marianne's room...
 		</div>
-		<div id="startBtn" href="#" data-icon="info" data-role="button" data-mini="false" data-theme="b" data-corners="false" style="display: none;">Click to Start!</div>
+		<div id="startBtn" href="#" data-icon="info" data-role="button" data-mini="false" data-theme="b" data-corners="false" style="display: none;">Click to enter Marianne's room</div>
 	</div>
 	<div id="credits" style="display: none;">
 		<div style="width: 100%; text-align: center; padding: 20px"> 
@@ -74,7 +76,7 @@
 
 		<a-entity id="lightMain" light="color:#FFFFFF;intensity:0.1;type:point;angle:180" position="2.5 5.49 -0.88" rotation="0 0 0" scale="1 1 1" visible="true">
 			<a-animation begin="lightOn" attribute="light.intensity" to="0.4" dur="1000"></a-animation>
-			<a-animation begin="lightOnHigh" attribute="light.intensity" to="1" dur="5000"></a-animation>
+			<a-animation begin="lightOnHigh" attribute="light.intensity" to="1" dur="0"></a-animation>
 			<a-animation begin="lightDreamOff" attribute="light.intensity" from="1" to="0.7" dur="500"></a-animation>
 			<a-animation begin="lightDreamOn" attribute="light.intensity" from="0.7" to="1" dur="500"></a-animation>
 			<a-animation begin="lightOff" attribute="light.intensity" to="0" dur="1000"></a-animation>
@@ -82,7 +84,7 @@
 
 	  	<a-entity id="windowSun" light="color:#FFB78B;intensity:1;type:point;angle:180;decay:5" position="7.630000000000001 5.72 -11.079999999999998" rotation="0 0 0" scale="1 1 1" visible="true">
 			<a-animation begin="lightOff" attribute="light.intensity" to="0" dur="4000"></a-animation>
-			<a-animation begin="lightOn" attribute="light.intensity" to="1" dur="10000"></a-animation>
+			<a-animation begin="lightOn" attribute="light.intensity" to="0.6" dur="10000"></a-animation>
 	  	</a-entity>
 
 		<!-- ASSETS -->
@@ -196,7 +198,8 @@
 		  	</a-collada-model>
 
 		  	<a-image id="Catherine1" src="#portrait" position="7.6 1.8 -6.5" scale="5.5 7 4" rotation="0 -15 0" material="opacity:0">
-				<a-animation attribute="material.opacity" begin="fadein" to="0.9" dur="5000"></a-animation>
+				<a-animation attribute="material.opacity" begin="fadein" to="1" dur="5000"></a-animation>
+				<a-animation attribute="material.opacity" begin="fadeOut" to="0" dur="0"></a-animation>
 			</a-image>
 
 			<a-image id="marrianneInBed" src="#marrianneBed" position="10.68 1.77 -2.98" scale="2.34 3.04 3" rotation="0 -25 0" material="opacity:0;color:#FFF;shader:flat;side:double;transparent:true;src:#marrianneBed" geometry="primitive:plane">
@@ -244,19 +247,19 @@
 			  position="0 0 -1" 
 			  scale="0.1 0.1 0.1" 
 			  geometry="primitive:ring;radiusInner:0.5;radiusOuter:0.6" 
-			  material="color:white;shader:flat;visible:false" raycaster="">
+			  material="color:black;shader:flat;visible:false" raycaster="">
 			  <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.01 0.01 0.01" to="0.1 0.1 0.1" dur="100"></a-animation>
 			</a-entity>
 			<a-entity id="pauseTimeBar" cursor="fuse: true; timeout: 50"
 			  position="-0.2 -0.2 -1"
 			  scale="0 0.01 0.01"
 			  geometry="primitive: plane;"
-			  material="color: white; shader: flat">
+			  material="color: black; shader: flat">
 			</a-entity>
 			<a-entity id="timer" text="text: 0"
-			  position="0 -0.2 -1"
-			  scale="0.1 0.1 0"
-			  material="color: white; shader: flat">
+			  position="-0.4 -0.2 -1"
+			  scale="0.06 0.06 0"
+			  material="color: black; shader: flat">
 			</a-entity>
 
 			<!-- <a-entity id="audio" sound="autoplay: false; src: #narration; volume: 5" ></a-entity> -->

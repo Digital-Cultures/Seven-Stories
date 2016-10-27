@@ -209,6 +209,11 @@ function addBookKey(){
 
 var roomHTML;
 function copyRoom(){
+	//remove books first
+	var myNode = document.getElementById("bookcaseModel");
+	while (myNode.firstChild) {
+	    myNode.removeChild(myNode.firstChild);
+	}
 	var elem = document.getElementById("room");
 	roomHTML = elem.cloneNode(true);
 }
@@ -343,95 +348,22 @@ function addHouseRoom(){
 
 	var marrianne = document.createElement("a-image");
 	marrianne.setAttribute("src", "#marrianne");
+	marrianne.setAttribute("id", "marrianneImg");
 	marrianne.setAttribute("position", "-1.3 0.49 -5.22");
 	marrianne.setAttribute("scale", "2.5 5 0");
 	marrianne.setAttribute("rotation", "0 195 0");
 	marrianne.setAttribute("shader", "standard");
 	document.getElementById("houseRoom").appendChild(marrianne);
 
-	var mandM = document.createElement("a-image");
-	mandM.setAttribute("src", "#mandM");
-	mandM.setAttribute("position", "3.63 0.49 -6.3");
-	mandM.setAttribute("scale", "5.86 5.6 0");
-	mandM.setAttribute("rotation", "0 23 0");
-	mandM.setAttribute("shader", "standard");
-	document.getElementById("houseRoom").appendChild(mandM);
-
-	var eggs = document.createElement("a-image");
-	eggs.setAttribute("src", "#eggs");
-	eggs.setAttribute("position", "4.4 -1.43 -4.66");
-	eggs.setAttribute("scale", "1 1 0");
-	eggs.setAttribute("rotation", "0 200 0");
-	eggs.setAttribute("shader", "standard");
-	document.getElementById("houseRoom").appendChild(eggs);
-
-	var eggs2 = document.createElement("a-image");
-	eggs2.setAttribute("src", "#eggs");
-	eggs2.setAttribute("position", "5.58 -1.5 -4.9");
-	eggs2.setAttribute("scale", "1 1 0");
-	eggs2.setAttribute("rotation", "0 27 0");
-	eggs2.setAttribute("shader", "standard");
-	document.getElementById("houseRoom").appendChild(eggs2);
-
 
 	var mark = document.createElement("a-image");
 	mark.setAttribute("src", "#mark");
+	mark.setAttribute("id", "markImg");
 	mark.setAttribute("position", "7.86 0.6 -10.56");
 	mark.setAttribute("scale", "3.14 6.4 0");
 	mark.setAttribute("rotation", "0 -19 0");
 	mark.setAttribute("shader", "standard");
 	document.getElementById("houseRoom").appendChild(mark);
-
-	// BED
-	var bed = document.createElement("a-image");
-	bed.setAttribute("src", "#bedImg");
-	bed.setAttribute("position", "-6.99 1.79 4.46");
-	bed.setAttribute("scale", "8 8 0");
-	bed.setAttribute("rotation", "0 90 0");
-	bed.setAttribute("shader", "standard");
-	document.getElementById("houseRoom").appendChild(bed);
-
-	var bedCover = document.createElement("a-image");
-	bedCover.setAttribute("src", "#bedCoverImg");
-	bedCover.setAttribute("position", "-4.45 0.91 4.4");
-	bedCover.setAttribute("scale", "7.26 4.48 0");
-	bedCover.setAttribute("rotation", "82.48 270 0");
-	bedCover.setAttribute("shader", "standard");
-	document.getElementById("houseRoom").appendChild(bedCover);
-
-	var bed2 = document.createElement("a-image");
-	bed2.setAttribute("src", "#bedImg");
-	bed2.setAttribute("position", "-2.15 1.89 4.2");
-	bed2.setAttribute("scale", "8.28 8.48 0");
-	bed2.setAttribute("rotation", "0 90 0");
-	bed2.setAttribute("shader", "standard");
-	document.getElementById("houseRoom").appendChild(bed2);
-
-	//CHAIR
-
-	var chairBack = document.createElement("a-image");
-	chairBack.setAttribute("src", "#chairBack");
-	chairBack.setAttribute("position", "10.32 -0.21 -5.33");
-	chairBack.setAttribute("scale", "2 4 0");
-	chairBack.setAttribute("rotation", "0 110 0");
-	chairBack.setAttribute("shader", "standard");
-	document.getElementById("houseRoom").appendChild(chairBack);
-
-	var chairFront = document.createElement("a-image");
-	chairFront.setAttribute("src", "#chairFront");
-	chairFront.setAttribute("position", "8.95 -1.36 -4.5");
-	chairFront.setAttribute("scale", "2 2 0");
-	chairFront.setAttribute("rotation", "0 295 0");
-	chairFront.setAttribute("shader", "standard");
-	document.getElementById("houseRoom").appendChild(chairFront);
-
-	var chairSeat = document.createElement("a-image");
-	chairSeat.setAttribute("src", "#chairSeat");
-	chairSeat.setAttribute("position", "9.65 -0.4 -4.84");
-	chairSeat.setAttribute("scale", "1.66 1.7 0");
-	chairSeat.setAttribute("rotation", "90 90 154");
-	chairSeat.setAttribute("shader", "standard");
-	document.getElementById("houseRoom").appendChild(chairSeat);
 
 
 	var PollyAndWolf = document.createElement("a-plane");
@@ -533,8 +465,8 @@ function addHouseRoom(){
 	var giantOnBeach = document.createElement("a-plane");
 	giantOnBeach.setAttribute("src", "#Giant-on-beach");
 	giantOnBeach.setAttribute("id", "giantOnBeachHP");
-	giantOnBeach.setAttribute("height", "3.5");
-	giantOnBeach.setAttribute("width", "5.3");
+	giantOnBeach.setAttribute("height", "4.5");
+	giantOnBeach.setAttribute("width", "6.5");
 	giantOnBeach.setAttribute("position", "-7.64 3 -4.97");
 	giantOnBeach.setAttribute("rotation", "0 90 0");
 
@@ -545,7 +477,7 @@ function addHouseRoom(){
 		giantOnBeachHP.setAttribute("text", "text:Giant's Bride (1956)");
 		giantOnBeachHP.setAttribute("rotation", "0 0 0");
 		giantOnBeachHP.setAttribute("scale", "1 1 0");
-		giantOnBeachHP.setAttribute("position", "-2.2 -2.4 0");
+		giantOnBeachHP.setAttribute("position", "-2.2 -3 0");
 		giantOnBeachHP.setAttribute("material", "color: black;");
 		giantOnBeachHP.setAttribute("visible", "false");
 
@@ -564,8 +496,91 @@ function addHouseRoom(){
 		});
 
 	document.getElementById("houseRoom").appendChild(giantOnBeach);
+}
+function removeMarianneAndMark(){
+	var elem = document.getElementById("markImg");
+	elem.parentNode.removeChild(elem);
+	var elem2 = document.getElementById("marrianneImg");
+	elem2.parentNode.removeChild(elem2);
+}
+function addMandM(){
+	var mandM = document.createElement("a-image");
+	mandM.setAttribute("src", "#mandM");
+	mandM.setAttribute("position", "3.63 0.49 -6.3");
+	mandM.setAttribute("scale", "5.86 5.6 0");
+	mandM.setAttribute("rotation", "0 23 0");
 
+	var animation = document.createElement("a-animation");
+	animation.setAttribute("attribute", "material.opacity");
+	animation.setAttribute("dur", "1000");
+	animation.setAttribute("from", "0");
+	animation.setAttribute("to", "1");
 
+	mandM.appendChild(animation);
+	document.getElementById("houseRoom").appendChild(mandM);
+}
+
+function addFoodToRoom(){
+	var eggs = document.createElement("a-image");
+	eggs.setAttribute("src", "#eggs");
+	eggs.setAttribute("position", "4.4 -1.43 -4.66");
+	eggs.setAttribute("scale", "1 1 0");
+	eggs.setAttribute("rotation", "0 200 0");
+	document.getElementById("houseRoom").appendChild(eggs);
+
+	var eggs2 = document.createElement("a-image");
+	eggs2.setAttribute("src", "#eggs");
+	eggs2.setAttribute("position", "5.58 -1.5 -4.9");
+	eggs2.setAttribute("scale", "1 1 0");
+	eggs2.setAttribute("rotation", "0 27 0");
+	document.getElementById("houseRoom").appendChild(eggs2);
+
+}
+function addFurnitureToRoom(){
+		// BED
+	var bed = document.createElement("a-image");
+	bed.setAttribute("src", "#bedImg");
+	bed.setAttribute("position", "-6.99 1.79 4.46");
+	bed.setAttribute("scale", "8 8 0");
+	bed.setAttribute("rotation", "0 90 0");
+	document.getElementById("houseRoom").appendChild(bed);
+
+	var bedCover = document.createElement("a-image");
+	bedCover.setAttribute("src", "#bedCoverImg");
+	bedCover.setAttribute("position", "-4.45 0.91 4.4");
+	bedCover.setAttribute("scale", "7.26 4.48 0");
+	bedCover.setAttribute("rotation", "82.48 270 0");
+	document.getElementById("houseRoom").appendChild(bedCover);
+
+	var bed2 = document.createElement("a-image");
+	bed2.setAttribute("src", "#bedImg");
+	bed2.setAttribute("position", "-2.15 1.89 4.2");
+	bed2.setAttribute("scale", "8.28 8.48 0");
+	bed2.setAttribute("rotation", "0 90 0");
+	document.getElementById("houseRoom").appendChild(bed2);
+
+	//CHAIR
+
+	var chairBack = document.createElement("a-image");
+	chairBack.setAttribute("src", "#chairBack");
+	chairBack.setAttribute("position", "10.32 -0.21 -5.33");
+	chairBack.setAttribute("scale", "2 4 0");
+	chairBack.setAttribute("rotation", "0 110 0");
+	document.getElementById("houseRoom").appendChild(chairBack);
+
+	var chairFront = document.createElement("a-image");
+	chairFront.setAttribute("src", "#chairFront");
+	chairFront.setAttribute("position", "8.95 -1.36 -4.5");
+	chairFront.setAttribute("scale", "2 2 0");
+	chairFront.setAttribute("rotation", "0 295 0");
+	document.getElementById("houseRoom").appendChild(chairFront);
+
+	var chairSeat = document.createElement("a-image");
+	chairSeat.setAttribute("src", "#chairSeat");
+	chairSeat.setAttribute("position", "9.65 -0.4 -4.84");
+	chairSeat.setAttribute("scale", "1.66 1.7 0");
+	chairSeat.setAttribute("rotation", "90 90 154");
+	document.getElementById("houseRoom").appendChild(chairSeat);
 }
 
 function removeHouseRoom(){
@@ -577,8 +592,16 @@ function addHeadShot(){
 	var headShot = document.createElement("a-image");
 	headShot.setAttribute("src", "#CatherineStorrHeadShot");
 	headShot.setAttribute("id", "HeadShot");
-	headShot.setAttribute("position", "7.6 2 30");
+	headShot.setAttribute("position", "24 -9 30");
 	headShot.setAttribute("scale", "320 160 10");
 	headShot.setAttribute("rotation", "0 0 0");
+
+	var animation = document.createElement("a-animation");
+	animation.setAttribute("attribute", "material.opacity");
+	animation.setAttribute("dur", "1000");
+	animation.setAttribute("from", "0");
+	animation.setAttribute("to", "1");
+
+	headShot.appendChild(animation);
 	document.querySelector("a-scene").appendChild(headShot);
 }
