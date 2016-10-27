@@ -310,11 +310,14 @@ function addHouseRoom(){
 	document.getElementById("houseRoom").appendChild(wall2);
 
 	var wall3 = document.createElement("a-plane");
+	wall3.setAttribute("src", "#paperwall");
 	wall3.setAttribute("height", "10");
 	wall3.setAttribute("width", "20");
 	wall3.setAttribute("position", "2.3 3 -12");
-	wall3.setAttribute("rotation", "180 180 0");
+	wall3.setAttribute("rotation", "0 0 0");
 	document.getElementById("houseRoom").appendChild(wall3);
+
+//<a-plane class="walls"  src="#wallBack" material="repeat: 1 1;" height="10" width="20" position="2.3 3 -12" rotation="0 0 0">
 
 	var wall4 = document.createElement("a-plane");
 	wall4.setAttribute("height", "10");
@@ -340,47 +343,108 @@ function addHouseRoom(){
 
 	var marrianne = document.createElement("a-image");
 	marrianne.setAttribute("src", "#marrianne");
-	marrianne.setAttribute("position", "7.6 1 -4");
+	marrianne.setAttribute("position", "-1.3 0.49 -5.22");
 	marrianne.setAttribute("scale", "2.5 5 0");
-	marrianne.setAttribute("rotation", "0 -25 0");
+	marrianne.setAttribute("rotation", "0 195 0");
 	marrianne.setAttribute("shader", "standard");
 	document.getElementById("houseRoom").appendChild(marrianne);
+
+	var mandM = document.createElement("a-image");
+	mandM.setAttribute("src", "#mandM");
+	mandM.setAttribute("position", "3.63 0.49 -6.3");
+	mandM.setAttribute("scale", "5.86 5.6 0");
+	mandM.setAttribute("rotation", "0 23 0");
+	mandM.setAttribute("shader", "standard");
+	document.getElementById("houseRoom").appendChild(mandM);
+
+	var eggs = document.createElement("a-image");
+	eggs.setAttribute("src", "#eggs");
+	eggs.setAttribute("position", "4.4 -1.43 -4.66");
+	eggs.setAttribute("scale", "1 1 0");
+	eggs.setAttribute("rotation", "0 200 0");
+	eggs.setAttribute("shader", "standard");
+	document.getElementById("houseRoom").appendChild(eggs);
+
+	var eggs2 = document.createElement("a-image");
+	eggs2.setAttribute("src", "#eggs");
+	eggs2.setAttribute("position", "5.58 -1.5 -4.9");
+	eggs2.setAttribute("scale", "1 1 0");
+	eggs2.setAttribute("rotation", "0 27 0");
+	eggs2.setAttribute("shader", "standard");
+	document.getElementById("houseRoom").appendChild(eggs2);
+
+
+	var mark = document.createElement("a-image");
+	mark.setAttribute("src", "#mark");
+	mark.setAttribute("position", "7.86 0.6 -10.56");
+	mark.setAttribute("scale", "3.14 6.4 0");
+	mark.setAttribute("rotation", "0 -19 0");
+	mark.setAttribute("shader", "standard");
+	document.getElementById("houseRoom").appendChild(mark);
+
+	
+	var bed = document.createElement("a-image");
+	bed.setAttribute("src", "#bedImg");
+	bed.setAttribute("position", "-6.99 1.79 4.46");
+	bed.setAttribute("scale", "8 8 0");
+	bed.setAttribute("rotation", "0 90 0");
+	bed.setAttribute("shader", "standard");
+	document.getElementById("houseRoom").appendChild(bed);
+
+	var bedCover = document.createElement("a-image");
+	bedCover.setAttribute("src", "#bedCoverImg");
+	bedCover.setAttribute("position", "-4.45 0.91 4.4");
+	bedCover.setAttribute("scale", "7.26 4.48 0");
+	bedCover.setAttribute("rotation", "82.48 270 0");
+	bedCover.setAttribute("shader", "standard");
+	document.getElementById("houseRoom").appendChild(bedCover);
+
+	var bed2 = document.createElement("a-image");
+	bed2.setAttribute("src", "#bedImg");
+	bed2.setAttribute("position", "-2.15 1.89 4.2");
+	bed2.setAttribute("scale", "8.28 8.48 0");
+	bed2.setAttribute("rotation", "0 90 0");
+	bed2.setAttribute("shader", "standard");
+	document.getElementById("houseRoom").appendChild(bed2);
+
+
+	var PollyAndWolf = document.createElement("a-plane");
+	PollyAndWolf.setAttribute("src", "#Polly-and-wolf");
+	PollyAndWolf.setAttribute("height", "2.8");
+	PollyAndWolf.setAttribute("width", "3.5");
+	PollyAndWolf.setAttribute("position", "12.23 3.17 3.6");
+	PollyAndWolf.setAttribute("rotation", "0 270 0");
+	document.getElementById("houseRoom").appendChild(PollyAndWolf);
+
+	var robin = document.createElement("a-plane");
+	robin.setAttribute("src", "#robin");
+	robin.setAttribute("height", "2.5");
+	robin.setAttribute("width", "2.5");
+	robin.setAttribute("position", "11.96 3.33 -4.16");
+	robin.setAttribute("rotation", "0 270 0");
+	document.getElementById("houseRoom").appendChild(robin);
+
+	var robin2 = document.createElement("a-plane");
+	robin2.setAttribute("src", "#robin2");
+	robin2.setAttribute("height", "3");
+	robin2.setAttribute("width", "3");
+	robin2.setAttribute("position", "7.75 3.45 7.78");
+	robin2.setAttribute("rotation", "0 180 0");
+	document.getElementById("houseRoom").appendChild(robin2);
+
+	var giantOnBeach = document.createElement("a-plane");
+	giantOnBeach.setAttribute("src", "#Giant-on-beach");
+	giantOnBeach.setAttribute("height", "3.5");
+	giantOnBeach.setAttribute("width", "5.3");
+	giantOnBeach.setAttribute("position", "-7.64 3 -4.97");
+	giantOnBeach.setAttribute("rotation", "0 90 0");
+	document.getElementById("houseRoom").appendChild(giantOnBeach);
+
 }
 
 function removeHouseRoom(){
 	var elem = document.getElementById("houseRoom");
 	elem.parentNode.removeChild(elem);
-}
-
-function addJamHoney(){
-	/*<a-image id="Catherine1" src="#portrait" position="7.6 1.8 -6.5" scale="5.5 7 4" rotation="0 -25 0" material="opacity:0">
-				<a-animation attribute="material.opacity" begin="fadein" to="1" dur="5000"></a-animation>
-			</a-image>*/
-	var JamHoney = document.createElement("a-image");
-	JamHoney.setAttribute("src", "#JamHoney");
-	JamHoney.setAttribute("position", "7.6 -2 -6.5");
-	JamHoney.setAttribute("scale", "4 4 4");
-	JamHoney.setAttribute("rotation", "0 -25 0");
-
-	var animation = document.createElement("a-animation");
-	animation.setAttribute("attribute", "position");
-	animation.setAttribute("dur", "2000");
-	animation.setAttribute("to", "7.6 1.8 -6.5");
-	animation.setAttribute("begin","3000");
-	
-	JamHoney.appendChild(animation)
-	document.querySelector("#houseRoom").appendChild(JamHoney);
-}
-function addShpere(){
-	//transparent:true; color:#b2e8ff; flatShading:false; shader:standard; metalness:0;roughness:0.25;opacity:0.84;scale="2 2 2" 
-	var sphere = document.createElement("a-sphere");
-	sphere.setAttribute("color", "#b2e8ff");
-	sphere.setAttribute("transparent", "true");
-	sphere.setAttribute("opacity", "0.4");
-	sphere.setAttribute("metalness", "0");
-	sphere.setAttribute("roughness", "0.25");
-	sphere.setAttribute("scale", "2 2 2");
-	document.querySelector("#houseRoom").appendChild(sphere);
 }
 
 function addHeadShot(){

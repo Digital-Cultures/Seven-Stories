@@ -204,7 +204,6 @@ function timeLine() {
             // Marianne appears next to Mark
             break;
         case 116:
-            addJamHoney();
             //Food -> Toys -> Furniture fade in
             break;
         case 118:
@@ -215,7 +214,6 @@ function timeLine() {
             break;
         case 127:
             //Aura ball fades out revealing larger Marianne
-            addShpere();
             break;
         case 128:
             // zoom in on Marianne
