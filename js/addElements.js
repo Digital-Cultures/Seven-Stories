@@ -385,6 +385,15 @@ function addHouseRoom(){
 
 		PollyAndWolf.appendChild(pollyAndWolfHP);
 
+		var speakerIcon = document.createElement("a-plane");
+		speakerIcon.setAttribute("src", "#speakerIcon");
+		speakerIcon.setAttribute("class", "speakerIcon");
+		speakerIcon.setAttribute("rotation", "0 0 0");
+		speakerIcon.setAttribute("scale", "1 1 0");
+		speakerIcon.setAttribute("position", "-2.4 -2.4 0");
+
+		PollyAndWolf.appendChild(speakerIcon);
+
 		PollyAndWolf.addEventListener("stateadded", function(evt) {
 		    if (!narration.playing() && !extras.playing()){
 		        //mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
@@ -474,7 +483,7 @@ function addHouseRoom(){
 		var giantOnBeachHP = document.createElement("a-entity");
 		giantOnBeachHP.setAttribute("class", "text");
 		giantOnBeachHP.setAttribute("id", "giantOnBeachText");
-		giantOnBeachHP.setAttribute("text", "text:Giant's Bride (1956)");
+		giantOnBeachHP.setAttribute("text", "text:Polly, the Giant's Bride (1956)");
 		giantOnBeachHP.setAttribute("rotation", "0 0 0");
 		giantOnBeachHP.setAttribute("scale", "1 1 0");
 		giantOnBeachHP.setAttribute("position", "-2.2 -3 0");

@@ -106,11 +106,15 @@ function timeLine() {
             if (!extras.playing()){
                 pauseTime ++;
                 timer.setAttribute('text', { text: "Look around for "+(15-pauseTime)+"sec to hear more about items in the room" });
-                document.querySelector('#pauseTimeBar').setAttribute('scale', { x: pauseTime/50, y: 0.01, z: 0.01 });
-                document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+(pauseTime/100), y: -0.2, z: -1 });
+                document.querySelector('#pauseTimeBar').setAttribute('scale', { x: (15-pauseTime)/50, y: 0.01, z: 0.01 });
+                document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+((15-pauseTime)/100), y: -0.2, z: -1 });
             }
             
             if (pauseTime>15){
+                var x = document.querySelectorAll(".speakerIcon");
+                for(var i=0; i<x.length; i++){
+                    x[i].setAttribute('visible','false');
+                }
                 narration.play();
                 document.querySelector('#lightMain').emit('lightOff');
                 document.querySelector('#pauseTimeBar').setAttribute('scale', { x: 0, y: 0.01, z: 0.01 });
@@ -119,6 +123,11 @@ function timeLine() {
 
             } else if (narration.playing()){
                 narration.pause();
+                //show speaker icons
+                var x = document.querySelectorAll(".speakerIcon");
+                for(var i=0; i<x.length; i++){
+                    x[i].setAttribute('visible','true');
+                }
                 //show crosshairs
                 document.querySelector('#crosshair').setAttribute('material',{visible:true});
             }
@@ -212,8 +221,8 @@ function timeLine() {
             if (!extras.playing()){
                 pauseTime ++;
                 timer.setAttribute('text', { text: "Look around for "+(10-pauseTime)+"sec to hear more about items in the room" });
-                document.querySelector('#pauseTimeBar').setAttribute('scale', { x: pauseTime/50, y: 0.01, z: 0.01 });
-                document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+(pauseTime/100), y: -0.2, z: -1 });
+                document.querySelector('#pauseTimeBar').setAttribute('scale', { x: (10-pauseTime)/50, y: 0.01, z: 0.01 });
+                document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+((10-pauseTime)/100), y: -0.2, z: -1 });
             }
             
             if (pauseTime>10){
