@@ -210,10 +210,7 @@ function timeLine() {
             addHouseRoom();
             //fae into bedroom (3 Sec) B&W and cold
             break;
-        case 114:
-            // Marianne appears next to Mark
-            break;
-        case 116:
+        case 115:
             pauseTime=0;
             break;
         case 118:
@@ -261,6 +258,10 @@ function timeLine() {
         case 122:
             //Marianne and Mark become engulfed in aura ball
              addFoodToRoom();
+            break;
+         case 123:
+            //Marianne and Mark become engulfed in aura ball
+             addGames();
             break;
         case 124:
             //Marianne and Mark become engulfed in aura ball

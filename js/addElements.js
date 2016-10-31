@@ -608,6 +608,15 @@ function addFoodToRoom(){
 	document.getElementById("houseRoom").appendChild(eggs2);
 
 }
+
+function addGames(){
+	var game = document.createElement("a-image");
+	game.setAttribute("src", "#game");
+	game.setAttribute("position", "3 -1.43 -3");
+	game.setAttribute("scale", "3 3 0");
+	game.setAttribute("rotation", "90 90 0");
+	document.getElementById("houseRoom").appendChild(game);
+}
 function addFurnitureToRoom(){
 		// BED
 	var bed = document.createElement("a-image");
