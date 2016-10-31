@@ -243,16 +243,15 @@ function addHouse(){
 	marrianne.setAttribute("position", "10.51 3.18 -2.06");
 	marrianne.setAttribute("scale", "0.8 1.6 0");
 	marrianne.setAttribute("rotation", "0 -13 0");
-	marrianne.setAttribute("opacity", "0");
 
-		var animation = document.createElement("a-animation");
-		animation.setAttribute("attribute", "material.opacity");
-		animation.setAttribute("begin", "9000");
-		animation.setAttribute("dur", "1000");
-		animation.setAttribute("from", "0");
-		animation.setAttribute("to", "1");
+	// 	var animation = document.createElement("a-animation");
+	// 	animation.setAttribute("attribute", "material.opacity");
+	// 	animation.setAttribute("begin", "9000");
+	// 	animation.setAttribute("dur", "1000");
+	// 	animation.setAttribute("from", "0");
+	// 	animation.setAttribute("to", "1");
 
-	marrianne.appendChild(animation);
+	// marrianne.appendChild(animation);
 
 // <a-image src="#fence" material="src:#fence;color:#FFF;shader:standard;side:double;transparent:true;visible:true;depthTest:false;flatShading:false;metalness:1" position="7 3 4.36" scale="3 3 3" rotation="0 0 0" width="5.76" geometry="width:5.76;height:0.52;primitive:plane" height="0.52"></a-image>
 	var fence = document.createElement("a-image");
