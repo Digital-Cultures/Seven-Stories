@@ -227,7 +227,7 @@ function timeLine() {
                     x[i].setAttribute('visible','false');
                 }
 
-                narration.play('secondHalf');
+                narration.play('thirdHalf');
                 //document.querySelector('#pauseTimeBar').setAttribute('scale', { x: 0, y: 0.01, z: 0.01 });
                 //hide crosshairs
                 timer.setAttribute('visible',false);
