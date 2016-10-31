@@ -105,10 +105,8 @@ function timeLine() {
             // pause to look around
             if (!extras.playing()){
                 pauseTime ++;
-                timer.setAttribute('text', { text: "Look around for "+(15-pauseTime)+" sec to hear more about items in the room" });
-               // document.querySelector('#pauseTimeBar').setAttribute('scale', { x: (15-pauseTime)/50, y: 0.01, z: 0.01 });
-               // document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+((15-pauseTime)/100), y: -0.2, z: -1 });
-            }
+                //timer.setAttribute('text', { text: "Look around for "+(15-pauseTime)+" sec to hear more about items in the room" });
+           }
             
             if (pauseTime>15){
                 var x = document.querySelectorAll(".speakerIcon");
@@ -222,9 +220,7 @@ function timeLine() {
             // becomes more colourfull
             if (!extras.playing()){
                 pauseTime ++;
-                timer.setAttribute('text', { text: "Look around for "+(10-pauseTime)+" sec to hear more about items in the room" });
-                //document.querySelector('#pauseTimeBar').setAttribute('scale', { x: (10-pauseTime)/50, y: 0.01, z: 0.01 });
-               // document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+((10-pauseTime)/100), y: -0.2, z: -1 });
+                //timer.setAttribute('text', { text: "Look around for "+(10-pauseTime)+" sec to hear more about items in the room" });
             }
             
             if (pauseTime>10){
@@ -320,7 +316,7 @@ function timeLine() {
 
     if (narration.playing()||totalSeconds<3){
         totalSeconds++;
-        timer.setAttribute('text', { text: totalSeconds });
+        //timer.setAttribute('text', { text: totalSeconds });
     }
     
     }

@@ -114,6 +114,7 @@
               }
             });
             extras.on('end',function(){
+                pauseTime =- 3;
                 timer.setAttribute('visible',true);
                 var x = document.querySelectorAll(".text");
                 for(var i=0; i<x.length; i++){

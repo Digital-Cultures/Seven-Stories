@@ -13,7 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
-		<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" />
 
@@ -22,10 +22,9 @@
 
 	<div id="cover">
 		<h1>The Catherine Storr Experience</h1>
-		This short introduction to the Catherine Storr archives is a joint project by Newcastle University and Seven Stories, the UK's National Centre for Children's Literature.
-		<br><br>This experience is loosely based around Catherine Storr’s novel Marianne Dreams and makes use of the new possibilities of modern mobile phones to create an immersive and atmospheric experience. Based in web browser technologies the 3D scene uses the motion sensors of your mobile phone to allow a natural visual exploration.
-		<br><br>
-The Catherine Storr Experience contributes to ongoing work in <a href="http://digitalcultures.ncl.ac.uk">Digital Cultures at Culture Lab</a> into the fusion of cultural heritage with new forms of creativity through the use of digital technologies. We hope that this experimental work encourages new experiences of Catherine Storr’s books and the Catherine Storr archive at Seven Stories, the National Centre for Children's Books.
+		This short introduction to the Catherine Storr archives is a joint project by Newcastle University and Seven Stories, the National Centre for Children's Books.
+		<br><br>This experience is loosely based around Catherine Storr’s novel <i>Marianne Dreams</i> and makes use of the new possibilities offered by modern mobile phones to create an immersive and atmospheric experience. Based in web browser technologies, the 3D scene uses the motion sensors of your mobile phone to allow a natural visual exploration.
+		<br><br>The <i>Catherine Storr Experience</i> contributes to ongoing work in <a href="http://digitalcultures.ncl.ac.uk">Digital Cultures at Newcastle University’s Culture</a> Lab into the fusion of cultural heritage with new forms of creativity through the use of digital technologies. We hope that this experimental work encourages new experiences of Catherine Storr’s books and the Catherine Storr archive at Seven Stories.
 		<br><br>
 		<div id="beginBtn" href="#" data-icon="info" data-role="button" data-mini="false" data-theme="b" data-corners="false">Shall We Begin?</div>
 		After enjoying the interactive Virtual Reality guided tour, you may want to learn more about Catherine Storr, her work, and the material held by Seven Stories. There is a link that will lead you to more detailed information at the end of the tour or alternatively go straight to it by clicking <a href="">here</a>.
@@ -47,7 +46,7 @@ The Catherine Storr Experience contributes to ongoing work in <a href="http://di
 		This experiance requires WebGL. For more information WebGL click <a href="https://en.wikipedia.org/wiki/WebGL">here.</a>
 	</div>
 	<div id="cover2" style="display: none;">
-		<div style="text-align: center;"> This experience is best enjoyed on <i class="fa fa-mobile" aria-hidden="true"></i> mobile with <i class="fa fa-headphones" aria-hidden="true"></i> headphones + Cardboard. <br><br>For desktops <i class="fa fa-mouse-pointer" aria-hidden="true"></i> click then move the mouse to look around.<br><br></div>
+		<div style="text-align: center;"> This experience is best enjoyed on <i class="fa fa-mobile" aria-hidden="true"></i> mobile with <i class="fa fa-headphones" aria-hidden="true"></i> headphones + Cardboard. <br><br>For desktops: <i class="fa fa-mouse-pointer" aria-hidden="true"></i> click, then move the mouse to look around.<br><br></div>
 		<div style="text-align: center;"><i class="fa fa-volume-up" aria-hidden="true"></i> Make sure the sound is on!</div>
 		<div id="loading" style="width: 100%; text-align: center;">
 			<div class="spinner"></div>
@@ -264,7 +263,7 @@ The Catherine Storr Experience contributes to ongoing work in <a href="http://di
 			<a-collada-model src="#bed" collada-model="#bed" position="12 -2 -2" scale="4 4 4" rotation="0 90 0" material=""></a-collada-model>
 			<a-collada-model id="mirrorModel" src="#mirror" collada-model="#mirror" position="11.9 2 -10" scale="3 3 3" rotation="0 -90 0" material="">
 				<a-image class="speakerIcon" visible="false" src="#speakerIcon" material="repeat:1 1;src:#speakerIcon;color:#FFF;shader:flat;side:double;transparent:true" height="1" width="1" position="1 0.5 0" geometry="primitive:plane;height:1;width:1" scale="0.2 0.1 1"></a-image>
-				<a-entity class="text" position="0.28 0.48 1.91" text="text:The Mirror Image Gost (1994)" id="mirrorText" rotation="0 90 0" scale="0.2 0.2 0" material="color: white; shader: flat;" visible="false"></a-entity>
+				<a-entity class="text" position="0.28 0.48 1.91" text="text:The Mirror Image Ghost (1994)" id="mirrorText" rotation="0 90 0" scale="0.2 0.2 0" material="color: white; shader: flat;" visible="false"></a-entity>
 
 			</a-collada-model>
 			<a-collada-model src="#keys" collada-model="#Bunch_of_keys" position="-3 -1.8 -6" scale="10 10 10" rotation="0 90 0" material=""></a-collada-model>
@@ -290,7 +289,7 @@ The Catherine Storr Experience contributes to ongoing work in <a href="http://di
 			</a-entity>
 
 			<a-entity position="9 0.78 2.87" rotation="0 0 0" scale="3.44 2.58 1" visible="true" geometry="primitive:plane" id="dollsCloths" material="opacity:0;side:back">
-				<a-entity class="text" position="-0.46 0.21 0" text="text:Dolls' Clothes" id="dollsClothsText" material="color: white; shader: flat;" visible="false" rotation="0 180 0" scale="0.15 0.15 0"></a-entity>
+				<a-entity class="text" position="-0.76 0.21 0" text="text:Dolls' Clothes" id="dollsClothsText" material="color: white; shader: flat;" visible="false" rotation="0 180 0" scale="0.15 0.15 0"></a-entity>
 				<a-image class="speakerIcon" visible="false" src="#speakerIcon" material="repeat:1 1;src:#speakerIcon;color:#FFF;shader:flat;side:double;transparent:true" height="1" width="1" position="-0.64 0.23 0" rotation="0 180 0" geometry="primitive:plane;height:1;width:1" scale="0.15 0.15 1"></a-image>
 			</a-entity>
 
@@ -317,12 +316,17 @@ The Catherine Storr Experience contributes to ongoing work in <a href="http://di
 			  geometry="primitive: plane;"
 			  material="color: black; shader: flat">
 			</a-entity> -->
-			<a-entity id="timer" text="text: 0"
-			  position="-0.6 -0.15 -1"
-			  scale="0.06 0.06 0"
+			<a-entity id="timer" text="text: You can explore the room to learn"
+			  position="-0.42 -0.15 -1"
+			  scale="0.08 0.08 0"
 			  material="color: black; shader: flat"
 			  visible="false">
-			  <a-plane color="#FFF" height="1" width="2" material="color:#FFF;opacity:0.5" position="9.5 0.2 -1.4" geometry="primitive:plane;height:1;width:2" scale="9.98 1 1"></a-plane>
+			  <a-entity id="timerLine2" text="text: more about some of the items shown"
+			  position="-0.6 -0.8 0"
+			  scale="1 1 1"
+			  material="color: black; shader: flat"
+			  ></a-entity>
+			  <a-plane color="#FFF" height="1" width="2" material="color:#FFF;opacity:0.5" position="5.2 -0.1 -1.4" geometry="primitive:plane;height:1;width:2" scale="6 2 1"></a-plane>
 			</a-entity>
 
 			<!-- <a-entity id="audio" sound="autoplay: false; src: #narration; volume: 5" ></a-entity> -->
