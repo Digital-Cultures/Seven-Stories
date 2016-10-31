@@ -120,7 +120,7 @@ function timeLine() {
                 timer.setAttribute('visible',false);
                 document.querySelector('#crosshair').setAttribute('material',{visible:false});
 
-            } else if (narration.playing()){
+            } else if (pauseTime==1){
                 narration.pause();
                 //show speaker icons
                 var x = document.querySelectorAll(".speakerIcon");
@@ -233,7 +233,7 @@ function timeLine() {
                 timer.setAttribute('visible',false);
                 document.querySelector('#crosshair').setAttribute('material',{visible:false});
 
-            } else if (narration.playing()){
+            } else if (pauseTime==1){
                 narration.pause();
 
                 //show speaker icons
