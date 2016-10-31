@@ -235,6 +235,24 @@ function addHouse(){
 	house.setAttribute("rotation", "0 0 0");
 	entity.appendChild(house);
 
+
+	var marrianne = document.createElement("a-image");
+	marrianne.setAttribute("src", "#marrianne");
+	marrianne.setAttribute("id", "marrianneImg");
+	marrianne.setAttribute("position", "10.51 3.18 -2.06");
+	marrianne.setAttribute("scale", "0.8 1.6 0");
+	marrianne.setAttribute("rotation", "0 -13 0");
+	marrianne.setAttribute("opacity", "0");
+
+		var animation = document.createElement("a-animation");
+		animation.setAttribute("attribute", "material.opacity");
+		animation.setAttribute("begin", "9000");
+		animation.setAttribute("dur", "1000");
+		animation.setAttribute("from", "0");
+		animation.setAttribute("to", "1");
+
+	marrianne.appendChild(animation);
+
 // <a-image src="#fence" material="src:#fence;color:#FFF;shader:standard;side:double;transparent:true;visible:true;depthTest:false;flatShading:false;metalness:1" position="7 3 4.36" scale="3 3 3" rotation="0 0 0" width="5.76" geometry="width:5.76;height:0.52;primitive:plane" height="0.52"></a-image>
 	var fence = document.createElement("a-image");
 	fence.setAttribute("src", "#fence");
@@ -286,6 +304,7 @@ function addHouse(){
 	entity.appendChild(stone);
 	entity.appendChild(fence2);
 	entity.appendChild(fence3);
+	entity.appendChild(marrianne);
 	entity.appendChild(fence);
 	document.querySelector("a-scene").appendChild(entity);
 }
@@ -377,20 +396,19 @@ function addHouseRoom(){
 		pollyAndWolfHP.setAttribute("class", "text");
 		pollyAndWolfHP.setAttribute("id", "pollyAndWolfText");
 		pollyAndWolfHP.setAttribute("text", "text:Clever Polly and the Stupid Wolf (1967)");
-		pollyAndWolfHP.setAttribute("rotation", "0 0 0");
-		pollyAndWolfHP.setAttribute("scale", "1 1 0");
-		pollyAndWolfHP.setAttribute("position", "-2.2 -2.4 0");
+		pollyAndWolfHP.setAttribute("scale", "0.4 0.4 0");
+		pollyAndWolfHP.setAttribute("position", "-1.2 -1.9 0");
 		pollyAndWolfHP.setAttribute("material", "color: black;");
 		pollyAndWolfHP.setAttribute("visible", "false");
 
 		PollyAndWolf.appendChild(pollyAndWolfHP);
 
-		var speakerIcon = document.createElement("a-plane");
+		var speakerIcon = document.createElement("a-image");
 		speakerIcon.setAttribute("src", "#speakerIcon");
 		speakerIcon.setAttribute("class", "speakerIcon");
-		speakerIcon.setAttribute("rotation", "0 0 0");
-		speakerIcon.setAttribute("scale", "1 1 0");
-		speakerIcon.setAttribute("position", "-2.4 -2.4 0");
+		speakerIcon.setAttribute("scale", "0.5 0.5 0");
+		speakerIcon.setAttribute("position", "-1.5 -1.8 0");
+		speakerIcon.setAttribute("visible", "false");
 
 		PollyAndWolf.appendChild(speakerIcon);
 
@@ -399,7 +417,7 @@ function addHouseRoom(){
 		        //mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
 		        if (evt.detail.state === "cursor-hovered") {
 		            extras.play('cleverPolly');
-		            timer.setAttribute('text', { text: "" });
+		            timer.setAttribute('visible',false);
 		            document.querySelector("#pollyAndWolfText").setAttribute("visible","true");
 		            document.querySelector('#lightMain').emit('lightDreamOff');
 		        }
@@ -418,20 +436,28 @@ function addHouseRoom(){
 		robinHP.setAttribute("class", "text");
 		robinHP.setAttribute("id", "robinText");
 		robinHP.setAttribute("text", "text:Robin (1962)");
-		robinHP.setAttribute("rotation", "0 0 0");
-		robinHP.setAttribute("scale", "1 1 0");
-		robinHP.setAttribute("position", "-2.2 -2.4 0");
+		robinHP.setAttribute("scale", "0.4 0.4 0");
+		robinHP.setAttribute("position", "-1 -1.7 0");
 		robinHP.setAttribute("material", "color: black;");
 		robinHP.setAttribute("visible", "false");
 
 		robin.appendChild(robinHP);
+
+		var speakerIcon = document.createElement("a-image");
+		speakerIcon.setAttribute("src", "#speakerIcon");
+		speakerIcon.setAttribute("class", "speakerIcon");
+		speakerIcon.setAttribute("scale", "0.5 0.5 0");
+		speakerIcon.setAttribute("position", "-1.3 -1.6 0");
+		speakerIcon.setAttribute("visible", "false");
+
+		robin.appendChild(speakerIcon);
 
 		robin.addEventListener("stateadded", function(evt) {
 		    if (!narration.playing() && !extras.playing()){
 		        //mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
 		        if (evt.detail.state === "cursor-hovered") {
 		            extras.play('robin');
-		            timer.setAttribute('text', { text: "" });
+		            timer.setAttribute('visible',false);
 		            document.querySelector("#robinText").setAttribute("visible","true");
 		            document.querySelector('#lightMain').emit('lightDreamOff');
 		        }
@@ -452,18 +478,29 @@ function addHouseRoom(){
 		robin2HP.setAttribute("id", "robin2Text");
 		robin2HP.setAttribute("text", "text:Robin (1962)");
 		robin2HP.setAttribute("rotation", "0 0 0");
-		robin2HP.setAttribute("scale", "1 1 0");
-		robin2HP.setAttribute("position", "-2.2 -2.4 0");
+		robin2HP.setAttribute("scale", "0.4 0.4 0");
+		robin2HP.setAttribute("position", "-1.1 -1.9 0");
 		robin2HP.setAttribute("material", "color: black;");
 		robin2HP.setAttribute("visible", "false");
 		robin2.appendChild(robin2HP);
+
+		var speakerIcon = document.createElement("a-image");
+		speakerIcon.setAttribute("src", "#speakerIcon");
+		speakerIcon.setAttribute("class", "speakerIcon");
+		speakerIcon.setAttribute("rotation", "0 0 0");
+		speakerIcon.setAttribute("scale", "0.5 0.5 0");
+		speakerIcon.setAttribute("position", "-1.4 -1.8 0");
+		speakerIcon.setAttribute("visible", "false");
+
+		robin2.appendChild(speakerIcon);
+
 
 		robin2.addEventListener("stateadded", function(evt) {
 		    if (!narration.playing() && !extras.playing()){
 		        //mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
 		        if (evt.detail.state === "cursor-hovered") {
 		            extras.play('robin');
-		            timer.setAttribute('text', { text: "" });
+		            timer.setAttribute('visible',false);
 		            document.querySelector("#robin2Text").setAttribute("visible","true");
 		            document.querySelector('#lightMain').emit('lightDreamOff');
 		        }
@@ -492,12 +529,22 @@ function addHouseRoom(){
 
 		giantOnBeach.appendChild(giantOnBeachHP);
 
+		var speakerIcon = document.createElement("a-image");
+		speakerIcon.setAttribute("src", "#speakerIcon");
+		speakerIcon.setAttribute("class", "speakerIcon");
+		speakerIcon.setAttribute("rotation", "0 0 0");
+		speakerIcon.setAttribute("scale", "1 1 0");
+		speakerIcon.setAttribute("position", "-3 -2.8 0");
+		speakerIcon.setAttribute("visible", "false");
+
+		giantOnBeach.appendChild(speakerIcon);
+
 		giantOnBeach.addEventListener("stateadded", function(evt) {
 		    if (!narration.playing() && !extras.playing()){
 		        //mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
 		        if (evt.detail.state === "cursor-hovered") {
 		            extras.play('giant');
-		            timer.setAttribute('text', { text: "" });
+		            timer.setAttribute('visible',false);
 		            document.querySelector("#giantOnBeachText").setAttribute("visible","true");
 		            document.querySelector('#lightMain').emit('lightDreamOff');
 		        }
@@ -507,10 +554,26 @@ function addHouseRoom(){
 	document.getElementById("houseRoom").appendChild(giantOnBeach);
 }
 function removeMarianneAndMark(){
-	var elem = document.getElementById("markImg");
-	elem.parentNode.removeChild(elem);
-	var elem2 = document.getElementById("marrianneImg");
-	elem2.parentNode.removeChild(elem2);
+	var animation = document.createElement("a-animation");
+	animation.setAttribute("attribute", "material.opacity");
+	animation.setAttribute("dur", "1000");
+	animation.setAttribute("from", "1");
+	animation.setAttribute("to", "0");
+
+	document.getElementById("markImg").appendChild(animation);
+
+	var animation2 = document.createElement("a-animation");
+	animation2.setAttribute("attribute", "material.opacity");
+	animation2.setAttribute("dur", "1000");
+	animation2.setAttribute("from", "1");
+	animation2.setAttribute("to", "0");
+	document.getElementById("marrianneImg").appendChild(animation2);
+	//document.querySelector("a-scene").appendChild(headShot);
+
+	// var elem = document.getElementById("markImg");
+	// elem.parentNode.removeChild(elem);
+	// var elem2 = document.getElementById("marrianneImg");
+	// elem2.parentNode.removeChild(elem2);
 }
 function addMandM(){
 	var mandM = document.createElement("a-image");
@@ -607,7 +670,7 @@ function addHeadShot(){
 
 	var animation = document.createElement("a-animation");
 	animation.setAttribute("attribute", "material.opacity");
-	animation.setAttribute("dur", "1000");
+	animation.setAttribute("dur", "2000");
 	animation.setAttribute("from", "0");
 	animation.setAttribute("to", "1");
 

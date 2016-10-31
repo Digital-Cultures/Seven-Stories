@@ -114,8 +114,7 @@
               }
             });
             extras.on('end',function(){
-                timer.setAttribute('text', { text: "Look at items to hear more about them" });
-                
+                timer.setAttribute('visible',true);
                 var x = document.querySelectorAll(".text");
                 for(var i=0; i<x.length; i++){
                     x[i].setAttribute('visible','false');
@@ -167,7 +166,7 @@
                     //mirrorModel.setAttribute('scale', "4 4.1 4"); //scale="1 1 1"
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('mirror');
-                        timer.setAttribute('text', { text: "" });
+                        timer.setAttribute('visible',false);
                         document.querySelector("#mirrorText").setAttribute("visible","true");
                         document.querySelector('#lightMain').emit('lightOff');
                     }
@@ -185,7 +184,7 @@
                 if (!narration.playing() && !extras.playing()){
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('darkRoom');
-                        timer.setAttribute('text', { text: "" });
+                        timer.setAttribute('visible',false);
                         document.querySelector("#doublesText").setAttribute("visible","true");
                         document.querySelector('#lightMain').emit('lightOff');
                     }
@@ -203,7 +202,7 @@
                 if (!narration.playing() && !extras.playing()){
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('portraitChild');
-                        timer.setAttribute('text', { text: "" });
+                        timer.setAttribute('visible',false);
                         document.querySelector("#portraitChildText").setAttribute("visible","true");
                         document.querySelector('#lightMain').emit('lightOff');
                     }
@@ -220,7 +219,7 @@
                 if (!narration.playing() && !extras.playing()){
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('dolls');
-                        timer.setAttribute('text', { text: "" });
+                        timer.setAttribute('visible',false);
                         document.querySelector("#dollsClothsText").setAttribute("visible","true");
                         document.querySelector('#lightMain').emit('lightOff');
                     }
@@ -237,7 +236,7 @@
                 if (!narration.playing() && !extras.playing()){
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('dolls');
-                        timer.setAttribute('text', { text: "" });
+                        timer.setAttribute('visible',false);
                         document.querySelector("#dolls2Text").setAttribute("visible","true");
                         document.querySelector('#lightMain').emit('lightOff');
                     }
@@ -282,7 +281,7 @@
                     if (evt.detail.state === "cursor-hovered") {
                         extras.play('piggyback');
                         document.querySelector("#motherText").setAttribute("visible","true");
-                        timer.setAttribute('text', { text: "" });
+                        timer.setAttribute('visible',false);
                     }
                 }
             });

@@ -79,7 +79,7 @@ function timeLine() {
             //document.querySelector('#scene-1').emit('lightOn');
         	cancelAnimationFrame(bookcaseFrame);
             break;
-        case 41:
+        case 42:
             document.querySelector('#scene-1').emit('fogfadeout');
             copyRoom();
             //Fade out room
@@ -105,9 +105,9 @@ function timeLine() {
             // pause to look around
             if (!extras.playing()){
                 pauseTime ++;
-                timer.setAttribute('text', { text: "Look around for "+(15-pauseTime)+"sec to hear more about items in the room" });
-                document.querySelector('#pauseTimeBar').setAttribute('scale', { x: (15-pauseTime)/50, y: 0.01, z: 0.01 });
-                document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+((15-pauseTime)/100), y: -0.2, z: -1 });
+                timer.setAttribute('text', { text: "Look around for "+(15-pauseTime)+" sec to hear more about items in the room" });
+               // document.querySelector('#pauseTimeBar').setAttribute('scale', { x: (15-pauseTime)/50, y: 0.01, z: 0.01 });
+               // document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+((15-pauseTime)/100), y: -0.2, z: -1 });
             }
             
             if (pauseTime>15){
@@ -117,8 +117,9 @@ function timeLine() {
                 }
                 narration.play();
                 document.querySelector('#lightMain').emit('lightOff');
-                document.querySelector('#pauseTimeBar').setAttribute('scale', { x: 0, y: 0.01, z: 0.01 });
+               // document.querySelector('#pauseTimeBar').setAttribute('scale', { x: 0, y: 0.01, z: 0.01 });
                 //hide crosshairs
+                timer.setAttribute('visible',false);
                 document.querySelector('#crosshair').setAttribute('material',{visible:false});
 
             } else if (narration.playing()){
@@ -130,6 +131,7 @@ function timeLine() {
                 }
                 //show crosshairs
                 document.querySelector('#crosshair').setAttribute('material',{visible:true});
+                timer.setAttribute('visible',true);
             }
             
             break;
@@ -140,7 +142,7 @@ function timeLine() {
         case 52:
             //Marianne appears
             break;
-        case 69:
+        case 70:
              document.querySelector('#scene-1').emit('fogfadeout');
              break;
         case 72:
@@ -220,20 +222,34 @@ function timeLine() {
             // becomes more colourfull
             if (!extras.playing()){
                 pauseTime ++;
-                timer.setAttribute('text', { text: "Look around for "+(10-pauseTime)+"sec to hear more about items in the room" });
-                document.querySelector('#pauseTimeBar').setAttribute('scale', { x: (10-pauseTime)/50, y: 0.01, z: 0.01 });
-                document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+((10-pauseTime)/100), y: -0.2, z: -1 });
+                timer.setAttribute('text', { text: "Look around for "+(10-pauseTime)+" sec to hear more about items in the room" });
+                //document.querySelector('#pauseTimeBar').setAttribute('scale', { x: (10-pauseTime)/50, y: 0.01, z: 0.01 });
+               // document.querySelector('#pauseTimeBar').setAttribute('position', { x: -0.2+((10-pauseTime)/100), y: -0.2, z: -1 });
             }
             
             if (pauseTime>10){
+
+                var x = document.querySelectorAll(".speakerIcon");
+                for(var i=0; i<x.length; i++){
+                    x[i].setAttribute('visible','false');
+                }
+
                 narration.play();
-                document.querySelector('#pauseTimeBar').setAttribute('scale', { x: 0, y: 0.01, z: 0.01 });
+                //document.querySelector('#pauseTimeBar').setAttribute('scale', { x: 0, y: 0.01, z: 0.01 });
                 //hide crosshairs
+                timer.setAttribute('visible',false);
                 document.querySelector('#crosshair').setAttribute('material',{visible:false});
 
             } else if (narration.playing()){
                 narration.pause();
+
+                //show speaker icons
+                var x = document.querySelectorAll(".speakerIcon");
+                for(var i=0; i<x.length; i++){
+                    x[i].setAttribute('visible','true');
+                }
                 //show crosshairs
+                timer.setAttribute('visible',true);
                 document.querySelector('#crosshair').setAttribute('material',{visible:true});
             }
             break;
@@ -264,8 +280,9 @@ function timeLine() {
         case 131:
             //room starts to spin (Marianne stays still)
             break;
-        case 134:
+        case 136:
             // starts getting dark
+            document.querySelector('#lightMain').emit('lightOffSlow');
             break;
         case 149:
             //play bang and Marianne dissapears
@@ -283,16 +300,16 @@ function timeLine() {
         case 152:
             document.querySelector('#windowSun').emit('lightOn');
             break;
-        case 173:
+        case 165:
             //show portrate
             
             startFrame = null;
-            cameraPositions = [new THREE.Vector3(8, 4, 0), new THREE.Vector3(4, 25, 190)];
+            cameraPositions = [new THREE.Vector3(8, 3.5, 0), new THREE.Vector3(4, 22, 180)];
             cameraPath = new THREE.SplineCurve3(cameraPositions);
             duration = 30000;
             bookcaseFrame = requestAnimationFrame(cameraPan);
             break;
-        case 183:
+        case 173:
             addHeadShot();
             break;
         case 200:
