@@ -395,8 +395,8 @@ function addHouseRoom(){
 	var pollyAndWolfHP = document.createElement("a-entity");
 		pollyAndWolfHP.setAttribute("class", "text");
 		pollyAndWolfHP.setAttribute("id", "pollyAndWolfText");
-		pollyAndWolfHP.setAttribute("text", "text:Clever Polly and the Stupid Wolf (1967)");
-		pollyAndWolfHP.setAttribute("scale", "0.4 0.4 0");
+		pollyAndWolfHP.setAttribute("text", "text:CLEVER POLLY AND THE STUPID WOLF (1967)");
+		pollyAndWolfHP.setAttribute("scale", "0.38 0.38 0");
 		pollyAndWolfHP.setAttribute("position", "-1.2 -1.9 0");
 		pollyAndWolfHP.setAttribute("material", "color: black;");
 		pollyAndWolfHP.setAttribute("visible", "false");
@@ -435,8 +435,8 @@ function addHouseRoom(){
 		var robinHP = document.createElement("a-entity");
 		robinHP.setAttribute("class", "text");
 		robinHP.setAttribute("id", "robinText");
-		robinHP.setAttribute("text", "text:Robin (1962)");
-		robinHP.setAttribute("scale", "0.4 0.4 0");
+		robinHP.setAttribute("text", "text:ROBIN (1962)");
+		robinHP.setAttribute("scale", "0.38 0.38 0");
 		robinHP.setAttribute("position", "-1 -1.7 0");
 		robinHP.setAttribute("material", "color: black;");
 		robinHP.setAttribute("visible", "false");
@@ -476,9 +476,9 @@ function addHouseRoom(){
 		var robin2HP = document.createElement("a-entity");
 		robin2HP.setAttribute("class", "text");
 		robin2HP.setAttribute("id", "robin2Text");
-		robin2HP.setAttribute("text", "text:Robin (1962)");
+		robin2HP.setAttribute("text", "text:ROBIN (1962)");
 		robin2HP.setAttribute("rotation", "0 0 0");
-		robin2HP.setAttribute("scale", "0.4 0.4 0");
+		robin2HP.setAttribute("scale", "0.38 0.38 0");
 		robin2HP.setAttribute("position", "-1.1 -1.9 0");
 		robin2HP.setAttribute("material", "color: black;");
 		robin2HP.setAttribute("visible", "false");
@@ -520,9 +520,9 @@ function addHouseRoom(){
 		var giantOnBeachHP = document.createElement("a-entity");
 		giantOnBeachHP.setAttribute("class", "text");
 		giantOnBeachHP.setAttribute("id", "giantOnBeachText");
-		giantOnBeachHP.setAttribute("text", "text:Polly, the Giant's Bride (1956)");
+		giantOnBeachHP.setAttribute("text", "text:POLLY, THE GIANT'S BRIDE (1956)");
 		giantOnBeachHP.setAttribute("rotation", "0 0 0");
-		giantOnBeachHP.setAttribute("scale", "1 1 0");
+		giantOnBeachHP.setAttribute("scale", "0.8 0.8 0");
 		giantOnBeachHP.setAttribute("position", "-2.2 -3 0");
 		giantOnBeachHP.setAttribute("material", "color: black;");
 		giantOnBeachHP.setAttribute("visible", "false");
