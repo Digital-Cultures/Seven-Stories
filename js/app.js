@@ -80,7 +80,12 @@
             narration = new Howl({
               src: ['sounds/narration.mp3'],
               volume: 0.8,
-              onload: showStartBtn
+              onload: showStartBtn,
+              sprite: {
+                firstHalf: [0, 43700],
+                secondHalf: [43700, 71200],
+                thirdHalf: [114900, 87100]
+                }
             });
 
            // narration = new THREE.Audio( listener );

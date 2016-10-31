@@ -44,7 +44,7 @@ function timeLine() {
             break;
 
         case 2:
-            narration.play();
+            narration.play('firstHalf');
            // totalSeconds = 76;
             document.querySelector('#lightSpot').emit('lightOn');
         
@@ -113,7 +113,7 @@ function timeLine() {
                 for(var i=0; i<x.length; i++){
                     x[i].setAttribute('visible','false');
                 }
-                narration.play();
+                narration.play('secondHalf');
                 document.querySelector('#lightMain').emit('lightOff');
                // document.querySelector('#pauseTimeBar').setAttribute('scale', { x: 0, y: 0.01, z: 0.01 });
                 //hide crosshairs
@@ -227,7 +227,7 @@ function timeLine() {
                     x[i].setAttribute('visible','false');
                 }
 
-                narration.play();
+                narration.play('secondHalf');
                 //document.querySelector('#pauseTimeBar').setAttribute('scale', { x: 0, y: 0.01, z: 0.01 });
                 //hide crosshairs
                 timer.setAttribute('visible',false);
