@@ -214,13 +214,14 @@ function copyRoom(){
 	while (myNode.firstChild) {
 	    myNode.removeChild(myNode.firstChild);
 	}
-	var elem = document.getElementById("room");
-	roomHTML = elem.cloneNode(true);
+	//var elem = document.getElementById("room");
+	//roomHTML = elem.cloneNode(true);
 }
 
 function removeRoom(){
-	var elem = document.getElementById("room");
-	elem.parentNode.removeChild(elem);
+	document.getElementById("room").setAttribute("visible", "false");
+	//var elem = document.getElementById("room");
+	//elem.parentNode.removeChild(elem);
 }
 
 function addHouse(){

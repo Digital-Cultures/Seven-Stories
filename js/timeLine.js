@@ -287,7 +287,8 @@ function timeLine() {
             document.querySelector('#scene-1').emit('fogfadeout');
             break;
         case 150:
-            document.querySelector("a-scene").appendChild(roomHTML);
+            document.getElementById("room").setAttribute("visible","true");
+            //document.querySelector("a-scene").appendChild(roomHTML);
             camera.setAttribute('position', { x: 8, y: 3.5, z: 0 });
             document.querySelector('#room').setAttribute('position', { x: 3.5, y: 1.5, z: -11 });
             document.querySelector('#room').setAttribute('rotation', { x: 0, y: -90, z: 0});
