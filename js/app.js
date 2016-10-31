@@ -180,7 +180,7 @@
             });
 
             mirrorModel.addEventListener("stateremoved", function(evt) {
-                mirrorModel.setAttribute('scale', "3 4 3"); //scale="0.2 0.2 0.2"
+                //mirrorModel.setAttribute('scale', "3 4 3"); //scale="0.2 0.2 0.2"
                 if (evt.detail.state === "cursor-hovered") {
                     //narration.play();
                 }
